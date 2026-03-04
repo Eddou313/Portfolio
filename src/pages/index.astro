@@ -130,11 +130,512 @@ import Layout from '../layouts/Layout.astro';
 			</div>
 		</div>
 	</section>
+
+	<!-- About Section -->
+	<section id="about" class="min-h-screen py-20 px-4 bg-gray-50 dark:bg-gray-800/50 flex flex-col justify-center relative">
+		<div class="max-w-6xl mx-auto">
+			<!-- Section Title -->
+			<div class="text-center mb-16">
+				<h2 
+					data-en="About Me" 
+					data-fr="À propos de moi"
+					class="about-text text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4"
+				>
+					About Me
+				</h2>
+				<div class="w-20 h-1 bg-indigo-600 mx-auto rounded-full"></div>
+			</div>
+
+			<div class="grid md:grid-cols-2 gap-12 items-center">
+				<!-- Left: Image/Illustration -->
+				<div class="flex justify-center">
+					<div class="relative">
+						<div class="w-72 h-72 md:w-80 md:h-80 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 p-1">
+							<div class="w-full h-full rounded-2xl bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
+								<svg class="w-32 h-32 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+								</svg>
+							</div>
+						</div>
+						<!-- Decorative elements -->
+						<div class="absolute -top-4 -right-4 w-20 h-20 bg-indigo-200 dark:bg-indigo-900/50 rounded-full -z-10"></div>
+						<div class="absolute -bottom-4 -left-4 w-16 h-16 bg-purple-200 dark:bg-purple-900/50 rounded-full -z-10"></div>
+					</div>
+				</div>
+
+				<!-- Right: Content -->
+				<div class="space-y-6">
+					<p 
+						data-en="I'm a passionate Full-Stack Developer based in Madagascar, with a strong focus on building modern, responsive, and user-friendly web applications." 
+						data-fr="Je suis un développeur Full-Stack passionné basé à Madagascar, avec un fort accent sur la création d'applications web modernes, responsives et conviviales."
+						class="about-text text-gray-600 dark:text-gray-300 leading-relaxed"
+					>
+						I'm a passionate Full-Stack Developer based in Madagascar, with a strong focus on building modern, responsive, and user-friendly web applications.
+					</p>
+					
+					<p 
+						data-en="I love turning complex problems into simple, beautiful solutions. When I'm not coding, you'll find me exploring new technologies and contributing to open-source projects." 
+						data-fr="J'aime transformer des problèmes complexes en solutions simples et élégantes. Quand je ne code pas, vous me trouverez en train d'explorer de nouvelles technologies et de contribuer à des projets open-source."
+						class="about-text text-gray-600 dark:text-gray-300 leading-relaxed"
+					>
+						I love turning complex problems into simple, beautiful solutions. When I'm not coding, you'll find me exploring new technologies and contributing to open-source projects.
+					</p>
+
+					<!-- Info Cards -->
+					<div class="grid grid-cols-2 gap-4 pt-4">
+						<div class="p-4 bg-white dark:bg-gray-800 rounded-xl shadow-sm">
+							<p class="text-indigo-600 dark:text-indigo-400 font-bold text-2xl">2+</p>
+							<p 
+								data-en="Years Experience" 
+								data-fr="Années d'expérience"
+								class="about-text text-gray-600 dark:text-gray-400 text-sm"
+							>
+								Years Experience
+							</p>
+						</div>
+						<div class="p-4 bg-white dark:bg-gray-800 rounded-xl shadow-sm">
+							<p class="text-indigo-600 dark:text-indigo-400 font-bold text-2xl">10+</p>
+							<p 
+								data-en="Projects Completed" 
+								data-fr="Projets réalisés"
+								class="about-text text-gray-600 dark:text-gray-400 text-sm"
+							>
+								Projects Completed
+							</p>
+						</div>
+					</div>
+
+					<!-- Download CV Button -->
+					<div class="pt-4">
+						<a 
+							href="#" 
+							data-en="Download CV"
+							data-fr="Télécharger CV"
+							class="about-text inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition-colors"
+						>
+							<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+							</svg>
+							Download CV
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Scroll indicator -->
+		<div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+			<a href="#skills" class="text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+				<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+				</svg>
+			</a>
+		</div>
+	</section>
+
+	<!-- Skills Section -->
+	<section id="skills" class="min-h-screen py-20 px-4 flex flex-col justify-center relative">
+		<div class="max-w-6xl mx-auto w-full">
+			<!-- Section Title -->
+			<div class="text-center mb-12">
+				<h2 
+					data-en="My Skills" 
+					data-fr="Mes Compétences"
+					class="section-text text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4"
+				>
+					My Skills
+				</h2>
+				<div class="w-20 h-1 bg-indigo-600 mx-auto rounded-full"></div>
+			</div>
+
+			<!-- Skills Categories -->
+			<div class="space-y-10">
+				<!-- Backend -->
+				<div>
+					<h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+						<svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/>
+						</svg>
+						Backend
+					</h3>
+					<div class="flex flex-wrap gap-3">
+						<span class="px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium">PHP</span>
+						<span class="px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium">Flight</span>
+						<span class="px-4 py-2 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 rounded-full text-sm font-medium">Laravel</span>
+						<span class="px-4 py-2 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 rounded-full text-sm font-medium">Java</span>
+						<span class="px-4 py-2 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-full text-sm font-medium">Spring Boot</span>
+						<span class="px-4 py-2 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-full text-sm font-medium">Spring MVC</span>
+						<span class="px-4 py-2 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 rounded-full text-sm font-medium">Swing</span>
+						<span class="px-4 py-2 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 rounded-full text-sm font-medium">Java EE</span>
+						<span class="px-4 py-2 bg-violet-100 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300 rounded-full text-sm font-medium">C#</span>
+						<span class="px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium">Python</span>
+						<span class="px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium">Pandas</span>
+						<span class="px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm font-medium">Flask</span>
+						<span class="px-4 py-2 bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 rounded-full text-sm font-medium">API REST</span>
+						<span class="px-4 py-2 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 rounded-full text-sm font-medium">Microservices</span>
+					</div>
+				</div>
+
+				<!-- Frontend -->
+				<div>
+					<h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+						<svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+						</svg>
+						Frontend
+					</h3>
+					<div class="flex flex-wrap gap-3">
+						<span class="px-4 py-2 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 rounded-full text-sm font-medium">Astro</span>
+						<span class="px-4 py-2 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 rounded-full text-sm font-medium">Vue.js</span>
+						<span class="px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium">Ionic</span>
+						<span class="px-4 py-2 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 rounded-full text-sm font-medium">HTML</span>
+						<span class="px-4 py-2 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 rounded-full text-sm font-medium">JavaScript</span>
+						<span class="px-4 py-2 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 rounded-full text-sm font-medium">DOM</span>
+					</div>
+				</div>
+
+				<!-- Database -->
+				<div>
+					<h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+						<svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/>
+						</svg>
+						<span data-en="Database" data-fr="Base de données" class="section-text">Database</span>
+					</h3>
+					<div class="flex flex-wrap gap-3">
+						<span class="px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium">MySQL</span>
+						<span class="px-4 py-2 bg-sky-100 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 rounded-full text-sm font-medium">PostgreSQL</span>
+						<span class="px-4 py-2 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 rounded-full text-sm font-medium">Oracle *</span>
+						<span class="px-4 py-2 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-full text-sm font-medium">MongoDB</span>
+					</div>
+					<p class="text-xs text-gray-500 dark:text-gray-400 mt-2" data-en="* Basic knowledge" data-fr="* Connaissances de base">* Basic knowledge</p>
+				</div>
+
+				<!-- Tools -->
+				<div>
+					<h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+						<svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+						</svg>
+						<span data-en="Tools" data-fr="Outils" class="section-text">Tools</span>
+					</h3>
+					<div class="flex flex-wrap gap-3">
+						<span class="px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm font-medium">Git</span>
+						<span class="px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 rounded-full text-sm font-medium">GitHub Desktop</span>
+						<span class="px-4 py-2 bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 rounded-full text-sm font-medium">Linux</span>
+						<span class="px-4 py-2 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 rounded-full text-sm font-medium">FileZilla</span>
+						<span class="px-4 py-2 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 rounded-full text-sm font-medium">Samba</span>
+						<span class="px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium">FTP</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Scroll indicator -->
+		<div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+			<a href="#projects" class="text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+				<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+				</svg>
+			</a>
+		</div>
+	</section>
+
+	<!-- Projects Section -->
+	<section id="projects" class="min-h-screen py-20 px-4 bg-gray-50 dark:bg-gray-800/50 flex flex-col justify-center relative">
+		<div class="max-w-6xl mx-auto w-full">
+			<!-- Section Title -->
+			<div class="text-center mb-16">
+				<h2 
+					data-en="My Projects" 
+					data-fr="Mes Projets"
+					class="section-text text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4"
+				>
+					My Projects
+				</h2>
+				<div class="w-20 h-1 bg-indigo-600 mx-auto rounded-full"></div>
+			</div>
+
+			<!-- Projects Grid -->
+			<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+				<!-- Project Card 1 -->
+				<div class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all group">
+					<div class="h-48 bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+						<svg class="w-16 h-16 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+						</svg>
+					</div>
+					<div class="p-6">
+						<h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Portfolio Website</h3>
+						<p 
+							data-en="A modern portfolio built with Astro and Tailwind CSS."
+							data-fr="Un portfolio moderne construit avec Astro et Tailwind CSS."
+							class="section-text text-gray-600 dark:text-gray-400 mb-4"
+						>
+							A modern portfolio built with Astro and Tailwind CSS.
+						</p>
+						<div class="flex flex-wrap gap-2 mb-4">
+							<span class="px-3 py-1 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-xs font-medium">Astro</span>
+							<span class="px-3 py-1 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-600 dark:text-cyan-400 rounded-full text-xs font-medium">Tailwind</span>
+						</div>
+						<div class="flex gap-3">
+							<a href="#" class="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+								<svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+									<path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+								</svg>
+							</a>
+							<a href="#" class="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+								<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+								</svg>
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<!-- Project Card 2 -->
+				<div class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all group">
+					<div class="h-48 bg-gradient-to-br from-green-500 to-teal-600 flex items-center justify-center">
+						<svg class="w-16 h-16 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+						</svg>
+					</div>
+					<div class="p-6">
+						<h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">E-Commerce App</h3>
+						<p 
+							data-en="Full-stack e-commerce application with React and Node.js."
+							data-fr="Application e-commerce full-stack avec React et Node.js."
+							class="section-text text-gray-600 dark:text-gray-400 mb-4"
+						>
+							Full-stack e-commerce application with React and Node.js.
+						</p>
+						<div class="flex flex-wrap gap-2 mb-4">
+							<span class="px-3 py-1 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-600 dark:text-cyan-400 rounded-full text-xs font-medium">React</span>
+							<span class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-full text-xs font-medium">Node.js</span>
+						</div>
+						<div class="flex gap-3">
+							<a href="#" class="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+								<svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+									<path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+								</svg>
+							</a>
+							<a href="#" class="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+								<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+								</svg>
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<!-- Project Card 3 -->
+				<div class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all group">
+					<div class="h-48 bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center">
+						<svg class="w-16 h-16 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+						</svg>
+					</div>
+					<div class="p-6">
+						<h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Mobile App</h3>
+						<p 
+							data-en="Cross-platform mobile application built with React Native."
+							data-fr="Application mobile multiplateforme construite avec React Native."
+							class="section-text text-gray-600 dark:text-gray-400 mb-4"
+						>
+							Cross-platform mobile application built with React Native.
+						</p>
+						<div class="flex flex-wrap gap-2 mb-4">
+							<span class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full text-xs font-medium">React Native</span>
+						</div>
+						<div class="flex gap-3">
+							<a href="#" class="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+								<svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+									<path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+								</svg>
+							</a>
+							<a href="#" class="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+								<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+								</svg>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Scroll indicator -->
+		<div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+			<a href="#blog" class="text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+				<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+				</svg>
+			</a>
+		</div>
+	</section>
+
+	<!-- Blog Section -->
+	<section id="blog" class="min-h-screen py-20 px-4 flex flex-col justify-center relative">
+		<div class="max-w-6xl mx-auto w-full">
+			<!-- Section Title -->
+			<div class="text-center mb-16">
+				<h2 
+					data-en="Latest Articles" 
+					data-fr="Derniers Articles"
+					class="section-text text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4"
+				>
+					Latest Articles
+				</h2>
+				<div class="w-20 h-1 bg-indigo-600 mx-auto rounded-full"></div>
+			</div>
+
+			<!-- Blog Grid -->
+			<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+				<!-- Blog Card 1 -->
+				<article class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all">
+					<div class="h-40 bg-gradient-to-br from-indigo-400 to-indigo-600"></div>
+					<div class="p-6">
+						<span class="text-xs text-indigo-600 dark:text-indigo-400 font-medium">March 2026</span>
+						<h3 class="text-lg font-bold text-gray-900 dark:text-white mt-2 mb-2">Getting Started with Astro</h3>
+						<p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Learn how to build fast websites with Astro framework...</p>
+						<a href="#" data-en="Read More" data-fr="Lire la suite" class="section-text text-indigo-600 dark:text-indigo-400 text-sm font-medium hover:underline">Read More →</a>
+					</div>
+				</article>
+
+				<!-- Blog Card 2 -->
+				<article class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all">
+					<div class="h-40 bg-gradient-to-br from-green-400 to-green-600"></div>
+					<div class="p-6">
+						<span class="text-xs text-indigo-600 dark:text-indigo-400 font-medium">February 2026</span>
+						<h3 class="text-lg font-bold text-gray-900 dark:text-white mt-2 mb-2">Tailwind CSS Tips & Tricks</h3>
+						<p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Discover useful tips to improve your Tailwind workflow...</p>
+						<a href="#" data-en="Read More" data-fr="Lire la suite" class="section-text text-indigo-600 dark:text-indigo-400 text-sm font-medium hover:underline">Read More →</a>
+					</div>
+				</article>
+
+				<!-- Blog Card 3 -->
+				<article class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all">
+					<div class="h-40 bg-gradient-to-br from-purple-400 to-purple-600"></div>
+					<div class="p-6">
+						<span class="text-xs text-indigo-600 dark:text-indigo-400 font-medium">January 2026</span>
+						<h3 class="text-lg font-bold text-gray-900 dark:text-white mt-2 mb-2">TypeScript Best Practices</h3>
+						<p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Essential TypeScript patterns for clean code...</p>
+						<a href="#" data-en="Read More" data-fr="Lire la suite" class="section-text text-indigo-600 dark:text-indigo-400 text-sm font-medium hover:underline">Read More →</a>
+					</div>
+				</article>
+			</div>
+		</div>
+
+		<!-- Scroll indicator -->
+		<div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+			<a href="#contact" class="text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+				<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+				</svg>
+			</a>
+		</div>
+	</section>
+
+	<!-- Contact Section -->
+	<section id="contact" class="min-h-screen py-20 px-4 bg-gray-50 dark:bg-gray-800/50 flex flex-col justify-center relative">
+		<div class="max-w-4xl mx-auto w-full">
+			<!-- Section Title -->
+			<div class="text-center mb-16">
+				<h2 
+					data-en="Get In Touch" 
+					data-fr="Me Contacter"
+					class="section-text text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4"
+				>
+					Get In Touch
+				</h2>
+				<div class="w-20 h-1 bg-indigo-600 mx-auto rounded-full"></div>
+				<p 
+					data-en="Have a project in mind? Let's work together!"
+					data-fr="Vous avez un projet en tête ? Travaillons ensemble !"
+					class="section-text mt-4 text-gray-600 dark:text-gray-400"
+				>
+					Have a project in mind? Let's work together!
+				</p>
+			</div>
+
+			<!-- Contact Form -->
+			<form class="space-y-6">
+				<div class="grid md:grid-cols-2 gap-6">
+					<div>
+						<label for="name" data-en="Name" data-fr="Nom" class="section-text block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Name</label>
+						<input 
+							type="text" 
+							id="name" 
+							class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-colors"
+							placeholder="John Doe"
+						>
+					</div>
+					<div>
+						<label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email</label>
+						<input 
+							type="email" 
+							id="email" 
+							class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-colors"
+							placeholder="john@example.com"
+						>
+					</div>
+				</div>
+				<div>
+					<label for="subject" data-en="Subject" data-fr="Sujet" class="section-text block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Subject</label>
+					<input 
+						type="text" 
+						id="subject" 
+						class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-colors"
+						placeholder="Project Inquiry"
+					>
+				</div>
+				<div>
+					<label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Message</label>
+					<textarea 
+						id="message" 
+						rows="5"
+						class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-colors resize-none"
+						placeholder="Tell me about your project..."
+					></textarea>
+				</div>
+				<div class="text-center">
+					<button 
+						type="submit"
+						data-en="Send Message"
+						data-fr="Envoyer le message"
+						class="section-text px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition-colors inline-flex items-center gap-2"
+					>
+						<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+						</svg>
+						Send Message
+					</button>
+				</div>
+			</form>
+
+			<!-- Contact Info -->
+			<div class="mt-16 flex flex-wrap justify-center gap-8">
+				<a href="mailto:votre@email.com" class="flex items-center gap-3 text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+					<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+					</svg>
+					<span>votre@email.com</span>
+				</a>
+				<a href="https://wa.me/+261327517278" class="flex items-center gap-3 text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+					<svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+						<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+					</svg>
+					<span>+261 32 751 7278</span>
+				</a>
+			</div>
+		</div>
+	</section>
 </Layout>
 
 <script>
-	function updateHeroLang(lang: string) {
-		document.querySelectorAll('.hero-text').forEach(el => {
+	function updateLang(lang: string) {
+		document.querySelectorAll('.hero-text, .about-text, .section-text').forEach(el => {
 			const text = el.getAttribute(`data-${lang}`);
 			if (text) el.textContent = text;
 		});
@@ -142,10 +643,10 @@ import Layout from '../layouts/Layout.astro';
 
 	// Initialize
 	const savedLang = localStorage.getItem('lang') || 'en';
-	updateHeroLang(savedLang);
+	updateLang(savedLang);
 
 	// Listen for language changes
 	window.addEventListener('langchange', (e: Event) => {
-		updateHeroLang((e as CustomEvent).detail.lang);
+		updateLang((e as CustomEvent).detail.lang);
 	});
 </script>
