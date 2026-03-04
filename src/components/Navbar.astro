@@ -3,6 +3,7 @@ const navItems = [
   { name: 'Home', nameFr: 'Accueil', href: '#home' },
   { name: 'About', nameFr: 'À propos', href: '#about' },
   { name: 'Skills', nameFr: 'Compétences', href: '#skills' },
+  { name: 'Formation', nameFr: 'Formation', href: '#formation' },
   { name: 'Projects', nameFr: 'Projets', href: '#projects' },
   { name: 'Blog', nameFr: 'Blog', href: '#blog' },
   { name: 'Contact', nameFr: 'Contact', href: '#contact' },
@@ -11,8 +12,12 @@ const navItems = [
 
 <nav class="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-gray-800 shadow-sm transition-colors duration-300">
   <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-    <a href="/" class="text-xl font-bold text-gray-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
-      Me.
+    <a href="/" class="group flex items-center gap-1">
+      <span class="relative flex items-center justify-center w-10 h-10 bg-gradient-to-br from-indigo-600 via-purple-600 to-indigo-700 rounded-xl shadow-lg shadow-indigo-500/30 group-hover:shadow-indigo-500/50 group-hover:scale-105 transition-all duration-300">
+        <span class="text-xl font-black text-white tracking-tight">E</span>
+        <span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-emerald-400 rounded-full border-2 border-white dark:border-gray-800"></span>
+      </span>
+      <span class="text-lg font-semibold text-gray-700 dark:text-gray-300 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors hidden sm:block">ddou</span>
     </a>
     
     <div class="flex items-center gap-3">
