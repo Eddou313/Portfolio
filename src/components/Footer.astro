@@ -2,30 +2,32 @@
 const year = new Date().getFullYear();
 
 const links = [
-  { name: 'Home', href: '#home' },
-  { name: 'About', href: '#about' },
-  { name: 'Skills', href: '#skills' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Blog', href: '#blog' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'Home', nameFr: 'Accueil', href: '#home' },
+  { name: 'About', nameFr: 'À propos', href: '#about' },
+  { name: 'Skills', nameFr: 'Compétences', href: '#skills' },
+  { name: 'Projects', nameFr: 'Projets', href: '#projects' },
+  { name: 'Blog', nameFr: 'Blog', href: '#blog' },
+  { name: 'Contact', nameFr: 'Contact', href: '#contact' },
 ];
 ---
 
-<footer class="bg-gray-50 border-t border-gray-200 mt-auto">
+<footer class="bg-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 mt-auto transition-colors duration-300">
   <div class="max-w-6xl mx-auto px-4 py-12">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
       <!-- Brand -->
       <div>
-        <a href="/" class="text-xl font-bold text-gray-900">Portfolio</a>
-        <p class="mt-2 text-gray-600 text-sm">Building digital experiences.</p>
+        <a href="/" class="text-xl font-bold text-gray-900 dark:text-white">Portfolio</a>
+        <p id="footer-tagline" data-en="Building digital experiences." data-fr="Créer des expériences numériques." class="mt-2 text-gray-600 dark:text-gray-400 text-sm">Building digital experiences.</p>
       </div>
       
       <!-- Links -->
       <nav class="flex flex-wrap gap-4 justify-center md:justify-start">
         {links.map((link) => (
           <a 
-            href={link.href} 
-            class="text-sm text-gray-600 hover:text-indigo-600 transition-colors"
+            href={link.href}
+            data-en={link.name}
+            data-fr={link.nameFr}
+            class="nav-item text-sm text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
           >
             {link.name}
           </a>
@@ -36,7 +38,7 @@ const links = [
       <div class="flex gap-3 justify-center md:justify-end">
         <a 
           href="#" 
-          class="w-10 h-10 flex items-center justify-center rounded-lg bg-gray-200 text-gray-600 hover:bg-indigo-600 hover:text-white transition-all"
+          class="w-10 h-10 flex items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-indigo-600 hover:text-white transition-all"
           aria-label="GitHub"
         >
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
@@ -45,7 +47,7 @@ const links = [
         </a>
         <a 
           href="#" 
-          class="w-10 h-10 flex items-center justify-center rounded-lg bg-gray-200 text-gray-600 hover:bg-indigo-600 hover:text-white transition-all"
+          class="w-10 h-10 flex items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-indigo-600 hover:text-white transition-all"
           aria-label="LinkedIn"
         >
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
@@ -54,7 +56,7 @@ const links = [
         </a>
         <a 
           href="#" 
-          class="w-10 h-10 flex items-center justify-center rounded-lg bg-gray-200 text-gray-600 hover:bg-indigo-600 hover:text-white transition-all"
+          class="w-10 h-10 flex items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-indigo-600 hover:text-white transition-all"
           aria-label="Twitter"
         >
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
@@ -65,8 +67,39 @@ const links = [
     </div>
     
     <!-- Bottom -->
-    <div class="pt-8 border-t border-gray-200 text-center">
-      <p class="text-gray-500 text-sm">© {year} Portfolio. All rights reserved.</p>
+    <div class="pt-8 border-t border-gray-200 dark:border-gray-700 text-center">
+      <p id="footer-copyright" data-en="© {year} Portfolio. All rights reserved." data-fr="© {year} Portfolio. Tous droits réservés." class="text-gray-500 dark:text-gray-400 text-sm">© {year} Portfolio. All rights reserved.</p>
     </div>
   </div>
 </footer>
+
+<script define:vars={{ year }}>
+  function updateFooterLang(lang) {
+    const tagline = document.getElementById('footer-tagline');
+    const copyright = document.getElementById('footer-copyright');
+    
+    if (tagline) {
+      tagline.textContent = tagline.getAttribute(`data-${lang}`) || tagline.textContent;
+    }
+    if (copyright) {
+      const text = lang === 'fr' 
+        ? `© ${year} Portfolio. Tous droits réservés.`
+        : `© ${year} Portfolio. All rights reserved.`;
+      copyright.textContent = text;
+    }
+    
+    document.querySelectorAll('footer .nav-item').forEach(item => {
+      const text = item.getAttribute(`data-${lang}`);
+      if (text) item.textContent = text;
+    });
+  }
+
+  // Initialize
+  const savedLang = localStorage.getItem('lang') || 'en';
+  updateFooterLang(savedLang);
+
+  // Listen for language changes
+  window.addEventListener('langchange', (e) => {
+    updateFooterLang(e.detail.lang);
+  });
+</script>
