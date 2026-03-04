@@ -17,6 +17,19 @@ const navItems = [
     </a>
     
     <div class="flex items-center gap-3">
+      <!-- Download CV Button -->
+      <a 
+        href="/cv/CV_Eddou.pdf" 
+        download="CV_Eddou.pdf"
+        class="flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 rounded-lg transition-colors shadow-sm hover:shadow-md"
+        title="Download CV"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+        </svg>
+        <span class="hidden sm:inline" data-en="CV" data-fr="CV">CV</span>
+      </a>
+
       <!-- Language Switcher -->
       <div class="relative">
         <button 
