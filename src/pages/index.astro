@@ -184,13 +184,13 @@ import Layout from '../layouts/Layout.astro';
 					<!-- Info Cards -->
 					<div class="grid grid-cols-2 gap-4 pt-4">
 						<div class="p-4 bg-white dark:bg-gray-800 rounded-xl shadow-sm">
-							<p class="text-indigo-600 dark:text-indigo-400 font-bold text-2xl">2+</p>
+							<p class="text-indigo-600 dark:text-indigo-400 font-bold text-2xl">...</p>
 							<p 
-								data-en="Years Experience" 
-								data-fr="Années d'expérience"
+								data-en="Looking for an internship" 
+								data-fr="En recherche de stage"
 								class="about-text text-gray-600 dark:text-gray-400 text-sm"
 							>
-								Years Experience
+								Looking for an internship
 							</p>
 						</div>
 						<div class="p-4 bg-white dark:bg-gray-800 rounded-xl shadow-sm">
@@ -644,13 +644,23 @@ import Layout from '../layouts/Layout.astro';
 			</div>
 
 			<!-- Contact Form -->
-			<form class="space-y-6">
+			<form
+				id="contact-form"
+				class="space-y-6"
+				action="https://formsubmit.co/eddourandria@gmail.com"
+				method="POST"
+			>
+				<input type="hidden" name="_captcha" value="false">
+				<input type="hidden" name="_subject" value="Nouveau message depuis le portfolio">
+				<input type="hidden" name="_template" value="table">
 				<div class="grid md:grid-cols-2 gap-6">
 					<div>
 						<label for="name" data-en="Name" data-fr="Nom" class="section-text block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Name</label>
 						<input 
 							type="text" 
 							id="name" 
+							name="name"
+							required
 							class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-colors"
 							placeholder="John Doe"
 						>
@@ -660,6 +670,8 @@ import Layout from '../layouts/Layout.astro';
 						<input 
 							type="email" 
 							id="email" 
+							name="email"
+							required
 							class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-colors"
 							placeholder="john@example.com"
 						>
@@ -670,6 +682,8 @@ import Layout from '../layouts/Layout.astro';
 					<input 
 						type="text" 
 						id="subject" 
+						name="subject"
+						required
 						class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-colors"
 						placeholder="Project Inquiry"
 					>
@@ -678,6 +692,8 @@ import Layout from '../layouts/Layout.astro';
 					<label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Message</label>
 					<textarea 
 						id="message" 
+						name="message"
+						required
 						rows="5"
 						class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-colors resize-none"
 						placeholder="Tell me about your project..."
@@ -695,12 +711,13 @@ import Layout from '../layouts/Layout.astro';
 						</svg>
 						Send Message
 					</button>
+					<p id="contact-status" class="section-text mt-4 text-sm text-gray-600 dark:text-gray-300" aria-live="polite"></p>
 				</div>
 			</form>
 
 			<!-- Contact Info -->
 			<div class="mt-16 flex flex-wrap justify-center gap-8">
-				<a href="mailto:votre@email.com" class="flex items-center gap-3 text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+				<a href="mailto:eddourandria@gmail.com" class="flex items-center gap-3 text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
 					<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
 					</svg>
@@ -726,11 +743,46 @@ import Layout from '../layouts/Layout.astro';
 	}
 
 	// Initialize
-	const savedLang = localStorage.getItem('lang') || 'en';
-	updateLang(savedLang);
+	let currentLang = localStorage.getItem('lang') || 'en';
+	updateLang(currentLang);
+
+	const contactForm = document.querySelector<HTMLFormElement>('#contact-form');
+	const contactStatus = document.querySelector<HTMLElement>('#contact-status');
+
+	if (contactForm && contactStatus) {
+		contactForm.addEventListener('submit', async (event) => {
+			event.preventDefault();
+			const formData = new FormData(contactForm);
+			contactStatus.textContent = currentLang === 'fr' ? 'Envoi en cours...' : 'Sending...';
+
+			try {
+				const response = await fetch('https://formsubmit.co/ajax/eddourandria@gmail.com', {
+					method: 'POST',
+					headers: {
+						Accept: 'application/json'
+					},
+					body: formData
+				});
+
+				if (!response.ok) {
+					throw new Error('Form submission failed');
+				}
+
+				contactForm.reset();
+				contactStatus.textContent = currentLang === 'fr'
+					? 'Message envoye avec succes. Je vous repondrai bientot.'
+					: 'Message sent successfully. I will reply soon.';
+			} catch {
+				contactStatus.textContent = currentLang === 'fr'
+					? 'Echec de l envoi. Reessayez ou ecrivez directement a eddourandria@gmail.com.'
+					: 'Failed to send. Please try again or email me directly at eddourandria@gmail.com.';
+			}
+		});
+	}
 
 	// Listen for language changes
 	window.addEventListener('langchange', (e: Event) => {
-		updateLang((e as CustomEvent).detail.lang);
+		currentLang = (e as CustomEvent).detail.lang;
+		updateLang(currentLang);
 	});
 </script>
