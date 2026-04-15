@@ -11,7 +11,7 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
   },
-  site: 'https://ton-pseudo.github.io',
+  site: 'https://eddou-randrianarison.github.io',
   base: '/Portfolio/',
 });
 
