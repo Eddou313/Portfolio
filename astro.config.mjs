@@ -12,6 +12,6 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
   site: 'https://eddou-randrianarison.github.io',
-  base: '/',
+  base: '/Portfolio/',
 });
 
