@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0e7490"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="70" y="90" width="1060" height="450" rx="24" fill="#ffffff1f"/>
+  <text x="120" y="230" fill="#ecfeff" font-size="62" font-family="Verdana, sans-serif" font-weight="700">Signalisation Route</text>
+  <text x="120" y="305" fill="#dbeafe" font-size="34" font-family="Verdana, sans-serif">Version web et mobile</text>
+  <polygon points="930,190 1040,380 820,380" fill="#ffffff4d"/>
+  <rect x="895" y="255" width="70" height="18" fill="#164e63"/>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#334155"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="70" y="90" width="1060" height="450" rx="24" fill="#ffffff16"/>
+  <text x="120" y="230" fill="#f8fafc" font-size="60" font-family="Verdana, sans-serif" font-weight="700">Gestion Compagnie Aerienne</text>
+  <text x="120" y="305" fill="#cbd5e1" font-size="34" font-family="Verdana, sans-serif">Vols, flotte, passagers</text>
+  <path d="M820 380 L1060 260 L910 390 L1020 460 L940 472 L860 410 L800 430 Z" fill="#ffffff5a"/>
+</svg>
