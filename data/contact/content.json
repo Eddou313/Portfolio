@@ -1,0 +1,40 @@
+{
+  "title": {
+    "en": "Get In Touch",
+    "fr": "Me Contacter"
+  },
+  "subtitle": {
+    "en": "Have a project in mind? Let's work together!",
+    "fr": "Vous avez un projet en tete ? Travaillons ensemble !"
+  },
+  "form": {
+    "name": {
+      "en": "Name",
+      "fr": "Nom",
+      "placeholder": "John Doe"
+    },
+    "email": {
+      "en": "Email",
+      "fr": "Email",
+      "placeholder": "john@example.com"
+    },
+    "subject": {
+      "en": "Subject",
+      "fr": "Sujet",
+      "placeholder": "Project Inquiry"
+    },
+    "message": {
+      "en": "Message",
+      "fr": "Message",
+      "placeholder": "Tell me about your project..."
+    },
+    "submit": {
+      "en": "Send Message",
+      "fr": "Envoyer le message"
+    }
+  },
+  "info": {
+    "email": "eddourandria@gmail.com",
+    "whatsapp": "+261 32 75 172 78"
+  }
+}

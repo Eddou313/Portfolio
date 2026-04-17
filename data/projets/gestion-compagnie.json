@@ -1,0 +1,19 @@
+{
+  "order": 6,
+  "slug": "gestion_compagnie",
+  "badge": "Solo",
+  "image": "projects/gestion-compagnie.svg",
+  "imageAlt": "Apercu du projet Gestion compagnie aerienne",
+  "title": "Gestion compagnie aerienne",
+  "description": "Gestion des vols, de la flotte et des passagers pour une compagnie aerienne.",
+  "technologies": ["Java", "Swing", "MySQL"],
+  "repoUrl": "https://github.com/Eddou313/gestion-compagnie-aerienne",
+  "details": {
+    "description": "Systeme de gestion de compagnie aerienne orientee operations.",
+    "points": [
+      "Gestion des vols et horaires.",
+      "Suivi de la flotte et maintenance.",
+      "Administration des passagers et reservations."
+    ]
+  }
+}

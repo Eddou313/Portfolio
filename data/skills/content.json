@@ -1,0 +1,36 @@
+{
+  "title": {
+    "en": "My Skills",
+    "fr": "Mes Competences"
+  },
+  "categories": [
+    {
+      "title": {
+        "en": "Backend",
+        "fr": "Backend"
+      },
+      "items": ["PHP Flight", "Laravel", "Spring Boot", "Spring MVC", "Java Swing", "Java EE", "C#", "Python Pandas", "Flask", "API REST"]
+    },
+    {
+      "title": {
+        "en": "Frontend",
+        "fr": "Frontend"
+      },
+      "items": ["Astro", "Vue.js", "Ionic", "HTML5 / CSS3", "JavaScript DOM"]
+    },
+    {
+      "title": {
+        "en": "Database",
+        "fr": "Base de donnees"
+      },
+      "items": ["MySQL", "PostgreSQL", "MongoDB"]
+    },
+    {
+      "title": {
+        "en": "Tools & DevOps",
+        "fr": "Outils & DevOps"
+      },
+      "items": ["Git", "GitHub Desktop", "Linux", "FileZilla", "Samba", "FTP", "PowerBI", "haproxy", "Docker"]
+    }
+  ]
+}

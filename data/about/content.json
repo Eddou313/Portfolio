@@ -1,0 +1,28 @@
+{
+  "title": {
+    "en": "About Me",
+    "fr": "A propos de moi"
+  },
+  "paragraphs": [
+    {
+      "en": "I'm a passionate Full-Stack Developer and 3rd-year Computer Science student based in Madagascar, focusing on building modern, responsive, and intuitive web applications.",
+      "fr": "Developpeur Full-Stack passionne base a Madagascar et actuellement en 3eme annee d'informatique, je me specialise dans la creation d'applications web modernes, responsives et intuitives."
+    },
+    {
+      "en": "I love turning complex problems into simple, beautiful solutions. When I'm not coding, you'll find me exploring new technologies and contributing to open-source projects.",
+      "fr": "Ma force reside dans ma capacite a transformer des problemes complexes en solutions simples et elegantes. Toujours en quete d'apprentissage, je consacre mon temps libre a explorer les nouvelles technologies et a contribuer a des projets open-source."
+    }
+  ],
+  "infoCards": [
+    {
+      "value": "...",
+      "en": "Looking for an internship",
+      "fr": "En recherche de stage"
+    },
+    {
+      "value": "10+",
+      "en": "Projects Completed",
+      "fr": "Projets realises"
+    }
+  ]
+}

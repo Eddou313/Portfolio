@@ -1,5 +1,30 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import homeData from '../../data/home/content.json';
+import aboutData from '../../data/about/content.json';
+import skillsData from '../../data/skills/content.json';
+import formationData from '../../data/formation/content.json';
+import contactData from '../../data/contact/content.json';
+
+type ProjectData = {
+	order?: number;
+	slug: string;
+	badge: string;
+	image: string;
+	imageAlt: string;
+	title: string;
+	description: string;
+	technologies: string[];
+	repoUrl: string;
+	details: {
+		description: string;
+		points: string[];
+	};
+};
+
+const projectModules = import.meta.glob('../../data/projets/*.json', { eager: true, import: 'default' });
+const projects = Object.values(projectModules) as ProjectData[];
+projects.sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
 ---
 
 <Layout>
@@ -9,59 +34,59 @@ import Layout from '../layouts/Layout.astro';
 			<!-- Avatar -->
 			<div class="mb-8">
 				<div class="w-40 h-40 md:w-52 md:h-52 mx-auto rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white text-5xl md:text-6xl font-bold shadow-xl ring-4 ring-white dark:ring-gray-800">
-					ED
+					{homeData.avatarInitials}
 				</div>
 			</div>
 
 			<!-- Greeting -->
 			<p 
-				data-en="Hello, I'm" 
-				data-fr="Bonjour, je suis"
+				data-en={homeData.greeting.en}
+				data-fr={homeData.greeting.fr}
 				class="hero-text text-lg text-indigo-600 dark:text-indigo-400 font-medium mb-2"
 			>
-				Hello, I'm
+				{homeData.greeting.en}
 			</p>
 
 			<!-- Name -->
 			<h1 class="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-4">
-				Randrianarison Eddou
+				{homeData.name}
 			</h1>
 
 			<!-- Title -->
 			<h2 
-				data-en="Full-Stack Developper" 
-				data-fr="Développeur Full-Stack"
+				data-en={homeData.title.en}
+				data-fr={homeData.title.fr}
 				class="hero-text text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-6"
 			>
-				Full-Stack Developper
+				{homeData.title.en}
 			</h2>
 
 			<!-- Description -->
 			<p 
-				data-en="Passionate about creating modern web applications and bringing ideas to life through clean code and intuitive design." 
-				data-fr="Passionné par la création d'applications web modernes et donner vie aux idées grâce à un code propre et un design intuitif."
+				data-en={homeData.description.en}
+				data-fr={homeData.description.fr}
 				class="hero-text text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-8 leading-relaxed"
 			>
-				Passionate about creating modern web applications and bringing ideas to life through clean code and intuitive design.
+				{homeData.description.en}
 			</p>
 
 			<!-- CTA Buttons -->
 			<div class="flex flex-col sm:flex-row gap-4 justify-center">
 				<a 
-					href="#projects" 
-					data-en="View My Work"
-					data-fr="Voir mes projets"
+					href={homeData.cta.primary.href}
+					data-en={homeData.cta.primary.en}
+					data-fr={homeData.cta.primary.fr}
 					class="hero-text px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition-colors shadow-md hover:shadow-lg"
 				>
-					View My Work
+					{homeData.cta.primary.en}
 				</a>
 				<a 
-					href="#contact" 
-					data-en="Contact Me"
-					data-fr="Me contacter"
+					href={homeData.cta.secondary.href}
+					data-en={homeData.cta.secondary.en}
+					data-fr={homeData.cta.secondary.fr}
 					class="hero-text px-8 py-3 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-indigo-600 hover:text-indigo-600 dark:hover:border-indigo-400 dark:hover:text-indigo-400 font-medium rounded-lg transition-colors"
 				>
-					Contact Me
+					{homeData.cta.secondary.en}
 				</a>
 			</div>
 
@@ -70,7 +95,7 @@ import Layout from '../layouts/Layout.astro';
 				<div class="flex justify-center gap-5">
 					<!-- GitHub -->
 					<a 
-						href="https://github.com/Eddou313" 
+						href={homeData.social.github}
 						target="_blank"
 						rel="noopener noreferrer"
 						aria-label="GitHub"
@@ -83,7 +108,7 @@ import Layout from '../layouts/Layout.astro';
 
 					<!-- LinkedIn -->
 					<a 
-						href="https://linkedin.com/in/eddou-randrianarison-4a7746374" 
+						href={homeData.social.linkedin}
 						target="_blank"
 						rel="noopener noreferrer"
 						aria-label="LinkedIn"
@@ -96,7 +121,7 @@ import Layout from '../layouts/Layout.astro';
 
 					<!-- Email -->
 					<a 
-						href="mailto:eddourandria@gmail.com"
+						href={homeData.social.email}
 						aria-label="Email"
 						class="w-12 h-12 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-red-500 hover:text-white transition-all hover:scale-110"
 					>
@@ -107,7 +132,7 @@ import Layout from '../layouts/Layout.astro';
 
 					<!-- WhatsApp -->
 					<a 
-						href="https://wa.me/+261327517278" 
+						href={homeData.social.whatsapp}
 						target="_blank"
 						rel="noopener noreferrer"
 						aria-label="WhatsApp"
@@ -137,11 +162,11 @@ import Layout from '../layouts/Layout.astro';
 			<!-- Section Title -->
 			<div class="text-center mb-16">
 				<h2 
-					data-en="About Me" 
-					data-fr="À propos de moi"
+					data-en={aboutData.title.en}
+					data-fr={aboutData.title.fr}
 					class="about-text text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4"
 				>
-					About Me
+					{aboutData.title.en}
 				</h2>
 				<div class="w-20 h-1 bg-indigo-600 mx-auto rounded-full"></div>
 			</div>
@@ -166,41 +191,41 @@ import Layout from '../layouts/Layout.astro';
 				<!-- Right: Content -->
 				<div class="space-y-6">
 					<p 
-						data-en="I'm a passionate Full-Stack Developer and 3rd-year Computer Science student based in Madagascar, focusing on building modern, responsive, and intuitive web applications." 
-						data-fr="Développeur Full-Stack passionné basé à Madagascar et actuellement en 3ème année d'informatique, je me spécialise dans la création d'applications web modernes, responsives et intuitives."
+						data-en={aboutData.paragraphs[0].en}
+						data-fr={aboutData.paragraphs[0].fr}
 						class="about-text text-gray-600 dark:text-gray-300 leading-relaxed"
 					>
-						I'm a passionate Full-Stack Developer and 3rd-year Computer Science student based in Madagascar, focusing on building modern, responsive, and intuitive web applications.
+						{aboutData.paragraphs[0].en}
 					</p>
 
 					<p 
-						data-en="I love turning complex problems into simple, beautiful solutions. When I'm not coding, you'll find me exploring new technologies and contributing to open-source projects." 
-						data-fr="Ma force réside dans ma capacité à transformer des problèmes complexes en solutions simples et élégantes. Toujours en quête d'apprentissage, je consacre mon temps libre à explorer les nouvelles technologies et à contribuer à des projets open-source."
+						data-en={aboutData.paragraphs[1].en}
+						data-fr={aboutData.paragraphs[1].fr}
 						class="about-text text-gray-600 dark:text-gray-300 leading-relaxed margin-top"
 					>
-						I love turning complex problems into simple, beautiful solutions. When I'm not coding, you'll find me exploring new technologies and contributing to open-source projects.
+						{aboutData.paragraphs[1].en}
 					</p>
 
 					<!-- Info Cards -->
 					<div class="grid grid-cols-2 gap-4 pt-4">
 						<div class="p-4 bg-white dark:bg-gray-800 rounded-xl shadow-sm">
-							<p class="text-indigo-600 dark:text-indigo-400 font-bold text-2xl">...</p>
+							<p class="text-indigo-600 dark:text-indigo-400 font-bold text-2xl">{aboutData.infoCards[0].value}</p>
 							<p 
-								data-en="Looking for an internship" 
-								data-fr="En recherche de stage"
+								data-en={aboutData.infoCards[0].en}
+								data-fr={aboutData.infoCards[0].fr}
 								class="about-text text-gray-600 dark:text-gray-400 text-sm"
 							>
-								Looking for an internship
+								{aboutData.infoCards[0].en}
 							</p>
 						</div>
 						<div class="p-4 bg-white dark:bg-gray-800 rounded-xl shadow-sm">
-							<p class="text-indigo-600 dark:text-indigo-400 font-bold text-2xl">10+</p>
+							<p class="text-indigo-600 dark:text-indigo-400 font-bold text-2xl">{aboutData.infoCards[1].value}</p>
 							<p 
-								data-en="Projects Completed" 
-								data-fr="Projets réalisés"
+								data-en={aboutData.infoCards[1].en}
+								data-fr={aboutData.infoCards[1].fr}
 								class="about-text text-gray-600 dark:text-gray-400 text-sm"
 							>
-								Projects Completed
+								{aboutData.infoCards[1].en}
 							</p>
 						</div>
 					</div>
@@ -226,180 +251,35 @@ import Layout from '../layouts/Layout.astro';
 			<!-- Section Title -->
 			<div class="text-center mb-12">
 				<h2 
-					data-en="My Skills" 
-					data-fr="Mes Compétences"
+					data-en={skillsData.title.en}
+					data-fr={skillsData.title.fr}
 					class="section-text text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4"
 				>
-					My Skills
+					{skillsData.title.en}
 				</h2>
 				<div class="w-20 h-1 bg-indigo-500 mx-auto rounded-full"></div>
 			</div>
 
 			<!-- Skills Grid 2x2 -->
 			<div class="grid md:grid-cols-2 gap-6">
-				<!-- Backend Card -->
-				<div class="p-6 bg-slate-800/90 dark:bg-slate-900/90 rounded-2xl border border-indigo-500/30 shadow-lg shadow-indigo-500/10">
-					<h3 class="text-xl font-bold text-indigo-400 mb-5 flex items-center gap-3">
-						<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/>
-						</svg>
-						Backend
-					</h3>
-					<div class="flex flex-wrap gap-3">
-						<span class="px-4 py-2 bg-slate-700/60 text-slate-100 rounded-lg text-sm font-medium flex items-center gap-2 border border-indigo-500/30">
-							<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M7.01 10.207h-.944l-.515 2.648h.838c.556 0 .97-.105 1.242-.314.272-.21.455-.559.55-1.049.092-.47.05-.802-.124-.995-.175-.193-.523-.29-1.047-.29zM12 5.688C5.373 5.688 0 8.514 0 12s5.373 6.313 12 6.313S24 15.486 24 12c0-3.486-5.373-6.312-12-6.312zm-3.26 7.451c-.261.25-.575.438-.917.551-.336.108-.765.164-1.285.164H5.357l-.327 1.681H3.652l1.23-6.326h2.65c.797 0 1.378.209 1.744.628.366.418.476 1.002.33 1.752a2.836 2.836 0 0 1-.866 1.55z"/></svg>
-							PHP Flight
-						</span>
-						<span class="px-4 py-2 bg-slate-700/60 text-slate-100 rounded-lg text-sm font-medium flex items-center gap-2 border border-indigo-500/30">
-							<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M7.01 10.207h-.944l-.515 2.648h.838c.556 0 .97-.105 1.242-.314.272-.21.455-.559.55-1.049.092-.47.05-.802-.124-.995-.175-.193-.523-.29-1.047-.29zM12 5.688C5.373 5.688 0 8.514 0 12s5.373 6.313 12 6.313S24 15.486 24 12c0-3.486-5.373-6.312-12-6.312z"/></svg>
-							Laravel
-						</span>
-						<span class="px-4 py-2 bg-slate-700/60 text-slate-100 rounded-lg text-sm font-medium flex items-center gap-2 border border-indigo-500/30">
-							<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M8.851 18.56s-.917.534.653.714c1.902.218 2.874.187 4.969-.211 0 0 .552.346 1.321.646-4.699 2.013-10.633-.118-6.943-1.149M8.276 15.933s-1.028.761.542.924c2.032.209 3.636.227 6.413-.308 0 0 .384.389.987.602-5.679 1.661-12.007.13-7.942-1.218M13.116 11.475c1.158 1.333-.304 2.533-.304 2.533s2.939-1.518 1.589-3.418c-1.261-1.772-2.228-2.652 3.007-5.688 0-.001-8.216 2.051-4.292 6.573"/></svg>
-							Spring Boot
-						</span>
-						<span class="px-4 py-2 bg-slate-700/60 text-slate-100 rounded-lg text-sm font-medium flex items-center gap-2 border border-indigo-500/30">
-							<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M8.851 18.56s-.917.534.653.714c1.902.218 2.874.187 4.969-.211 0 0 .552.346 1.321.646-4.699 2.013-10.633-.118-6.943-1.149"/></svg>
-							Spring MVC
-						</span>
-						<span class="px-4 py-2 bg-slate-700/60 text-slate-100 rounded-lg text-sm font-medium flex items-center gap-2 border border-indigo-500/30">
-							<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M8.851 18.56s-.917.534.653.714c1.902.218 2.874.187 4.969-.211 0 0 .552.346 1.321.646-4.699 2.013-10.633-.118-6.943-1.149"/></svg>
-							Java Swing
-						</span>
-						<span class="px-4 py-2 bg-slate-700/60 text-slate-100 rounded-lg text-sm font-medium flex items-center gap-2 border border-indigo-500/30">
-							<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M8.851 18.56s-.917.534.653.714c1.902.218 2.874.187 4.969-.211 0 0 .552.346 1.321.646-4.699 2.013-10.633-.118-6.943-1.149"/></svg>
-							Java EE
-						</span>
-						<span class="px-4 py-2 bg-slate-700/60 text-slate-100 rounded-lg text-sm font-medium flex items-center gap-2 border border-indigo-500/30">
-							<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0z"/></svg>
-							C#
-						</span>
-						<span class="px-4 py-2 bg-slate-700/60 text-slate-100 rounded-lg text-sm font-medium flex items-center gap-2 border border-indigo-500/30">
-							<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05z"/></svg>
-							Python Pandas
-						</span>
-						<span class="px-4 py-2 bg-slate-700/60 text-slate-100 rounded-lg text-sm font-medium flex items-center gap-2 border border-indigo-500/30">
-							<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77z"/></svg>
-							Flask
-						</span>
-						<span class="px-4 py-2 bg-slate-700/60 text-slate-100 rounded-lg text-sm font-medium flex items-center gap-2 border border-indigo-500/30">
-							<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-							API REST
-						</span>
-						<!-- <span class="px-4 py-2 bg-slate-700/60 text-slate-100 rounded-lg text-sm font-medium flex items-center gap-2 border border-indigo-500/30">
-							<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
-							Microservices
-						</span> -->
+				{skillsData.categories.map((category) => (
+					<div class="p-6 bg-slate-800/90 dark:bg-slate-900/90 rounded-2xl border border-indigo-500/30 shadow-lg shadow-indigo-500/10">
+						<h3
+							data-en={category.title.en}
+							data-fr={category.title.fr}
+							class="section-text text-xl font-bold text-indigo-400 mb-5"
+						>
+							{category.title.en}
+						</h3>
+						<div class="flex flex-wrap gap-3">
+							{category.items.map((item) => (
+								<span class="px-4 py-2 bg-slate-700/60 text-slate-100 rounded-lg text-sm font-medium border border-indigo-500/30">
+									{item}
+								</span>
+							))}
+						</div>
 					</div>
-				</div>
-
-				<!-- Frontend Card -->
-				<div class="p-6 bg-slate-800/90 dark:bg-slate-900/90 rounded-2xl border border-indigo-500/30 shadow-lg shadow-indigo-500/10">
-					<h3 class="text-xl font-bold text-indigo-400 mb-5 flex items-center gap-3">
-						<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-						</svg>
-						Frontend
-					</h3>
-					<div class="flex flex-wrap gap-3">
-						<span class="px-4 py-2 bg-slate-700/60 text-slate-100 rounded-lg text-sm font-medium flex items-center gap-2 border border-indigo-500/30">
-							<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M8.358 20.162c-1.186-1.07-1.532-3.316-1.038-4.944.856 1.026 2.043 1.352 3.272 1.535 1.897.283 3.76.177 5.522-.678.202-.098.388-.229.608-.36.166.473.209.95.151 1.437-.14 1.185-.738 2.082-1.582 2.794-.422.357-.19.22-.584.543-.364.299-.927.483-1.376.631-.449.148-1.17.164-1.69.152-.521-.012-.986-.156-1.476-.347-.49-.19-.951-.423-1.378-.687-.426-.265-.807-.572-1.143-.909-.338-.338-.516-.63-.516-.63.383.199.79.39 1.23.463zm3.212-7.108c-.54-.083-1.145.103-1.452.536-.27.38-.225.863-.09 1.28.136.419.364.803.624 1.156.26.352.544.677.839.989a9.95 9.95 0 001.958 1.52c.486.282.993.505 1.544.593.551.088 1.14.016 1.598-.27.505-.317.756-.856.778-1.451.023-.595-.194-1.179-.478-1.704-.283-.527-.634-1.018-1.003-1.482a13.64 13.64 0 00-2.403-2.374c-.586-.439-1.37-.716-1.915-.793zM12 0c-.988 0-1.947.132-2.867.384-.92.253-1.785.623-2.574 1.094-.79.472-1.5 1.033-2.114 1.672-.614.639-1.132 1.35-1.539 2.117-.407.768-.702 1.592-.878 2.456-.175.864-.23 1.765-.163 2.67.068.906.256 1.798.556 2.656.3.858.71 1.678 1.22 2.437.511.759 1.12 1.455 1.812 2.07.692.615 1.463 1.15 2.295 1.588.832.438 1.722.778 2.65 1.011.928.233 1.89.355 2.868.362.978.007 1.952-.097 2.9-.31.948-.214 1.866-.54 2.733-.97.866-.43 1.677-.962 2.414-1.586.737-.625 1.394-1.341 1.956-2.128.562-.787 1.023-1.643 1.373-2.549.35-.906.588-1.86.704-2.837.116-.977.108-1.976-.024-2.966-.131-.99-.384-1.966-.755-2.896-.371-.93-.857-1.81-1.445-2.614-.588-.803-1.277-1.526-2.045-2.149-.768-.623-1.613-1.142-2.513-1.544-.9-.402-1.85-.683-2.833-.839-.984-.156-1.996-.187-2.998-.093z"/></svg>
-							Astro
-						</span>
-						<span class="px-4 py-2 bg-slate-700/60 text-slate-100 rounded-lg text-sm font-medium flex items-center gap-2 border border-indigo-500/30">
-							<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M24 11.111A4.889 4.889 0 0 1 19.111 16H4.89A4.889 4.889 0 0 1 0 11.111a4.888 4.888 0 0 1 4.889-4.889H6.57l2.142-3.707a.568.568 0 0 1 .981 0L12 6.222l2.307-3.707a.568.568 0 0 1 .981 0l2.142 3.707h1.681A4.889 4.889 0 0 1 24 11.111z"/></svg>
-							Vue.js
-						</span>
-						<span class="px-4 py-2 bg-slate-700/60 text-slate-100 rounded-lg text-sm font-medium flex items-center gap-2 border border-indigo-500/30">
-							<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12.001 4.8z"/></svg>
-							Ionic
-						</span>
-						<span class="px-4 py-2 bg-slate-700/60 text-slate-100 rounded-lg text-sm font-medium flex items-center gap-2 border border-indigo-500/30">
-							<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z"/></svg>
-							HTML5 / CSS3
-						</span>
-						<span class="px-4 py-2 bg-slate-700/60 text-slate-100 rounded-lg text-sm font-medium flex items-center gap-2 border border-indigo-500/30">
-							<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.404-.601-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41z"/></svg>
-							JavaScript DOM
-						</span>
-					</div>
-				</div>
-
-				<!-- Database Card -->
-				<div class="p-6 bg-slate-800/90 dark:bg-slate-900/90 rounded-2xl border border-indigo-500/30 shadow-lg shadow-indigo-500/10">
-					<h3 class="text-xl font-bold text-indigo-400 mb-5 flex items-center gap-3">
-						<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/>
-						</svg>
-						<span data-en="Database" data-fr="Base de données" class="section-text">Database</span>
-					</h3>
-					<div class="flex flex-wrap gap-3">
-						<span class="px-4 py-2 bg-slate-700/60 text-slate-100 rounded-lg text-sm font-medium flex items-center gap-2 border border-indigo-500/30">
-							<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M16.405 5.676c-.115 0-.193.014-.274.033v.013h.014c.054.104.146.18.214.273.054.107.1.214.154.32l.014-.015c.094-.066.14-.172.14-.333-.04-.047-.046-.094-.08-.14-.04-.067-.126-.1-.18-.153z"/></svg>
-							MySQL
-						</span>
-						<span class="px-4 py-2 bg-slate-700/60 text-slate-100 rounded-lg text-sm font-medium flex items-center gap-2 border border-indigo-500/30">
-							<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M23.557 17.07c-.814 1.578-1.253 2.234-2.342 3.62-.523.673-1.26 1.512-2.17 1.512z"/></svg>
-							PostgreSQL
-						</span>
-						<!-- <span class="px-4 py-2 bg-slate-700/60 text-slate-100 rounded-lg text-sm font-medium flex items-center gap-2 border border-indigo-500/30">
-							<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7"/></svg>
-							Oracle (notions)
-						</span> -->
-						<span class="px-4 py-2 bg-slate-700/60 text-slate-100 rounded-lg text-sm font-medium flex items-center gap-2 border border-indigo-500/30">
-							<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M17.193 9.555c-1.264-5.58-4.252-7.414-4.573-8.115-.28-.394-.53-.954-.735-1.44-.036.495-.055.685-.523 1.184-.723.566-4.438 3.682-4.74 10.02-.282 5.912 4.27 9.435 4.888 9.884l.07.05z"/></svg>
-							MongoDB
-						</span>
-					</div>
-				</div>
-
-				<!-- Tools & DevOps Card -->
-				<div class="p-6 bg-slate-800/90 dark:bg-slate-900/90 rounded-2xl border border-indigo-500/30 shadow-lg shadow-indigo-500/10">
-					<h3 class="text-xl font-bold text-indigo-400 mb-5 flex items-center gap-3">
-						<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-						</svg>
-						<span data-en="Tools & DevOps" data-fr="Outils & DevOps" class="section-text">Tools & DevOps</span>
-					</h3>
-					<div class="flex flex-wrap gap-3">
-						<span class="px-4 py-2 bg-slate-700/60 text-slate-100 rounded-lg text-sm font-medium flex items-center gap-2 border border-indigo-500/30">
-							<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M23.546 10.93L13.067.452c-.604-.603-1.582-.603-2.188 0L8.708 2.627l2.76 2.76c.645-.215 1.379-.07 1.889.441.516.515.658 1.258.438 1.9l2.658 2.66c.645-.223 1.387-.078 1.9.435.721.72.721 1.884 0 2.604-.719.719-1.881.719-2.6 0-.539-.541-.674-1.337-.404-1.996L12.86 8.955v6.525c.176.086.342.203.488.348.713.721.713 1.883 0 2.6-.719.721-1.889.721-2.609 0-.719-.719-.719-1.879 0-2.598.182-.18.387-.316.605-.406V8.835c-.217-.091-.424-.222-.6-.401-.545-.545-.676-1.342-.396-2.009L7.636 3.7.45 10.881c-.6.605-.6 1.584 0 2.189l10.48 10.477c.604.604 1.582.604 2.186 0l10.43-10.43c.605-.603.605-1.582 0-2.187"/></svg>
-							Git
-						</span>
-						<span class="px-4 py-2 bg-slate-700/60 text-slate-100 rounded-lg text-sm font-medium flex items-center gap-2 border border-indigo-500/30">
-							<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-							GitHub Desktop
-						</span>
-						<span class="px-4 py-2 bg-slate-700/60 text-slate-100 rounded-lg text-sm font-medium flex items-center gap-2 border border-indigo-500/30">
-							<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12.504 0c-.155 0-.315.008-.48.021-4.226.333-3.105 4.807-3.17 6.298-.076 1.092-.3 1.953-1.05 3.02-.885 1.051-2.127 2.75-2.716 4.521-.278.832-.41 1.684-.287 2.489a.424.424 0 00-.11.135c-.26.268-.45.6-.663.839-.199.199-.485.267-.797.4-.313.136-.658.269-.864.68-.09.189-.136.394-.132.602 0 .199.027.4.055.536.058.399.116.728.04.97-.249.68-.28 1.145-.106 1.484.174.334.535.47.94.601.81.2 1.91.135 2.774.6.926.466 1.866.67 2.616.47.526-.116.97-.464 1.208-.946z"/></svg>
-							Linux
-						</span>
-						<span class="px-4 py-2 bg-slate-700/60 text-slate-100 rounded-lg text-sm font-medium flex items-center gap-2 border border-indigo-500/30">
-							<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M23.999 9.149a1.845 1.845 0 0 0-.616-1.084l-9.542-8.057.015-.003v-.003A1.8 1.8 0 0 0 12.731 0c-.41.002-.8.146-1.125.405L2.064 8.461l.03.026a1.847 1.847 0 0 0-.579 1.664l1.358 9.942a1.858 1.858 0 0 0 1.839 1.581h14.537a1.86 1.86 0 0 0 1.84-1.58l1.358-9.942c.046-.34.01-.676-.105-.988l-.343-.015z"/></svg>
-							FileZilla
-						</span>
-						<span class="px-4 py-2 bg-slate-700/60 text-slate-100 rounded-lg text-sm font-medium flex items-center gap-2 border border-indigo-500/30">
-							<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2"/></svg>
-							Samba
-						</span>
-						<span class="px-4 py-2 bg-slate-700/60 text-slate-100 rounded-lg text-sm font-medium flex items-center gap-2 border border-indigo-500/30">
-							<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/></svg>
-							FTP
-						</span>
-						<span class="px-4 py-2 bg-slate-700/60 text-slate-100 rounded-lg text-sm font-medium flex items-center gap-2 border border-indigo-500/30">
-							<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/></svg>
-							PowerBI
-						</span><span class="px-4 py-2 bg-slate-700/60 text-slate-100 rounded-lg text-sm font-medium flex items-center gap-2 border border-indigo-500/30">
-							<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/></svg>
-							haproxy
-						</span>
-						<span class="px-4 py-2 bg-slate-700/60 text-slate-100 rounded-lg text-sm font-medium flex items-center gap-2 border border-indigo-500/30">
-							<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M13.983 11.078h2.119a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.119a.185.185 0 00-.185.185v1.888c0 .102.083.185.185.185m-2.954-5.43h2.118a.186.186 0 00.186-.186V3.574a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m0 2.716h2.118a.187.187 0 00.186-.186V6.29a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.887c0 .102.082.185.185.186z"/></svg>
-							Docker
-						</span>
-					</div>
-				</div>
+				))}
 			</div>
 		</div>
 
@@ -419,51 +299,49 @@ import Layout from '../layouts/Layout.astro';
 			<!-- Section Title -->
 			<div class="text-center mb-12">
 				<h2 
-					data-en="Education" 
-					data-fr="Formation"
+					data-en={formationData.title.en}
+					data-fr={formationData.title.fr}
 					class="section-text text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4"
 				>
-					Education
+					{formationData.title.en}
 				</h2>
 				<div class="w-20 h-1 bg-indigo-500 mx-auto rounded-full"></div>
 			</div>
 
 			<!-- Timeline -->
 			<div class="relative">
-				<!-- Vertical Line -->
 				<div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 top-0 bottom-0 w-0.5 bg-indigo-300 dark:bg-indigo-700"></div>
-
-				
-
-				<!-- Formation Item 2 -->
-				<div class="relative flex flex-col md:flex-row md:justify-center mb-8">
-					<div class="hidden md:block md:w-5/12"></div>
-					<!-- Circle -->
-					<div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-indigo-500 rounded-full border-4 border-white dark:border-gray-900 mt-8"></div>
-					<div class="ml-12 md:ml-0 md:w-5/12 md:pl-8">
-						<div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
-							<span class="text-sm text-indigo-500 font-semibold">2025 - 2026</span>
-								<h3 class="section-text text-xl font-bold text-gray-900 dark:text-white mt-2" data-en="3rd Year in Computer Science" data-fr="3ème année en Informatique">3rd Year in Computer Science</h3>
-								<p class="section-text text-gray-600 dark:text-gray-400 mt-2" data-en="Developer Option" data-fr="Option Développeur">Developer Option</p>
-							<p class="text-indigo-600 dark:text-indigo-400 font-medium mt-2">IT Université Andoharanofotsy</p>
-						</div>
+				{formationData.items.map((item, index) => (
+					<div class="relative flex flex-col md:flex-row md:justify-center mb-8">
+						{index % 2 === 0 ? (
+							<>
+								<div class="hidden md:block md:w-5/12"></div>
+								<div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-indigo-500 rounded-full border-4 border-white dark:border-gray-900 mt-8"></div>
+								<div class="ml-12 md:ml-0 md:w-5/12 md:pl-8">
+									<div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
+										<span class="text-sm text-indigo-500 font-semibold">{item.period}</span>
+										<h3 class="section-text text-xl font-bold text-gray-900 dark:text-white mt-2" data-en={item.title.en} data-fr={item.title.fr}>{item.title.en}</h3>
+										<p class="section-text text-gray-600 dark:text-gray-400 mt-2" data-en={item.subtitle.en} data-fr={item.subtitle.fr}>{item.subtitle.en}</p>
+										<p class="text-indigo-600 dark:text-indigo-400 font-medium mt-2">{item.school}</p>
+									</div>
+								</div>
+							</>
+						) : (
+							<>
+								<div class="ml-12 md:ml-0 md:w-5/12 md:pr-8 md:text-right">
+									<div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
+										<span class="text-sm text-indigo-500 font-semibold">{item.period}</span>
+										<h3 class="section-text text-xl font-bold text-gray-900 dark:text-white mt-2" data-en={item.title.en} data-fr={item.title.fr}>{item.title.en}</h3>
+										<p class="section-text text-gray-600 dark:text-gray-400 mt-2" data-en={item.subtitle.en} data-fr={item.subtitle.fr}>{item.subtitle.en}</p>
+										<p class="text-indigo-600 dark:text-indigo-400 font-medium mt-2">{item.school}</p>
+									</div>
+								</div>
+								<div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-indigo-500 rounded-full border-4 border-white dark:border-gray-900 mt-8"></div>
+								<div class="hidden md:block md:w-5/12"></div>
+							</>
+						)}
 					</div>
-				</div>
-
-				<!-- Formation Item 3 -->
-				<div class="relative flex flex-col md:flex-row md:justify-center mb-8">
-					<div class="ml-12 md:ml-0 md:w-5/12 md:pr-8 md:text-right">
-						<div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
-							<span class="text-sm text-indigo-500 font-semibold">2019 - 2020</span>
-							<h3 class="section-text text-xl font-bold text-gray-900 dark:text-white mt-2" data-en="High School Diploma" data-fr="Baccalauréat">High School Diploma</h3>
-							<p class="section-text text-gray-600 dark:text-gray-400 mt-2" data-en="Scientific Stream (S) with 'Assez bien' grade" data-fr="Série Scientifique (S) avec mention 'Assez bien'">Scientific Stream (S) with 'Assez bien' grade</p>
-							<p class="text-indigo-600 dark:text-indigo-400 font-medium mt-2">Lycée Saint Famille MAhamasina</p>
-						</div>
-					</div>
-					<!-- Circle -->
-					<div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-indigo-500 rounded-full border-4 border-white dark:border-gray-900 mt-8"></div>
-					<div class="hidden md:block md:w-5/12"></div>
-				</div>
+				))}
 			</div>
 		</div>
 
@@ -493,149 +371,38 @@ import Layout from '../layouts/Layout.astro';
 			</div>
 
 			<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-				<div class="relative rounded-2xl overflow-hidden border border-gray-200 dark:border-indigo-700/60 bg-white dark:bg-slate-900/80 shadow-lg shadow-black/10 dark:shadow-black/30 hover:-translate-y-1 hover:shadow-xl transition-all h-full flex flex-col">
-					<span class="absolute top-3 right-3 z-10 inline-flex items-center gap-1.5 rounded-full bg-amber-400 px-3 py-1 text-xs font-semibold text-slate-900">
-						<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A9 9 0 1118 12"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-						Solo
-					</span>
-					<img src="projects/gestion-bibliotheque.svg" alt="Apercu du projet Gestion bibliotheque" class="h-52 w-full object-cover" loading="lazy" />
-					<div class="p-5 flex flex-1 flex-col">
-						<h3 class="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-2">Gestion bibliotheque</h3>
-						<p class="text-gray-600 dark:text-slate-300/90 leading-relaxed">Application web pour gerer livres, emprunts, retours et suivi des activites.</p>
-						<div class="mt-4 flex flex-wrap gap-2">
-							<span class="px-2.5 py-1 rounded-md bg-gray-100 dark:bg-slate-800 text-amber-700 dark:text-amber-300 text-xs font-semibold">Java</span>
-							<span class="px-2.5 py-1 rounded-md bg-gray-100 dark:bg-slate-800 text-amber-700 dark:text-amber-300 text-xs font-semibold">Spring Boot</span>
-							<span class="px-2.5 py-1 rounded-md bg-gray-100 dark:bg-slate-800 text-amber-700 dark:text-amber-300 text-xs font-semibold">PostgreSQL</span>
-						</div>
-						<div class="mt-auto pt-4 border-t border-gray-200 dark:border-indigo-700/60 flex items-center justify-between gap-3">
-							<a href="https://github.com/Eddou313/gestion_bibliotheque" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-indigo-700 dark:text-amber-300 hover:text-indigo-900 dark:hover:text-amber-200 font-semibold text-sm">
-								<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-								Voir le code
-							</a>
-							<button type="button" class="project-detail-btn text-indigo-700 dark:text-amber-300 hover:text-indigo-900 dark:hover:text-amber-200 font-semibold text-sm" data-project="gestion_bibliotheque">Voir les details</button>
-						</div>
-					</div>
-				</div>
-
-				<div class="relative rounded-2xl overflow-hidden border border-gray-200 dark:border-indigo-700/60 bg-white dark:bg-slate-900/80 shadow-lg shadow-black/10 dark:shadow-black/30 hover:-translate-y-1 hover:shadow-xl transition-all h-full flex flex-col">
-					<span class="absolute top-3 right-3 z-10 inline-flex items-center gap-1.5 rounded-full bg-amber-400 px-3 py-1 text-xs font-semibold text-slate-900">
-						<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5V4H2v16h5"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 10a3 3 0 106 0 3 3 0 00-6 0zM4 20a8 8 0 0116 0"/></svg>
-						Binome
-					</span>
-					<img src="projects/gestion-parking.svg" alt="Apercu du projet Gestion Parking" class="h-52 w-full object-cover" loading="lazy" />
-					<div class="p-5 flex flex-1 flex-col">
-						<h3 class="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-2">Gestion parking</h3>
-						<p class="text-gray-600 dark:text-slate-300/90 leading-relaxed">Suivi des places silos et exterieur, controle des entrees/sorties et analyse des flux.</p>
-						<div class="mt-4 flex flex-wrap gap-2">
-							<span class="px-2.5 py-1 rounded-md bg-gray-100 dark:bg-slate-800 text-amber-700 dark:text-amber-300 text-xs font-semibold">TypeScript</span>
-							<span class="px-2.5 py-1 rounded-md bg-gray-100 dark:bg-slate-800 text-amber-700 dark:text-amber-300 text-xs font-semibold">Node.js</span>
-							<span class="px-2.5 py-1 rounded-md bg-gray-100 dark:bg-slate-800 text-amber-700 dark:text-amber-300 text-xs font-semibold">MySQL</span>
-						</div>
-						<div class="mt-auto pt-4 border-t border-gray-200 dark:border-indigo-700/60 flex items-center justify-between gap-3">
-							<a href="https://github.com/Eddou313/gestion-parking-silos-exterieur" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-indigo-700 dark:text-amber-300 hover:text-indigo-900 dark:hover:text-amber-200 font-semibold text-sm">
-								<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-								Voir le code
-							</a>
-							<button type="button" class="project-detail-btn text-indigo-700 dark:text-amber-300 hover:text-indigo-900 dark:hover:text-amber-200 font-semibold text-sm" data-project="gestion_parking">Voir les details</button>
+				{projects.map((project) => (
+					<div class="relative rounded-2xl overflow-hidden border border-gray-200 dark:border-indigo-700/60 bg-white dark:bg-slate-900/80 shadow-lg shadow-black/10 dark:shadow-black/30 hover:-translate-y-1 hover:shadow-xl transition-all h-full flex flex-col">
+						<span class="absolute top-3 right-3 z-10 inline-flex items-center gap-1.5 rounded-full bg-amber-400 px-3 py-1 text-xs font-semibold text-slate-900">
+							{project.badge}
+						</span>
+						<img src={project.image} alt={project.imageAlt} class="h-52 w-full object-cover" loading="lazy" />
+						<div class="p-5 flex flex-1 flex-col">
+							<h3 class="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-2">{project.title}</h3>
+							<p class="text-gray-600 dark:text-slate-300/90 leading-relaxed">{project.description}</p>
+							<div class="mt-4 flex flex-wrap gap-2">
+								{project.technologies.map((tech) => (
+									<span class="px-2.5 py-1 rounded-md bg-gray-100 dark:bg-slate-800 text-amber-700 dark:text-amber-300 text-xs font-semibold">{tech}</span>
+								))}
+							</div>
+							<div class="mt-auto pt-4 border-t border-gray-200 dark:border-indigo-700/60 flex items-center justify-between gap-3">
+								<a href={project.repoUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-indigo-700 dark:text-amber-300 hover:text-indigo-900 dark:hover:text-amber-200 font-semibold text-sm">
+									<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+									Voir le code
+								</a>
+								<button
+									type="button"
+									class="project-detail-btn text-indigo-700 dark:text-amber-300 hover:text-indigo-900 dark:hover:text-amber-200 font-semibold text-sm"
+									data-project={project.slug}
+									data-description={project.details.description}
+									data-points={project.details.points.join('||')}
+								>
+									Voir les details
+								</button>
+							</div>
 						</div>
 					</div>
-				</div>
-
-				<div class="relative rounded-2xl overflow-hidden border border-gray-200 dark:border-indigo-700/60 bg-white dark:bg-slate-900/80 shadow-lg shadow-black/10 dark:shadow-black/30 hover:-translate-y-1 hover:shadow-xl transition-all h-full flex flex-col">
-					<span class="absolute top-3 right-3 z-10 inline-flex items-center gap-1.5 rounded-full bg-amber-400 px-3 py-1 text-xs font-semibold text-slate-900">
-						<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5V4H2v16h5"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 10a3 3 0 106 0 3 3 0 00-6 0zM4 20a8 8 0 0116 0"/></svg>
-						Groupe
-					</span>
-					<img src="projects/gestion-rh.svg" alt="Apercu du projet Gestion RH" class="h-52 w-full object-cover" loading="lazy" />
-					<div class="p-5 flex flex-1 flex-col">
-						<h3 class="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-2">Gestion RH</h3>
-						<p class="text-gray-600 dark:text-slate-300/90 leading-relaxed">Gestion RH collaborative avec suivi des employes, conges, services et indicateurs.</p>
-						<div class="mt-4 flex flex-wrap gap-2">
-							<span class="px-2.5 py-1 rounded-md bg-gray-100 dark:bg-slate-800 text-amber-700 dark:text-amber-300 text-xs font-semibold">Java 17</span>
-							<span class="px-2.5 py-1 rounded-md bg-gray-100 dark:bg-slate-800 text-amber-700 dark:text-amber-300 text-xs font-semibold">Spring Boot</span>
-							<span class="px-2.5 py-1 rounded-md bg-gray-100 dark:bg-slate-800 text-amber-700 dark:text-amber-300 text-xs font-semibold">PostgreSQL</span>
-						</div>
-						<div class="mt-auto pt-4 border-t border-gray-200 dark:border-indigo-700/60 flex items-center justify-between gap-3">
-							<a href="https://github.com/Eddou313/gestion-rh" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-indigo-700 dark:text-amber-300 hover:text-indigo-900 dark:hover:text-amber-200 font-semibold text-sm">
-								<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-								Voir le code
-							</a>
-							<button type="button" class="project-detail-btn text-indigo-700 dark:text-amber-300 hover:text-indigo-900 dark:hover:text-amber-200 font-semibold text-sm" data-project="gestion_rh">Voir les details</button>
-						</div>
-					</div>
-				</div>
-
-				<div class="relative rounded-2xl overflow-hidden border border-gray-200 dark:border-indigo-700/60 bg-white dark:bg-slate-900/80 shadow-lg shadow-black/10 dark:shadow-black/30 hover:-translate-y-1 hover:shadow-xl transition-all h-full flex flex-col">
-					<span class="absolute top-3 right-3 z-10 inline-flex items-center gap-1.5 rounded-full bg-amber-400 px-3 py-1 text-xs font-semibold text-slate-900">
-						<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5V4H2v16h5"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 10a3 3 0 106 0 3 3 0 00-6 0zM4 20a8 8 0 0116 0"/></svg>
-						Groupe
-					</span>
-					<img src="projects/signalisation-route.svg" alt="Apercu du projet Signalisation des routes" class="h-52 w-full object-cover" loading="lazy" />
-					<div class="p-5 flex flex-1 flex-col">
-						<h3 class="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-2">Signalisation des routes</h3>
-						<p class="text-gray-600 dark:text-slate-300/90 leading-relaxed">Projet web et mobile pour recenser et suivre la signalisation routiere.</p>
-						<div class="mt-4 flex flex-wrap gap-2">
-							<span class="px-2.5 py-1 rounded-md bg-gray-100 dark:bg-slate-800 text-amber-700 dark:text-amber-300 text-xs font-semibold">Vue.js 3</span>
-							<span class="px-2.5 py-1 rounded-md bg-gray-100 dark:bg-slate-800 text-amber-700 dark:text-amber-300 text-xs font-semibold">TypeScript</span>
-							<span class="px-2.5 py-1 rounded-md bg-gray-100 dark:bg-slate-800 text-amber-700 dark:text-amber-300 text-xs font-semibold">Ionic</span>
-						</div>
-						<div class="mt-auto pt-4 border-t border-gray-200 dark:border-indigo-700/60 flex items-center justify-between gap-3">
-							<a href="https://github.com/Eddou313/signialisation-des-route" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-indigo-700 dark:text-amber-300 hover:text-indigo-900 dark:hover:text-amber-200 font-semibold text-sm">
-								<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-								Voir le code
-							</a>
-							<button type="button" class="project-detail-btn text-indigo-700 dark:text-amber-300 hover:text-indigo-900 dark:hover:text-amber-200 font-semibold text-sm" data-project="signalisation_route">Voir les details</button>
-						</div>
-					</div>
-				</div>
-
-				<div class="relative rounded-2xl overflow-hidden border border-gray-200 dark:border-indigo-700/60 bg-white dark:bg-slate-900/80 shadow-lg shadow-black/10 dark:shadow-black/30 hover:-translate-y-1 hover:shadow-xl transition-all h-full flex flex-col">
-					<span class="absolute top-3 right-3 z-10 inline-flex items-center gap-1.5 rounded-full bg-amber-400 px-3 py-1 text-xs font-semibold text-slate-900">
-						<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5V4H2v16h5"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 10a3 3 0 106 0 3 3 0 00-6 0zM4 20a8 8 0 0116 0"/></svg>
-						Groupe
-					</span>
-					<img src="projects/gestion-transport.svg" alt="Apercu du projet Gestion transport" class="h-52 w-full object-cover" loading="lazy" />
-					<div class="p-5 flex flex-1 flex-col">
-						<h3 class="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-2">Gestion transport des produits</h3>
-						<p class="text-gray-600 dark:text-slate-300/90 leading-relaxed">Gestion logistique du transport de produits entre Antsirabe et Tana.</p>
-						<div class="mt-4 flex flex-wrap gap-2">
-							<span class="px-2.5 py-1 rounded-md bg-gray-100 dark:bg-slate-800 text-amber-700 dark:text-amber-300 text-xs font-semibold">Laravel</span>
-							<span class="px-2.5 py-1 rounded-md bg-gray-100 dark:bg-slate-800 text-amber-700 dark:text-amber-300 text-xs font-semibold">Bootstrap 5</span>
-							<span class="px-2.5 py-1 rounded-md bg-gray-100 dark:bg-slate-800 text-amber-700 dark:text-amber-300 text-xs font-semibold">MySQL</span>
-						</div>
-						<div class="mt-auto pt-4 border-t border-gray-200 dark:border-indigo-700/60 flex items-center justify-between gap-3">
-							<a href="https://github.com/Eddou313/gestion-transport-produit-antsirabe-tana" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-indigo-700 dark:text-amber-300 hover:text-indigo-900 dark:hover:text-amber-200 font-semibold text-sm">
-								<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-								Voir le code
-							</a>
-							<button type="button" class="project-detail-btn text-indigo-700 dark:text-amber-300 hover:text-indigo-900 dark:hover:text-amber-200 font-semibold text-sm" data-project="gestion_transport">Voir les details</button>
-						</div>
-					</div>
-				</div>
-
-				<div class="relative rounded-2xl overflow-hidden border border-gray-200 dark:border-indigo-700/60 bg-white dark:bg-slate-900/80 shadow-lg shadow-black/10 dark:shadow-black/30 hover:-translate-y-1 hover:shadow-xl transition-all h-full flex flex-col">
-					<span class="absolute top-3 right-3 z-10 inline-flex items-center gap-1.5 rounded-full bg-amber-400 px-3 py-1 text-xs font-semibold text-slate-900">
-						<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A9 9 0 1118 12"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-						Solo
-					</span>
-					<img src="projects/gestion-compagnie.svg" alt="Apercu du projet Gestion compagnie aerienne" class="h-52 w-full object-cover" loading="lazy" />
-					<div class="p-5 flex flex-1 flex-col">
-						<h3 class="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-2">Gestion compagnie aerienne</h3>
-						<p class="text-gray-600 dark:text-slate-300/90 leading-relaxed">Gestion des vols, de la flotte et des passagers pour une compagnie aerienne.</p>
-						<div class="mt-4 flex flex-wrap gap-2">
-							<span class="px-2.5 py-1 rounded-md bg-gray-100 dark:bg-slate-800 text-amber-700 dark:text-amber-300 text-xs font-semibold">Java</span>
-							<span class="px-2.5 py-1 rounded-md bg-gray-100 dark:bg-slate-800 text-amber-700 dark:text-amber-300 text-xs font-semibold">Swing</span>
-							<span class="px-2.5 py-1 rounded-md bg-gray-100 dark:bg-slate-800 text-amber-700 dark:text-amber-300 text-xs font-semibold">MySQL</span>
-						</div>
-						<div class="mt-auto pt-4 border-t border-gray-200 dark:border-indigo-700/60 flex items-center justify-between gap-3">
-							<a href="https://github.com/Eddou313/gestion-compagnie-aerienne" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-indigo-700 dark:text-amber-300 hover:text-indigo-900 dark:hover:text-amber-200 font-semibold text-sm">
-								<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-								Voir le code
-							</a>
-							<button type="button" class="project-detail-btn text-indigo-700 dark:text-amber-300 hover:text-indigo-900 dark:hover:text-amber-200 font-semibold text-sm" data-project="gestion_compagnie">Voir les details</button>
-						</div>
-					</div>
-				</div>
+				))}
 			</div>
 
 			<div id="project-modal" class="fixed inset-0 z-[80] hidden" aria-hidden="true">
@@ -681,19 +448,19 @@ import Layout from '../layouts/Layout.astro';
 			<!-- Section Title -->
 			<div class="text-center mb-16">
 				<h2 
-					data-en="Get In Touch" 
-					data-fr="Me Contacter"
+					data-en={contactData.title.en}
+					data-fr={contactData.title.fr}
 					class="section-text text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4"
 				>
-					Get In Touch
+					{contactData.title.en}
 				</h2>
 				<div class="w-20 h-1 bg-indigo-600 mx-auto rounded-full"></div>
 				<p 
-					data-en="Have a project in mind? Let's work together!"
-					data-fr="Vous avez un projet en tête ? Travaillons ensemble !"
+					data-en={contactData.subtitle.en}
+					data-fr={contactData.subtitle.fr}
 					class="section-text mt-4 text-gray-600 dark:text-gray-400"
 				>
-					Have a project in mind? Let's work together!
+					{contactData.subtitle.en}
 				</p>
 			</div>
 
@@ -701,7 +468,7 @@ import Layout from '../layouts/Layout.astro';
 			<form
 				id="contact-form"
 				class="space-y-6"
-				action="https://formsubmit.co/eddourandria@gmail.com"
+				action={`https://formsubmit.co/${contactData.info.email}`}
 				method="POST"
 			>
 				<input type="hidden" name="_captcha" value="false">
@@ -709,61 +476,61 @@ import Layout from '../layouts/Layout.astro';
 				<input type="hidden" name="_template" value="table">
 				<div class="grid md:grid-cols-2 gap-6">
 					<div>
-						<label for="name" data-en="Name" data-fr="Nom" class="section-text block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Name</label>
+						<label for="name" data-en={contactData.form.name.en} data-fr={contactData.form.name.fr} class="section-text block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{contactData.form.name.en}</label>
 						<input 
 							type="text" 
 							id="name" 
 							name="name"
 							required
 							class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-colors"
-							placeholder="John Doe"
+							placeholder={contactData.form.name.placeholder}
 						>
 					</div>
 					<div>
-						<label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email</label>
+						<label for="email" data-en={contactData.form.email.en} data-fr={contactData.form.email.fr} class="section-text block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{contactData.form.email.en}</label>
 						<input 
 							type="email" 
 							id="email" 
 							name="email"
 							required
 							class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-colors"
-							placeholder="john@example.com"
+							placeholder={contactData.form.email.placeholder}
 						>
 					</div>
 				</div>
 				<div>
-					<label for="subject" data-en="Subject" data-fr="Sujet" class="section-text block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Subject</label>
+					<label for="subject" data-en={contactData.form.subject.en} data-fr={contactData.form.subject.fr} class="section-text block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{contactData.form.subject.en}</label>
 					<input 
 						type="text" 
 						id="subject" 
 						name="subject"
 						required
 						class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-colors"
-						placeholder="Project Inquiry"
+						placeholder={contactData.form.subject.placeholder}
 					>
 				</div>
 				<div>
-					<label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Message</label>
+					<label for="message" data-en={contactData.form.message.en} data-fr={contactData.form.message.fr} class="section-text block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{contactData.form.message.en}</label>
 					<textarea 
 						id="message" 
 						name="message"
 						required
 						rows="5"
 						class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-colors resize-none"
-						placeholder="Tell me about your project..."
+						placeholder={contactData.form.message.placeholder}
 					></textarea>
 				</div>
 				<div class="text-center">
 					<button 
 						type="submit"
-						data-en="Send Message"
-						data-fr="Envoyer le message"
+						data-en={contactData.form.submit.en}
+						data-fr={contactData.form.submit.fr}
 						class="section-text px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition-colors inline-flex items-center gap-2"
 					>
 						<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
 						</svg>
-						Send Message
+						{contactData.form.submit.en}
 					</button>
 					<p id="contact-status" class="section-text mt-4 text-sm text-gray-600 dark:text-gray-300" aria-live="polite"></p>
 				</div>
@@ -771,24 +538,24 @@ import Layout from '../layouts/Layout.astro';
 
 			<!-- Contact Info -->
 			<div class="mt-16 flex flex-wrap justify-center gap-8">
-				<a href="mailto:eddourandria@gmail.com" class="flex items-center gap-3 text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+				<a href={`mailto:${contactData.info.email}`} class="flex items-center gap-3 text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
 					<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
 					</svg>
-					<span>eddourandria@gmail.com</span>
+					<span>{contactData.info.email}</span>
 				</a>
 				<a href="https://wa.me/+261327517278" class="flex items-center gap-3 text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
 					<svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
 						<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
 					</svg>
-					<span>+261 32 75 172 78</span>
+					<span>{contactData.info.whatsapp}</span>
 				</a>
 			</div>
 		</div>
 	</section>
 </Layout>
 
-<script>
+<script define:vars={{ contactEmail: contactData.info.email }}>
 	function updateLang(lang: string) {
 		document.querySelectorAll('.hero-text, .about-text, .section-text').forEach(el => {
 			const text = el.getAttribute(`data-${lang}`);
@@ -807,57 +574,6 @@ import Layout from '../layouts/Layout.astro';
 	const projectModalDescription = document.querySelector<HTMLElement>('#project-modal-description');
 	const projectModalList = document.querySelector<HTMLElement>('#project-modal-list');
 
-	const projectDetailContent: Record<string, { description: string; points: string[] }> = {
-		gestion_bibliotheque: {
-			description: 'Application de gestion bibliotheque concue pour digitaliser les operations quotidiennes.',
-			points: [
-				'Catalogue centralise des ouvrages et disponibilites en temps reel.',
-				'Gestion complete des emprunts, retours et relances.',
-				'Tableau de bord pour suivre activite et statistiques cles.'
-			]
-		},
-		gestion_parking: {
-			description: 'Plateforme de supervision de parkings silos et exterieur.',
-			points: [
-				'Suivi de capacite par zone et par niveau.',
-				'Journal d entree/sortie avec historique.',
-				'Analyse de flux pour optimiser l occupation.'
-			]
-		},
-		gestion_rh: {
-			description: 'Application RH collaborative orientee gestion administrative.',
-			points: [
-				'Gestion des collaborateurs, postes et services.',
-				'Module de demandes et validation des conges.',
-				'Indicateurs RH et exports de suivi.'
-			]
-		},
-		signalisation_route: {
-			description: 'Solution web/mobile pour inventorier et suivre la signalisation routiere.',
-			points: [
-				'Inventaire des panneaux et metadonnees geolocalisees.',
-				'Remontees terrain via mobile pour mises a jour rapides.',
-				'Synchronisation des donnees entre interfaces.'
-			]
-		},
-		gestion_transport: {
-			description: 'Application logistique pour le transport de produits entre Antsirabe et Tana.',
-			points: [
-				'Planification de trajets et affectation des ressources.',
-				'Suivi des livraisons et statuts de transit.',
-				'Tracabilite des lots transportes.'
-			]
-		},
-		gestion_compagnie: {
-			description: 'Systeme de gestion de compagnie aerienne orientee operations.',
-			points: [
-				'Gestion des vols et horaires.',
-				'Suivi de la flotte et maintenance.',
-				'Administration des passagers et reservations.'
-			]
-		}
-	};
-
 	function closeProjectModal() {
 		if (!projectModal) return;
 		projectModal.classList.add('hidden');
@@ -867,13 +583,15 @@ import Layout from '../layouts/Layout.astro';
 
 	document.querySelectorAll<HTMLButtonElement>('.project-detail-btn').forEach((btn) => {
 		btn.addEventListener('click', () => {
-			const key = btn.dataset.project;
-			if (!key || !projectModal || !projectModalDescription || !projectModalList) return;
-			const content = projectDetailContent[key];
-			if (!content) return;
+			if (!projectModal || !projectModalDescription || !projectModalList) return;
+			const description = btn.dataset.description || '';
+			const points = (btn.dataset.points || '')
+				.split('||')
+				.map((point) => point.trim())
+				.filter(Boolean);
 
-			projectModalDescription.textContent = content.description;
-			projectModalList.innerHTML = content.points.map((point) => `<li>${point}</li>`).join('');
+			projectModalDescription.textContent = description;
+			projectModalList.innerHTML = points.map((point) => `<li>${point}</li>`).join('');
 			projectModal.classList.remove('hidden');
 			projectModal.setAttribute('aria-hidden', 'false');
 			document.body.classList.add('overflow-hidden');
@@ -893,7 +611,7 @@ import Layout from '../layouts/Layout.astro';
 			contactStatus.textContent = currentLang === 'fr' ? 'Envoi en cours...' : 'Sending...';
 
 			try {
-				const response = await fetch('https://formsubmit.co/ajax/eddourandria@gmail.com', {
+				const response = await fetch(`https://formsubmit.co/ajax/${contactEmail}`, {
 					method: 'POST',
 					headers: {
 						Accept: 'application/json'
@@ -911,8 +629,8 @@ import Layout from '../layouts/Layout.astro';
 					: 'Message sent successfully. I will reply soon.';
 			} catch {
 				contactStatus.textContent = currentLang === 'fr'
-					? 'Echec de l envoi. Reessayez ou ecrivez directement a eddourandria@gmail.com.'
-					: 'Failed to send. Please try again or email me directly at eddourandria@gmail.com.';
+					? `Echec de l envoi. Reessayez ou ecrivez directement a ${contactEmail}.`
+					: `Failed to send. Please try again or email me directly at ${contactEmail}.`;
 			}
 		});
 	}

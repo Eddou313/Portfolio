@@ -1,0 +1,19 @@
+{
+  "order": 4,
+  "slug": "signalisation_route",
+  "badge": "Groupe",
+  "image": "projects/signalisation-route.svg",
+  "imageAlt": "Apercu du projet Signalisation des routes",
+  "title": "Signalisation des routes",
+  "description": "Projet web et mobile pour recenser et suivre la signalisation routiere.",
+  "technologies": ["Vue.js 3", "TypeScript", "Ionic"],
+  "repoUrl": "https://github.com/Eddou313/signialisation-des-route",
+  "details": {
+    "description": "Solution web/mobile pour inventorier et suivre la signalisation routiere.",
+    "points": [
+      "Inventaire des panneaux et metadonnees geolocalisees.",
+      "Remontees terrain via mobile pour mises a jour rapides.",
+      "Synchronisation des donnees entre interfaces."
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "avatarInitials": "ED",
+  "greeting": {
+    "en": "Hello, I'm",
+    "fr": "Bonjour, je suis"
+  },
+  "name": "Randrianarison Eddou",
+  "title": {
+    "en": "Full-Stack Developer",
+    "fr": "Developpeur Full-Stack"
+  },
+  "description": {
+    "en": "Passionate about creating modern web applications and bringing ideas to life through clean code and intuitive design.",
+    "fr": "Passionne par la creation d'applications web modernes et par la mise en vie des idees grace a un code propre et un design intuitif."
+  },
+  "cta": {
+    "primary": {
+      "href": "#projects",
+      "en": "View My Work",
+      "fr": "Voir mes projets"
+    },
+    "secondary": {
+      "href": "#contact",
+      "en": "Contact Me",
+      "fr": "Me contacter"
+    }
+  },
+  "social": {
+    "github": "https://github.com/Eddou313",
+    "linkedin": "https://linkedin.com/in/eddou-randrianarison-4a7746374",
+    "email": "mailto:eddourandria@gmail.com",
+    "whatsapp": "https://wa.me/+261327517278"
+  }
+}
