@@ -1,0 +1,83 @@
+---
+import aboutData from '../../../data/about/content.json';
+---
+
+<section id="about" class="min-h-screen py-20 px-4 bg-gray-50 dark:bg-gray-800/50 flex flex-col justify-center relative">
+	<div class="max-w-6xl mx-auto">
+		<div class="text-center mb-16">
+			<h2 
+				data-en={aboutData.title.en}
+				data-fr={aboutData.title.fr}
+				class="about-text text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4"
+			>
+				{aboutData.title.en}
+			</h2>
+			<div class="w-20 h-1 bg-indigo-600 mx-auto rounded-full"></div>
+		</div>
+
+		<div class="grid md:grid-cols-2 gap-12 items-center">
+			<div class="flex justify-center">
+				<div class="relative">
+					<div class="w-72 h-72 md:w-80 md:h-80 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 p-1">
+						<div class="w-full h-full rounded-2xl bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
+							<svg class="w-32 h-32 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+							</svg>
+						</div>
+					</div>
+					<div class="absolute -top-4 -right-4 w-20 h-20 bg-indigo-200 dark:bg-indigo-900/50 rounded-full -z-10"></div>
+					<div class="absolute -bottom-4 -left-4 w-16 h-16 bg-purple-200 dark:bg-purple-900/50 rounded-full -z-10"></div>
+				</div>
+			</div>
+
+			<div class="space-y-6">
+				<p 
+					data-en={aboutData.paragraphs[0].en}
+					data-fr={aboutData.paragraphs[0].fr}
+					class="about-text text-gray-600 dark:text-gray-300 leading-relaxed"
+				>
+					{aboutData.paragraphs[0].en}
+				</p>
+
+				<p 
+					data-en={aboutData.paragraphs[1].en}
+					data-fr={aboutData.paragraphs[1].fr}
+					class="about-text text-gray-600 dark:text-gray-300 leading-relaxed margin-top"
+				>
+					{aboutData.paragraphs[1].en}
+				</p>
+
+				<div class="grid grid-cols-2 gap-4 pt-4">
+					<div class="p-4 bg-white dark:bg-gray-800 rounded-xl shadow-sm">
+						<p class="text-indigo-600 dark:text-indigo-400 font-bold text-2xl">{aboutData.infoCards[0].value}</p>
+						<p 
+							data-en={aboutData.infoCards[0].en}
+							data-fr={aboutData.infoCards[0].fr}
+							class="about-text text-gray-600 dark:text-gray-400 text-sm"
+						>
+							{aboutData.infoCards[0].en}
+						</p>
+					</div>
+					<div class="p-4 bg-white dark:bg-gray-800 rounded-xl shadow-sm">
+						<p class="text-indigo-600 dark:text-indigo-400 font-bold text-2xl">{aboutData.infoCards[1].value}</p>
+						<p 
+							data-en={aboutData.infoCards[1].en}
+							data-fr={aboutData.infoCards[1].fr}
+							class="about-text text-gray-600 dark:text-gray-400 text-sm"
+						>
+							{aboutData.infoCards[1].en}
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+		<a href="#skills" aria-label="Scroll to Skills section" class="inline-flex items-center justify-center w-12 h-12 rounded-full text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">
+			<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+			</svg>
+		</a>
+	</div>
+</section>

@@ -1,30 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import AboutSection from '../components/sections/AboutSection.astro';
+import SkillsSection from '../components/sections/SkillsSection.astro';
+import FormationSection from '../components/sections/FormationSection.astro';
+import ProjectsSection from '../components/sections/ProjectsSection.astro';
 import homeData from '../../data/home/content.json';
-import aboutData from '../../data/about/content.json';
-import skillsData from '../../data/skills/content.json';
-import formationData from '../../data/formation/content.json';
 import contactData from '../../data/contact/content.json';
-
-type ProjectData = {
-	order?: number;
-	slug: string;
-	badge: string;
-	image: string;
-	imageAlt: string;
-	title: string;
-	description: string;
-	technologies: string[];
-	repoUrl: string;
-	details: {
-		description: string;
-		points: string[];
-	};
-};
-
-const projectModules = import.meta.glob('../../data/projets/*.json', { eager: true, import: 'default' });
-const projects = Object.values(projectModules) as ProjectData[];
-projects.sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
 ---
 
 <Layout>
@@ -156,291 +137,13 @@ projects.sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
 		</div>
 	</section>
 
-	<!-- About Section -->
-	<section id="about" class="min-h-screen py-20 px-4 bg-gray-50 dark:bg-gray-800/50 flex flex-col justify-center relative">
-		<div class="max-w-6xl mx-auto">
-			<!-- Section Title -->
-			<div class="text-center mb-16">
-				<h2 
-					data-en={aboutData.title.en}
-					data-fr={aboutData.title.fr}
-					class="about-text text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4"
-				>
-					{aboutData.title.en}
-				</h2>
-				<div class="w-20 h-1 bg-indigo-600 mx-auto rounded-full"></div>
-			</div>
+	<AboutSection />
 
-			<div class="grid md:grid-cols-2 gap-12 items-center">
-				<!-- Left: Image/Illustration -->
-				<div class="flex justify-center">
-					<div class="relative">
-						<div class="w-72 h-72 md:w-80 md:h-80 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 p-1">
-							<div class="w-full h-full rounded-2xl bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
-								<svg class="w-32 h-32 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
-								</svg>
-							</div>
-						</div>
-						<!-- Decorative elements -->
-						<div class="absolute -top-4 -right-4 w-20 h-20 bg-indigo-200 dark:bg-indigo-900/50 rounded-full -z-10"></div>
-						<div class="absolute -bottom-4 -left-4 w-16 h-16 bg-purple-200 dark:bg-purple-900/50 rounded-full -z-10"></div>
-					</div>
-				</div>
+	<SkillsSection />
 
-				<!-- Right: Content -->
-				<div class="space-y-6">
-					<p 
-						data-en={aboutData.paragraphs[0].en}
-						data-fr={aboutData.paragraphs[0].fr}
-						class="about-text text-gray-600 dark:text-gray-300 leading-relaxed"
-					>
-						{aboutData.paragraphs[0].en}
-					</p>
+	<FormationSection />
 
-					<p 
-						data-en={aboutData.paragraphs[1].en}
-						data-fr={aboutData.paragraphs[1].fr}
-						class="about-text text-gray-600 dark:text-gray-300 leading-relaxed margin-top"
-					>
-						{aboutData.paragraphs[1].en}
-					</p>
-
-					<!-- Info Cards -->
-					<div class="grid grid-cols-2 gap-4 pt-4">
-						<div class="p-4 bg-white dark:bg-gray-800 rounded-xl shadow-sm">
-							<p class="text-indigo-600 dark:text-indigo-400 font-bold text-2xl">{aboutData.infoCards[0].value}</p>
-							<p 
-								data-en={aboutData.infoCards[0].en}
-								data-fr={aboutData.infoCards[0].fr}
-								class="about-text text-gray-600 dark:text-gray-400 text-sm"
-							>
-								{aboutData.infoCards[0].en}
-							</p>
-						</div>
-						<div class="p-4 bg-white dark:bg-gray-800 rounded-xl shadow-sm">
-							<p class="text-indigo-600 dark:text-indigo-400 font-bold text-2xl">{aboutData.infoCards[1].value}</p>
-							<p 
-								data-en={aboutData.infoCards[1].en}
-								data-fr={aboutData.infoCards[1].fr}
-								class="about-text text-gray-600 dark:text-gray-400 text-sm"
-							>
-								{aboutData.infoCards[1].en}
-							</p>
-						</div>
-					</div>
-
-
-				</div>
-			</div>
-		</div>
-
-		<!-- Scroll indicator -->
-		<div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-			<a href="#skills" aria-label="Scroll to Skills section" class="inline-flex items-center justify-center w-12 h-12 rounded-full text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">
-				<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
-				</svg>
-			</a>
-		</div>
-	</section>
-
-	<!-- Skills Section -->
-	<section id="skills" class="min-h-screen py-20 px-4 flex flex-col justify-center relative">
-		<div class="max-w-6xl mx-auto w-full">
-			<!-- Section Title -->
-			<div class="text-center mb-12">
-				<h2 
-					data-en={skillsData.title.en}
-					data-fr={skillsData.title.fr}
-					class="section-text text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4"
-				>
-					{skillsData.title.en}
-				</h2>
-				<div class="w-20 h-1 bg-indigo-500 mx-auto rounded-full"></div>
-			</div>
-
-			<!-- Skills Grid 2x2 -->
-			<div class="grid md:grid-cols-2 gap-6">
-				{skillsData.categories.map((category) => (
-					<div class="p-6 bg-slate-800/90 dark:bg-slate-900/90 rounded-2xl border border-indigo-500/30 shadow-lg shadow-indigo-500/10">
-						<h3
-							data-en={category.title.en}
-							data-fr={category.title.fr}
-							class="section-text text-xl font-bold text-indigo-400 mb-5"
-						>
-							{category.title.en}
-						</h3>
-						<div class="flex flex-wrap gap-3">
-							{category.items.map((item) => (
-								<span class="px-4 py-2 bg-slate-700/60 text-slate-100 rounded-lg text-sm font-medium border border-indigo-500/30">
-									{item}
-								</span>
-							))}
-						</div>
-					</div>
-				))}
-			</div>
-		</div>
-
-		<!-- Scroll indicator -->
-		<div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-			<a href="#formation" aria-label="Scroll to Education section" class="inline-flex items-center justify-center w-12 h-12 rounded-full text-gray-400 hover:text-indigo-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">
-				<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
-				</svg>
-			</a>
-		</div>
-	</section>
-
-	<!-- Formation Section -->
-	<section id="formation" class="min-h-screen py-20 px-4 bg-gray-50 dark:bg-gray-800/50 flex flex-col justify-center relative">
-		<div class="max-w-6xl mx-auto w-full">
-			<!-- Section Title -->
-			<div class="text-center mb-12">
-				<h2 
-					data-en={formationData.title.en}
-					data-fr={formationData.title.fr}
-					class="section-text text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4"
-				>
-					{formationData.title.en}
-				</h2>
-				<div class="w-20 h-1 bg-indigo-500 mx-auto rounded-full"></div>
-			</div>
-
-			<!-- Timeline -->
-			<div class="relative">
-				<div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 top-0 bottom-0 w-0.5 bg-indigo-300 dark:bg-indigo-700"></div>
-				{formationData.items.map((item, index) => (
-					<div class="relative flex flex-col md:flex-row md:justify-center mb-8">
-						{index % 2 === 0 ? (
-							<>
-								<div class="hidden md:block md:w-5/12"></div>
-								<div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-indigo-500 rounded-full border-4 border-white dark:border-gray-900 mt-8"></div>
-								<div class="ml-12 md:ml-0 md:w-5/12 md:pl-8">
-									<div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
-										<span class="text-sm text-indigo-500 font-semibold">{item.period}</span>
-										<h3 class="section-text text-xl font-bold text-gray-900 dark:text-white mt-2" data-en={item.title.en} data-fr={item.title.fr}>{item.title.en}</h3>
-										<p class="section-text text-gray-600 dark:text-gray-400 mt-2" data-en={item.subtitle.en} data-fr={item.subtitle.fr}>{item.subtitle.en}</p>
-										<p class="text-indigo-600 dark:text-indigo-400 font-medium mt-2">{item.school}</p>
-									</div>
-								</div>
-							</>
-						) : (
-							<>
-								<div class="ml-12 md:ml-0 md:w-5/12 md:pr-8 md:text-right">
-									<div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
-										<span class="text-sm text-indigo-500 font-semibold">{item.period}</span>
-										<h3 class="section-text text-xl font-bold text-gray-900 dark:text-white mt-2" data-en={item.title.en} data-fr={item.title.fr}>{item.title.en}</h3>
-										<p class="section-text text-gray-600 dark:text-gray-400 mt-2" data-en={item.subtitle.en} data-fr={item.subtitle.fr}>{item.subtitle.en}</p>
-										<p class="text-indigo-600 dark:text-indigo-400 font-medium mt-2">{item.school}</p>
-									</div>
-								</div>
-								<div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-indigo-500 rounded-full border-4 border-white dark:border-gray-900 mt-8"></div>
-								<div class="hidden md:block md:w-5/12"></div>
-							</>
-						)}
-					</div>
-				))}
-			</div>
-		</div>
-
-		<!-- Scroll indicator -->
-		<div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-			<a href="#projects" aria-label="Scroll to Projects section" class="inline-flex items-center justify-center w-12 h-12 rounded-full text-gray-400 hover:text-indigo-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">
-				<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
-				</svg>
-			</a>
-		</div>
-	</section>
-
-	<!-- Projects Section -->
-	<section id="projects" class="min-h-screen py-20 px-4 bg-gray-50 dark:bg-gray-800/50 flex flex-col justify-center relative">
-		<div class="max-w-6xl mx-auto w-full">
-			<div class="text-center mb-14">
-				<h2
-					data-en="My Projects"
-					data-fr="Mes Projets"
-					class="section-text text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4"
-				>
-					My Projects
-				</h2>
-				<div class="w-20 h-1 bg-amber-400 mx-auto rounded-full"></div>
-				<p data-en="Some of my recent work" data-fr="Quelques-uns de mes travaux recents" class="section-text mt-6 text-gray-600 dark:text-gray-400 text-lg">Some of my recent work</p>
-			</div>
-
-			<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-				{projects.map((project) => (
-					<div class="relative rounded-2xl overflow-hidden border border-gray-200 dark:border-indigo-700/60 bg-white dark:bg-slate-900/80 shadow-lg shadow-black/10 dark:shadow-black/30 hover:-translate-y-1 hover:shadow-xl transition-all h-full flex flex-col">
-						<span class="absolute top-3 right-3 z-10 inline-flex items-center gap-1.5 rounded-full bg-amber-400 px-3 py-1 text-xs font-semibold text-slate-900">
-							{project.badge}
-						</span>
-						<img src={project.image} alt={project.imageAlt} class="h-52 w-full object-cover" loading="lazy" />
-						<div class="p-5 flex flex-1 flex-col">
-							<h3 class="text-2xl font-bold text-gray-900 dark:text-slate-100 mb-2">{project.title}</h3>
-							<p class="text-gray-600 dark:text-slate-300/90 leading-relaxed">{project.description}</p>
-							<div class="mt-4 flex flex-wrap gap-2">
-								{project.technologies.map((tech) => (
-									<span class="px-2.5 py-1 rounded-md bg-gray-100 dark:bg-slate-800 text-amber-700 dark:text-amber-300 text-xs font-semibold">{tech}</span>
-								))}
-							</div>
-							<div class="mt-auto pt-4 border-t border-gray-200 dark:border-indigo-700/60 flex items-center justify-between gap-3">
-								<a href={project.repoUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-indigo-700 dark:text-amber-300 hover:text-indigo-900 dark:hover:text-amber-200 font-semibold text-sm">
-									<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-									Voir le code
-								</a>
-								<button
-									type="button"
-									class="project-detail-btn text-indigo-700 dark:text-amber-300 hover:text-indigo-900 dark:hover:text-amber-200 font-semibold text-sm"
-									data-project={project.slug}
-									data-description={project.details.description}
-									data-points={project.details.points.join('||')}
-								>
-									Voir les details
-								</button>
-							</div>
-						</div>
-					</div>
-				))}
-			</div>
-
-			<div id="project-modal" class="fixed inset-0 z-[80] hidden" aria-hidden="true">
-				<div class="absolute inset-0 bg-black/70 backdrop-blur-sm" data-project-close></div>
-				<div class="relative z-10 flex items-center justify-center min-h-full p-4">
-					<div class="w-full max-w-3xl rounded-2xl border border-gray-200 dark:border-indigo-700 bg-white dark:bg-slate-900 text-gray-900 dark:text-slate-100 shadow-2xl shadow-black/30 dark:shadow-black/70" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
-						<div class="flex items-center justify-between gap-4 border-b border-gray-200 dark:border-indigo-700 px-5 py-4">
-							<h3 id="project-modal-title" class="text-xl font-bold">Details du projet</h3>
-							<button type="button" id="project-modal-close" class="rounded-lg border border-gray-300 dark:border-indigo-600 px-3 py-2 text-sm hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors">Fermer</button>
-						</div>
-						<div class="p-5">
-							<p id="project-modal-description" class="text-gray-700 dark:text-slate-300/95 leading-relaxed"></p>
-							<ul id="project-modal-list" class="mt-4 space-y-2 text-gray-700 dark:text-slate-300/90 list-disc pl-5"></ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-			<a href="#blog" aria-label="Scroll to Blog section" class="inline-flex items-center justify-center w-12 h-12 rounded-full text-gray-400 dark:text-slate-300 hover:text-amber-300 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300">
-				<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
-				</svg>
-			</a>
-		</div>
-	</section>
-
-	
-		<!-- Scroll indicator -->
-		<div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-			<a href="#contact" aria-label="Scroll to Contact section" class="inline-flex items-center justify-center w-12 h-12 rounded-full text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">
-				<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
-				</svg>
-			</a>
-		</div>
-	</section>
+	<ProjectsSection />
 
 	<!-- Contact Section -->
 	<section id="contact" class="min-h-screen py-20 px-4 bg-gray-50 dark:bg-gray-800/50 flex flex-col justify-center relative">
@@ -608,33 +311,55 @@ projects.sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
 	if (contactForm && contactStatus) {
 		contactForm.addEventListener('submit', async (event) => {
 			event.preventDefault();
+			
 			const formData = new FormData(contactForm);
-			contactStatus.textContent = currentLang === 'fr' ? 'Envoi en cours...' : 'Sending...';
+			const emailToVerify = formData.get('email') as string;
+			
+			// 1. Message de début de vérification
+			contactStatus.textContent = currentLang === 'fr' ? 'Vérification de l\'email...' : 'Verifying email...';
 
 			try {
+				// --- ÉTAPE DE VÉRIFICATION DE L'EXISTENCE ---
+				// Remplace 'TON_API_KEY' par ta clé Abstract API
+				const apiKey = 'TON_API_KEY'; 
+				const verifyRes = await fetch(`https://emailvalidation.abstractapi.com/v1/?api_key=${apiKey}&email=${emailToVerify}`);
+				const verifyData = await verifyRes.json();
+
+				// On vérifie si l'email est considéré comme valide (deliverability)
+				// 'DELIVERABLE' signifie que l'adresse existe probablement
+				if (verifyData.deliverability === 'UNDELIVERABLE') {
+					contactStatus.textContent = currentLang === 'fr' 
+						? "L'adresse email semble invalide ou n'existe pas." 
+						: "The email address seems invalid or doesn't exist.";
+					contactStatus.classList.add('text-red-500');
+					return; // On arrête tout ici
+				}
+
+				// --- ÉTAPE D'ENVOI SI OK ---
+				contactStatus.textContent = currentLang === 'fr' ? 'Envoi en cours...' : 'Sending...';
+
 				const response = await fetch(`https://formsubmit.co/ajax/${contactEmail}`, {
 					method: 'POST',
-					headers: {
-						Accept: 'application/json'
-					},
+					headers: { 'Accept': 'application/json' },
 					body: formData
 				});
 
-				if (!response.ok) {
-					throw new Error('Form submission failed');
-				}
+				if (!response.ok) throw new Error('Form submission failed');
 
 				contactForm.reset();
+				contactStatus.classList.replace('text-red-500', 'text-green-500');
 				contactStatus.textContent = currentLang === 'fr'
-					? 'Message envoye avec succes. Je vous repondrai bientot.'
+					? 'Message envoyé avec succès. Je vous répondrai bientôt.'
 					: 'Message sent successfully. I will reply soon.';
-			} catch {
+
+			} catch (error) {
 				contactStatus.textContent = currentLang === 'fr'
-					? `Echec de l envoi. Reessayez ou ecrivez directement a ${contactEmail}.`
-					: `Failed to send. Please try again or email me directly at ${contactEmail}.`;
+					? `Une erreur est survenue. Réessayez ou écrivez à ${contactEmail}.`
+					: `An error occurred. Please try again or email me at ${contactEmail}.`;
 			}
 		});
 	}
+	
 
 	// Listen for language changes
 	window.addEventListener('langchange', (e: Event) => {

@@ -1,0 +1,61 @@
+---
+import formationData from '../../../data/formation/content.json';
+---
+
+<section id="formation" class="min-h-screen py-20 px-4 bg-gray-50 dark:bg-gray-800/50 flex flex-col justify-center relative">
+	<div class="max-w-6xl mx-auto w-full">
+		<div class="text-center mb-12">
+			<h2 
+				data-en={formationData.title.en}
+				data-fr={formationData.title.fr}
+				class="section-text text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4"
+			>
+				{formationData.title.en}
+			</h2>
+			<div class="w-20 h-1 bg-indigo-500 mx-auto rounded-full"></div>
+		</div>
+
+		<div class="relative">
+			<div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 top-0 bottom-0 w-0.5 bg-indigo-300 dark:bg-indigo-700"></div>
+			{formationData.items.map((item, index) => (
+				<div class="relative flex flex-col md:flex-row md:justify-center mb-8">
+					{index % 2 === 0 ? (
+						<>
+							<div class="hidden md:block md:w-5/12"></div>
+							<div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-indigo-500 rounded-full border-4 border-white dark:border-gray-900 mt-8"></div>
+							<div class="ml-12 md:ml-0 md:w-5/12 md:pl-8">
+								<div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
+									<span class="text-sm text-indigo-500 font-semibold">{item.period}</span>
+									<h3 class="section-text text-xl font-bold text-gray-900 dark:text-white mt-2" data-en={item.title.en} data-fr={item.title.fr}>{item.title.en}</h3>
+									<p class="section-text text-gray-600 dark:text-gray-400 mt-2" data-en={item.subtitle.en} data-fr={item.subtitle.fr}>{item.subtitle.en}</p>
+									<p class="text-indigo-600 dark:text-indigo-400 font-medium mt-2">{item.school}</p>
+								</div>
+							</div>
+						</>
+					) : (
+						<>
+							<div class="ml-12 md:ml-0 md:w-5/12 md:pr-8 md:text-right">
+								<div class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
+									<span class="text-sm text-indigo-500 font-semibold">{item.period}</span>
+									<h3 class="section-text text-xl font-bold text-gray-900 dark:text-white mt-2" data-en={item.title.en} data-fr={item.title.fr}>{item.title.en}</h3>
+									<p class="section-text text-gray-600 dark:text-gray-400 mt-2" data-en={item.subtitle.en} data-fr={item.subtitle.fr}>{item.subtitle.en}</p>
+									<p class="text-indigo-600 dark:text-indigo-400 font-medium mt-2">{item.school}</p>
+								</div>
+							</div>
+							<div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-indigo-500 rounded-full border-4 border-white dark:border-gray-900 mt-8"></div>
+							<div class="hidden md:block md:w-5/12"></div>
+						</>
+					)}
+				</div>
+			))}
+		</div>
+	</div>
+
+	<div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+		<a href="#projects" aria-label="Scroll to Projects section" class="inline-flex items-center justify-center w-12 h-12 rounded-full text-gray-400 hover:text-indigo-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">
+			<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+			</svg>
+		</a>
+	</div>
+</section>

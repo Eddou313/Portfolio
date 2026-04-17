@@ -1,0 +1,47 @@
+---
+import skillsData from '../../../data/skills/content.json';
+---
+
+<section id="skills" class="min-h-screen py-20 px-4 flex flex-col justify-center relative">
+	<div class="max-w-6xl mx-auto w-full">
+		<div class="text-center mb-12">
+			<h2 
+				data-en={skillsData.title.en}
+				data-fr={skillsData.title.fr}
+				class="section-text text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4"
+			>
+				{skillsData.title.en}
+			</h2>
+			<div class="w-20 h-1 bg-indigo-500 mx-auto rounded-full"></div>
+		</div>
+
+		<div class="grid md:grid-cols-2 gap-6">
+			{skillsData.categories.map((category) => (
+				<div class="p-6 bg-slate-800/90 dark:bg-slate-900/90 rounded-2xl border border-indigo-500/30 shadow-lg shadow-indigo-500/10">
+					<h3
+						data-en={category.title.en}
+						data-fr={category.title.fr}
+						class="section-text text-xl font-bold text-indigo-400 mb-5"
+					>
+						{category.title.en}
+					</h3>
+					<div class="flex flex-wrap gap-3">
+						{category.items.map((item) => (
+							<span class="px-4 py-2 bg-slate-700/60 text-slate-100 rounded-lg text-sm font-medium border border-indigo-500/30">
+								{item}
+							</span>
+						))}
+					</div>
+				</div>
+			))}
+		</div>
+	</div>
+
+	<div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+		<a href="#formation" aria-label="Scroll to Education section" class="inline-flex items-center justify-center w-12 h-12 rounded-full text-gray-400 hover:text-indigo-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">
+			<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+			</svg>
+		</a>
+	</div>
+</section>
