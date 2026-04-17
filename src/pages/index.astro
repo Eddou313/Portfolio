@@ -555,7 +555,7 @@ projects.sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
 	</section>
 </Layout>
 
-<script define:vars={{ contactEmail: contactData.info.email }}>
+<script>
 	function updateLang(lang: string) {
 		document.querySelectorAll('.hero-text, .about-text, .section-text').forEach(el => {
 			const text = el.getAttribute(`data-${lang}`);
@@ -569,6 +569,7 @@ projects.sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
 
 	const contactForm = document.querySelector<HTMLFormElement>('#contact-form');
 	const contactStatus = document.querySelector<HTMLElement>('#contact-status');
+	const contactEmail = contactForm?.action.replace('https://formsubmit.co/', '').trim() || '';
 	const projectModal = document.querySelector<HTMLElement>('#project-modal');
 	const projectModalClose = document.querySelector<HTMLButtonElement>('#project-modal-close');
 	const projectModalDescription = document.querySelector<HTMLElement>('#project-modal-description');
