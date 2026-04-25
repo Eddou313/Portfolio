@@ -6,6 +6,8 @@ import FormationSection from '../components/sections/FormationSection.astro';
 import ProjectsSection from '../components/sections/ProjectsSection.astro';
 import homeData from '../../data/home/content.json';
 import contactData from '../../data/contact/content.json';
+
+const avatarSrc = `${import.meta.env.BASE_URL}${String(homeData.avatarInitials).replace(/^\/+/, '')}`;
 ---
 
 <Layout>
@@ -14,8 +16,9 @@ import contactData from '../../data/contact/content.json';
 		<div class="max-w-4xl mx-auto text-center">
 			<!-- Avatar -->
 			<div class="mb-8">
-				<div class="w-40 h-40 md:w-52 md:h-52 mx-auto rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white text-5xl md:text-6xl font-bold shadow-xl ring-4 ring-white dark:ring-gray-800">
-					{homeData.avatarInitials}
+				<div class="w-40 h-40 md:w-52 md:h-52 mx-auto overflow-hidden rounded-full shadow-xl ring-4 ring-white dark:ring-gray-800">
+					<!-- <img src={avatarSrc} alt={`Photo de ${homeData.name}`} class="w-full h-full object-cover" loading="eager" decoding="async" /> -->
+					Eddou
 				</div>
 			</div>
 
