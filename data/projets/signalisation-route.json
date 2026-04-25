@@ -14,6 +14,13 @@
       "Inventaire des panneaux et metadonnees geolocalisees.",
       "Remontees terrain via mobile pour mises a jour rapides.",
       "Synchronisation des donnees entre interfaces."
+    ],
+    "images": [
+      {
+        "src": "projects/signalisation-route.svg",
+        "alt": "Capture du projet Signalisation des routes",
+        "caption": "Illustration des interfaces web/mobile pour le suivi terrain."
+      }
     ]
   }
 }

@@ -30,7 +30,7 @@
         "en": "Tools & DevOps",
         "fr": "Outils & DevOps"
       },
-      "items": ["Git", "GitHub Desktop", "Linux", "FileZilla", "Samba", "FTP", "PowerBI", "haproxy", "Docker"]
+      "items": ["Git", "GitHub Desktop", "Linux", "FileZilla", "Samba", "FTP", "PowerBI", "haproxy", "Docker","n8n"]
     }
   ]
 }

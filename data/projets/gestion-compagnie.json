@@ -14,6 +14,13 @@
       "Gestion des vols et horaires.",
       "Suivi de la flotte et maintenance.",
       "Administration des passagers et reservations."
+    ],
+    "images": [
+      {
+        "src": "projects/gestion-compagnie.svg",
+        "alt": "Capture du projet Gestion compagnie aerienne",
+        "caption": "Interface de suivi des vols, flotte et reservations."
+      }
     ]
   }
 }

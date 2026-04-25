@@ -14,6 +14,13 @@
       "Planification de trajets et affectation des ressources.",
       "Suivi des livraisons et statuts de transit.",
       "Tracabilite des lots transportes."
+    ],
+    "images": [
+      {
+        "src": "projects/gestion-transport.svg",
+        "alt": "Capture du projet Gestion transport des produits",
+        "caption": "Vue logistique des trajets, statuts de transit et tracabilite."
+      }
     ]
   }
 }

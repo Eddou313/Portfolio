@@ -14,6 +14,13 @@
       "Suivi de capacite par zone et par niveau.",
       "Journal d'entree/sortie avec historique.",
       "Analyse de flux pour optimiser l'occupation."
+    ],
+    "images": [
+      {
+        "src": "projects/gestion-parking.svg",
+        "alt": "Capture du projet Gestion parking",
+        "caption": "Vue de supervision des capacites et flux d'entree/sortie."
+      }
     ]
   }
 }

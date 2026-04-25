@@ -14,6 +14,13 @@
       "Catalogue centralise des ouvrages et disponibilites en temps reel.",
       "Gestion complete des emprunts, retours et relances.",
       "Tableau de bord pour suivre activite et statistiques cles."
+    ],
+    "images": [
+      {
+        "src": "projects/gestion-bibliotheque.svg",
+        "alt": "Capture de l'interface du projet Gestion bibliotheque",
+        "caption": "Vue d'ensemble du module de gestion des ouvrages et emprunts."
+      }
     ]
   }
 }

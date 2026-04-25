@@ -12,6 +12,11 @@ type ProjectData = {
 	details: {
 		description: string;
 		points: string[];
+		images?: Array<{
+			src: string;
+			alt?: string;
+			caption?: string;
+		}>;
 	};
 };
 
@@ -60,6 +65,7 @@ projects.sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
 								data-project={project.slug}
 								data-description={project.details.description}
 								data-points={project.details.points.join('||')}
+								data-images={JSON.stringify(project.details.images ?? [])}
 							>
 								Voir les details
 							</button>
@@ -80,6 +86,7 @@ projects.sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
 					<div class="p-5">
 						<p id="project-modal-description" class="text-gray-700 dark:text-slate-300/95 leading-relaxed"></p>
 						<ul id="project-modal-list" class="mt-4 space-y-2 text-gray-700 dark:text-slate-300/90 list-disc pl-5"></ul>
+						<div id="project-modal-gallery" class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4"></div>
 					</div>
 				</div>
 			</div>

@@ -14,6 +14,13 @@
       "Gestion des collaborateurs, postes et services.",
       "Module de demandes et validation des conges.",
       "Indicateurs RH et exports de suivi."
+    ],
+    "images": [
+      {
+        "src": "projects/gestion-rh.svg",
+        "alt": "Capture du projet Gestion RH",
+        "caption": "Presentation des modules RH: collaborateurs, conges et indicateurs."
+      }
     ]
   }
 }
