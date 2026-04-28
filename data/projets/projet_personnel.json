@@ -1,26 +1,55 @@
 {
   "order": 7,
   "slug": "Frameworks_personnels",
-  "badge": "Solo",
+  "badge": {
+    "en": "Solo",
+    "fr": "Solo"
+  },
   "image": "projects/framework_personnel.svg",
-  "imageAlt": "Architecture du Framework personnel ou fait maison pour comprendre les concepts de Spring Boot",
-  "title": "Framework Personnel",
-  "description": "Un framework 'from scratch' conçu pour démystifier le fonctionnement interne des moteurs MVC et de l'injection de dépendances.",
+  "imageAlt": {
+    "en": "Architecture of a custom framework created to understand Spring Boot concepts",
+    "fr": "Architecture du Framework personnel ou fait maison pour comprendre les concepts de Spring Boot"
+  },
+  "title": {
+    "en": "Personal Framework",
+    "fr": "Framework Personnel"
+  },
+  "description": {
+    "en": "A from-scratch framework designed to demystify how MVC engines and dependency injection work internally.",
+    "fr": "Un framework 'from scratch' conçu pour démystifier le fonctionnement interne des moteurs MVC et de l'injection de dépendances."
+  },
   "technologies": ["Java", "Jakarta Servlet"],
   "repoUrl": "https://github.com/Eddou313/RepJAR",
   "details": {
-    "description": "L'objectif de ce projet n'est pas de concurrencer les solutions industrielles comme Spring Boot, mais de comprendre précisément ce qui se passe sous le capot. J'ai recréé les composants essentiels pour maîtriser le cycle de vie complet d'une requête.",
-    "points": [
-      "Démystification de la 'magie' des annotations via l'implémentation manuelle de la Reflection API.",
-      "Compréhension profonde du Front Controller en gérant manuellement le routing et le dispatching des requêtes.",
-      "Développement d'un sérialiseur JSON récursif pour assimiler les principes de transformation de données sans bibliothèques tierces.",
-      "Mise en place d'une couche de sécurité granulaire pour explorer les mécanismes d'interception et de gestion des rôles (RBAC)."
-    ],
+    "description": {
+      "en": "The goal of this project is not to compete with production frameworks like Spring Boot, but to deeply understand what happens under the hood. I rebuilt core components to master the full lifecycle of an HTTP request.",
+      "fr": "L'objectif de ce projet n'est pas de concurrencer les solutions industrielles comme Spring Boot, mais de comprendre précisément ce qui se passe sous le capot. J'ai recréé les composants essentiels pour maîtriser le cycle de vie complet d'une requête."
+    },
+    "points": {
+      "en": [
+        "Demystified annotation magic through a manual implementation of the Reflection API.",
+        "Gained deep understanding of the Front Controller by manually handling request routing and dispatching.",
+        "Built a recursive JSON serializer to learn data transformation principles without third-party libraries.",
+        "Implemented a granular security layer to explore interception and role-based access control (RBAC)."
+      ],
+      "fr": [
+        "Démystification de la 'magie' des annotations via l'implémentation manuelle de la Reflection API.",
+        "Compréhension profonde du Front Controller en gérant manuellement le routing et le dispatching des requêtes.",
+        "Développement d'un sérialiseur JSON récursif pour assimiler les principes de transformation de données sans bibliothèques tierces.",
+        "Mise en place d'une couche de sécurité granulaire pour explorer les mécanismes d'interception et de gestion des rôles (RBAC)."
+      ]
+    },
     "images": [
       {
         "src": "projects/framework_personnel.svg",
-        "alt": "Architecture technique du Framework",
-        "caption": "Schéma de l'architecture : une reproduction pédagogique des flux de données internes de Spring Boot."
+        "alt": {
+          "en": "Framework technical architecture",
+          "fr": "Architecture technique du Framework"
+        },
+        "caption": {
+          "en": "Architecture diagram: a pedagogical reconstruction of Spring Boot internal data flows.",
+          "fr": "Schéma de l'architecture : une reproduction pédagogique des flux de données internes de Spring Boot."
+        }
       }
     ]
   }
