@@ -1,0 +1,64 @@
+<svg width="900" height="420" viewBox="0 0 900 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  
+  <!-- Background -->
+  <rect width="900" height="420" rx="20" fill="#0F172A"></rect>
+
+  <!-- Title -->
+  <text x="450" y="40" text-anchor="middle" fill="#E2E8F0" font-size="20" font-family="Arial" font-weight="bold">
+    Architecture Front Controller
+  </text>
+
+  <!-- Navigateur -->
+  <rect x="40" y="170" width="140" height="80" rx="12" fill="#3B82F6"></rect>
+  <text x="110" y="210" text-anchor="middle" fill="white" font-family="Arial" font-weight="bold">
+    Navigateur
+  </text>
+
+  <!-- Front Controller -->
+  <rect x="240" y="140" width="180" height="140" rx="12" fill="#1E293B" stroke="#334155"></rect>
+  <text x="330" y="195" text-anchor="middle" fill="white" font-family="Arial" font-weight="bold">
+    frontServlet
+  </text>
+  <text x="330" y="220" text-anchor="middle" fill="#94A3B8" font-size="12" font-family="Arial">
+    (Front Controller)
+  </text>
+
+  <!-- Security -->
+  <rect x="480" y="60" width="160" height="70" rx="10" fill="#7F1D1D" fill-opacity="0.2" stroke="#EF4444" stroke-width="2"></rect>
+  <text x="560" y="100" text-anchor="middle" fill="#FCA5A5" font-family="Arial" font-weight="bold">
+    SecurityChecker
+  </text>
+
+  <!-- Controller -->
+  <rect x="480" y="190" width="160" height="70" rx="10" fill="#064E3B" fill-opacity="0.2" stroke="#10B981" stroke-width="2"></rect>
+  <text x="560" y="230" text-anchor="middle" fill="#6EE7B7" font-family="Arial" font-weight="bold">
+    Contrôleur
+  </text>
+
+  <!-- JSON -->
+  <rect x="700" y="140" width="160" height="60" rx="10" fill="#78350F" fill-opacity="0.2" stroke="#F59E0B" stroke-width="2"></rect>
+  <text x="780" y="175" text-anchor="middle" fill="#FCD34D" font-family="Arial" font-weight="bold">
+    JsonResponse
+  </text>
+
+  <!-- JSP -->
+  <rect x="700" y="230" width="160" height="60" rx="10" fill="#4C1D95" fill-opacity="0.2" stroke="#8B5CF6" stroke-width="2"></rect>
+  <text x="780" y="265" text-anchor="middle" fill="#C4B5FD" font-family="Arial" font-weight="bold">
+    ModelView (JSP)
+  </text>
+
+  <!-- Arrows -->
+  <path d="M180 210 H240" stroke="#94A3B8" stroke-width="2" marker-end="url(#arrow)"></path>
+  <path d="M420 210 H480" stroke="#94A3B8" stroke-width="2" marker-end="url(#arrow)"></path>
+  <path d="M330 140 V100 H480" stroke="#94A3B8" stroke-width="2" fill="none" marker-end="url(#arrow)"></path>
+  <path d="M640 220 H700" stroke="#94A3B8" stroke-width="2" marker-end="url(#arrow)"></path>
+  <path d="M640 250 H700" stroke="#94A3B8" stroke-width="2" marker-end="url(#arrow)"></path>
+
+  <!-- Arrow marker -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#94A3B8"></path>
+    </marker>
+  </defs>
+
+</svg>
