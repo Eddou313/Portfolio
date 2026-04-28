@@ -1,0 +1,223 @@
+{
+  "order": 1,
+  "slug": "gestion_parking_silos",
+  "badge": {
+    "en": "Solo",
+    "fr": "Solo"
+  },
+  "image": "projects/gestion-parking.svg",
+  "imageAlt": {
+    "en": "Operational dashboard of the parking management application",
+    "fr": "Tableau de bord opérationnel de l'application de gestion de parking"
+  },
+  "title": {
+    "en": "Parking Management System",
+    "fr": "Système de Gestion de Parking"
+  },
+  "description": {
+    "en": "A full-stack parking and operations platform built to manage vehicle entries and exits, employee workflows, cash tracking, expense approvals, and user access from a single interface.",
+    "fr": "Une plateforme full-stack de gestion du parking et des opérations, conçue pour piloter les entrées et sorties de véhicules, les flux RH, le suivi de caisse, la validation des dépenses et les accès utilisateurs depuis une interface unique."
+  },
+  "technologies": ["React", "Vite", "Java 17", "Spring Boot", ".NET 8", "ASP.NET Core", "PostgreSQL", "Docker"],
+  "repoUrl": "https://github.com/Eddou313/Gestion_Parking_silos",
+  "details": {
+    "description": {
+      "en": "This project was built to model a real parking silo business where several services have to work together: access control, parking allocation, employee management, expense approval, and cash reporting. The goal was to create a realistic business application with clear rules, multiple modules, and separate backends that demonstrate how a complete operational platform can be assembled from the frontend down to the database.",
+      "fr": "Ce projet a été construit pour modéliser un vrai système de parking silo où plusieurs services doivent fonctionner ensemble : contrôle d'accès, attribution des places, gestion des employés, validation des dépenses et reporting de caisse. L'objectif était de créer une application métier réaliste, avec des règles claires, plusieurs modules et des backends séparés, afin de montrer comment une plateforme opérationnelle complète se construit du frontend jusqu'à la base de données."
+    },
+    "points": {
+      "en": [
+        "Built a React + Vite frontend to expose the operational screens used by admins and managers.",
+        "Implemented a .NET 8 ASP.NET Core backend for the parking flow, security rules, and parking allocation logic.",
+        "Implemented a Java/Spring Boot backend for HR, users, cash, and expense workflows.",
+        "Persisted data in PostgreSQL and orchestrated the stack with Docker and SQL scripts.",
+        "Designed the business rules around vehicle sizing, parking capacity, motorcycle sharing, and exit billing."
+      ],
+      "fr": [
+        "Création d'un frontend React + Vite pour exposer les écrans métiers utilisés par les administrateurs et les gérants.",
+        "Mise en place d'un backend Java/Spring Boot pour le flux parking, les règles de sécurité et la logique d'affectation des places.",
+        "Mise en place d'un backend .NET 8 ASP.NET Core pour les modules RH, utilisateurs, caisse et dépenses.",
+        "Persistance des données dans PostgreSQL et orchestration de l'ensemble avec Docker et des scripts SQL.",
+        "Modélisation de règles métier autour des dimensions des véhicules, de la capacité du parking, du partage des places moto et de la facturation de sortie."
+      ]
+    },
+    "images": [
+      {
+        "src": "projects/gestionParking/login.webp",
+        "alt": {
+          "en": "Login page with a split layout for authentication",
+          "fr": "Page de connexion avec une mise en page en deux colonnes pour l'authentification"
+        },
+        "caption": {
+          "en": "Authentication screen used to access the parking management workspace.",
+          "fr": "Écran d'authentification utilisé pour accéder à l'espace de gestion du parking."
+        }
+      },
+      {
+        "src": "projects/gestionParking/Dashbord.webp",
+        "alt": {
+          "en": "Main operational dashboard with key indicators and charts",
+          "fr": "Tableau de bord principal avec indicateurs clés et graphiques"
+        },
+        "caption": {
+          "en": "Overview screen showing cash balance, occupancy, revenue curves, and recent transactions.",
+          "fr": "Vue d'ensemble affichant le solde de caisse, l'occupation, les courbes de revenus et les dernières transactions."
+        }
+      },
+      {
+        "src": "projects/gestionParking/entrer_vehicule.webp",
+        "alt": {
+          "en": "Vehicle entry form with plate, dimensions, and driver selection",
+          "fr": "Formulaire d'entrée véhicule avec plaque, dimensions et sélection du conducteur"
+        },
+        "caption": {
+          "en": "Entry form used to register a vehicle and assign a parking place automatically.",
+          "fr": "Formulaire d'entrée permettant d'enregistrer un véhicule et d'affecter automatiquement une place."
+        }
+      },
+      {
+        "src": "projects/gestionParking/sortie_vehicule.webp",
+        "alt": {
+          "en": "Parking exit screen with active sessions and estimated amount",
+          "fr": "Écran de sortie du parking avec sessions actives et montant estimé"
+        },
+        "caption": {
+          "en": "Exit workflow used to search a plate, calculate the billing amount, and validate the departure.",
+          "fr": "Flux de sortie utilisé pour rechercher une plaque, calculer le montant et valider le départ."
+        }
+      },
+      {
+        "src": "projects/gestionParking/Historique_Parking.webp",
+        "alt": {
+          "en": "Detailed parking history table with filters and status badges",
+          "fr": "Tableau d'historique parking détaillé avec filtres et badges de statut"
+        },
+        "caption": {
+          "en": "History view showing active and closed parking sessions with filters by plate, status, place, and zone.",
+          "fr": "Vue historique affichant les sessions de parking actives et terminées avec filtres par plaque, statut, place et zone."
+        }
+      },
+      {
+        "src": "projects/gestionParking/ajout_employer.webp",
+        "alt": {
+          "en": "Employee creation form with identity and status fields",
+          "fr": "Formulaire de création d'employé avec identité et statut"
+        },
+        "caption": {
+          "en": "HR screen used to create a new employee profile linked or unlinked to a user account.",
+          "fr": "Écran RH servant à créer un nouvel employé lié ou non à un compte utilisateur."
+        }
+      },
+      {
+        "src": "projects/gestionParking/liste_empoyer.webp",
+        "alt": {
+          "en": "Employee list with search and action buttons",
+          "fr": "Liste des employés avec recherche et boutons d'action"
+        },
+        "caption": {
+          "en": "Directory of employees with filters by type, status, and active state, plus edit and delete actions.",
+          "fr": "Annuaire des employés avec filtres par type, statut et activité, ainsi que des actions modifier et supprimer."
+        }
+      },
+      {
+        "src": "projects/gestionParking/paiement_employer.webp",
+        "alt": {
+          "en": "Employee payment form with amount, date, and description",
+          "fr": "Formulaire de paiement employé avec montant, date et description"
+        },
+        "caption": {
+          "en": "Payroll entry screen used to register a salary payment, bonus, or advance.",
+          "fr": "Écran de saisie de paie utilisé pour enregistrer un salaire, une prime ou une avance."
+        }
+      },
+      {
+        "src": "projects/gestionParking/historique_paiement.webp",
+        "alt": {
+          "en": "Monthly employee payment history with totals",
+          "fr": "Historique mensuel des paiements employés avec totaux"
+        },
+        "caption": {
+          "en": "Monthly payroll history grouped by day with a monthly total summary.",
+          "fr": "Historique mensuel de la paie regroupé par jour avec un total du mois."
+        }
+      },
+      {
+        "src": "projects/gestionParking/dashbord-_mouvemnet_caisse.webp",
+        "alt": {
+          "en": "Cash dashboard with balance and movement counters",
+          "fr": "Tableau de bord de caisse avec solde et compteurs de mouvements"
+        },
+        "caption": {
+          "en": "Cash dashboard summarizing current balance, income movements, expense movements, and pending expenses.",
+          "fr": "Tableau de caisse résumant le solde actuel, les entrées, les sorties et les dépenses en attente."
+        }
+      },
+      {
+        "src": "projects/gestionParking/Histprique_mouvemnet_caisse.webp",
+        "alt": {
+          "en": "Cash movement history table with income and expense rows",
+          "fr": "Historique des mouvements de caisse avec lignes d'entrée et de sortie"
+        },
+        "caption": {
+          "en": "Ledger-style view of cash movements showing deposits, withdrawals, and their descriptions.",
+          "fr": "Vue de type journal des mouvements de caisse affichant les entrées, les sorties et leurs descriptions."
+        }
+      },
+      {
+        "src": "projects/gestionParking/demande_depense.webp",
+        "alt": {
+          "en": "Expense request creation form",
+          "fr": "Formulaire de création de demande de dépense"
+        },
+        "caption": {
+          "en": "Expense form used to submit a request with an amount, usage date, and justification.",
+          "fr": "Formulaire de dépense permettant de soumettre un montant, une date d'utilisation et un motif."
+        }
+      },
+      {
+        "src": "projects/gestionParking/Liste_demande_enatente.webp",
+        "alt": {
+          "en": "Pending expense request list with approve and reject actions",
+          "fr": "Liste des demandes de dépense en attente avec actions valider et rejeter"
+        },
+        "caption": {
+          "en": "Approval queue where pending expense requests can be validated or rejected by an admin.",
+          "fr": "File de validation où les demandes de dépense en attente peuvent être validées ou rejetées par un administrateur."
+        }
+      },
+      {
+        "src": "projects/gestionParking/Historique_status_depense.webp",
+        "alt": {
+          "en": "Expense history with creation, validation, and refusal statuses",
+          "fr": "Historique des dépenses avec statuts de création, validation et refus"
+        },
+        "caption": {
+          "en": "Full expense history showing request lifecycle, validation status, employee name, and validator.",
+          "fr": "Historique complet des dépenses affichant le cycle de vie des demandes, leur statut, l'employé concerné et le validateur."
+        }
+      },
+      {
+        "src": "projects/gestionParking/ajout_utilisateur.webp",
+        "alt": {
+          "en": "User registration form with role and employee association",
+          "fr": "Formulaire d'ajout d'utilisateur avec rôle et association employé"
+        },
+        "caption": {
+          "en": "User creation screen used to add a login, password, role, and optional employee link.",
+          "fr": "Écran de création d'utilisateur permettant d'ajouter un identifiant, un mot de passe, un rôle et un lien employé optionnel."
+        }
+      },
+      {
+        "src": "projects/gestionParking/liste_utilisateur.webp",
+        "alt": {
+          "en": "User list with details, edit, and delete actions",
+          "fr": "Liste des utilisateurs avec actions détail, modifier et supprimer"
+        },
+        "caption": {
+          "en": "Administration table listing all user accounts, roles, active state, and related employee names.",
+          "fr": "Table d'administration listant les comptes utilisateurs, les rôles, l'état actif et les employés associés."
+        }
+      }
+    ]
+  }
+}
