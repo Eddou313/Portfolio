@@ -1,54 +1,62 @@
 {
   "order": 2,
-  "slug": "Frameworks_personnels",
+  "slug": "lightmvc-framework",
   "badge": {
-    "en": "Solo",
-    "fr": "Solo"
+    "en": "Deep Dive",
+    "fr": "Étude Interne"
   },
   "image": "projects/framework_personnel.svg",
   "imageAlt": {
     "en": "Architecture of a custom framework created to understand Spring Boot concepts",
-    "fr": "Architecture du Framework personnel ou fait maison pour comprendre les concepts de Spring Boot"
+    "fr": "Architecture d'un framework conçu pour explorer les entrailles de Spring Boot"
   },
   "title": {
-    "en": "Personal Framework",
-    "fr": "Framework Personnel"
+    "en": "LightMVC : Java Internals Explorer",
+    "fr": "LightMVC : Exploration des Internals Java"
   },
   "description": {
-    "en": "A from-scratch framework designed to demystify how MVC engines and dependency injection work internally.",
-    "fr": "Un framework 'from scratch' conçu pour démystifier le fonctionnement interne des moteurs MVC et de l'injection de dépendances."
+    "en": "A pedagogical framework designed to demystify MVC engines and the 'magic' of dependency injection.",
+    "fr": "Un framework pédagogique conçu pour démystifier les moteurs MVC et la 'magie' de l'injection de dépendances."
   },
-  "technologies": ["Java", "Jakarta Servlet"],
+  "technologies": ["Java", "Jakarta Servlet", "Reflection API"],
   "repoUrl": "https://github.com/Eddou313/RepJAR",
   "details": {
     "description": {
-      "en": "The goal of this project is not to compete with production frameworks like Spring Boot, but to deeply understand what happens under the hood. I rebuilt core components to master the full lifecycle of an HTTP request.",
-      "fr": "L'objectif de ce projet n'est pas de concurrencer les solutions industrielles comme Spring Boot, mais de comprendre précisément ce qui se passe sous le capot. J'ai recréé les composants essentiels pour maîtriser le cycle de vie complet d'une requête."
+      "en": "The goal isn't to compete with Spring, but to understand from the inside how the fundamental bricks we use every day work: from automatic scanning to the Front Controller pattern.",
+      "fr": "L'objectif n'est évidemment pas de concurrencer Spring, mais de comprendre de l'intérieur comment fonctionnent les briques fondamentales qu'on utilise tous les jours sans se poser de questions : du scan automatique au pattern Front Controller."
     },
     "points": {
       "en": [
-        "Demystified annotation magic through a manual implementation of the Reflection API.",
-        "Gained deep understanding of the Front Controller by manually handling request routing and dispatching.",
-        "Built a recursive JSON serializer to learn data transformation principles without third-party libraries.",
-        "Implemented a granular security layer to explore interception and role-based access control (RBAC)."
+        "Automatic class scanning and custom annotation processing via Reflection.",
+        "Routing engine with support for path parameters like {id}.",
+        "Automatic injection of path and query parameters into controller methods.",
+        "Hybrid rendering: Support for String returns or ModelView for JSP execution.",
+        "Centralized Front Controller with manual 404 and error handling.",
+        "Deep understanding of what lies behind the Spring MVC abstraction."
       ],
       "fr": [
-        "Démystification de la 'magie' des annotations via l'implémentation manuelle de la Reflection API.",
-        "Compréhension profonde du Front Controller en gérant manuellement le routing et le dispatching des requêtes.",
-        "Développement d'un sérialiseur JSON récursif pour assimiler les principes de transformation de données sans bibliothèques tierces.",
-        "Mise en place d'une couche de sécurité granulaire pour explorer les mécanismes d'interception et de gestion des rôles (RBAC)."
+        "Scan automatique des classes et gestion des annotations via la Reflection API.",
+        "Moteur de routing avec support des paramètres d'URL dynamiques ({id}).",
+        "Injection automatique des paramètres (path + query) dans les arguments des méthodes.",
+        "Rendu hybride : Support des retours String ou ModelView vers les pages JSP.",
+        "Implémentation d'un Front Controller unique pour centraliser le flux de requêtes.",
+        "Assimilation concrète des mécanismes cachés derrière l'abstraction Spring MVC."
       ]
+    },
+    "status": {
+      "en": "This project is a work in progress. While base mechanisms are functional, I continue to enrich it to explore more advanced patterns.",
+      "fr": "Ce projet est encore en développement et loin d'être terminé, mais les mécanismes de base fonctionnent déjà proprement et j'en suis fier. Je continue de l'enrichir petit à petit."
     },
     "images": [
       {
         "src": "projects/framework_personnel.svg",
         "alt": {
-          "en": "Framework technical architecture",
-          "fr": "Architecture technique du Framework"
+          "en": "Framework technical architecture diagram",
+          "fr": "Diagramme de l'architecture technique du Framework"
         },
         "caption": {
-          "en": "Architecture diagram: a pedagogical reconstruction of Spring Boot internal data flows.",
-          "fr": "Schéma de l'architecture : une reproduction pédagogique des flux de données internes de Spring Boot."
+          "en": "Technical flow: showing how the Reflection Engine dispatches requests to POJO controllers.",
+          "fr": "Flux technique : illustration de la manière dont le moteur de réflexion distribue les requêtes aux contrôleurs."
         }
       }
     ]
