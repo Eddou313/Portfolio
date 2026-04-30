@@ -283,6 +283,11 @@ const avatarSrc = `${import.meta.env.BASE_URL}${String(homeData.avatarInitials).
 			const alt = img.getAttribute(`data-${lang}-alt`);
 			if (alt) img.alt = alt;
 		});
+
+		document.querySelectorAll<HTMLButtonElement>('#project-lightbox [data-en][data-fr]').forEach((btn) => {
+			const label = btn.getAttribute(`data-${lang}`);
+			if (label) btn.setAttribute('aria-label', label);
+		});
 	}
 
 	// Initialize
@@ -297,13 +302,30 @@ const avatarSrc = `${import.meta.env.BASE_URL}${String(homeData.avatarInitials).
 	const projectModalDescription = document.querySelector<HTMLElement>('#project-modal-description');
 	const projectModalList = document.querySelector<HTMLElement>('#project-modal-list');
 	const projectModalGallery = document.querySelector<HTMLElement>('#project-modal-gallery');
+	const projectLightbox = document.querySelector<HTMLElement>('#project-lightbox');
+	const projectLightboxImage = document.querySelector<HTMLImageElement>('#project-lightbox-image');
+	const projectLightboxCaption = document.querySelector<HTMLElement>('#project-lightbox-caption');
+	const projectLightboxClose = document.querySelector<HTMLButtonElement>('#project-lightbox-close');
+	const projectLightboxPrev = document.querySelector<HTMLButtonElement>('#project-lightbox-prev');
+	const projectLightboxNext = document.querySelector<HTMLButtonElement>('#project-lightbox-next');
 	let activeProjectTrigger: HTMLButtonElement | null = null;
+	let activeProjectImages: ProjectDetailImage[] = [];
+	let activeImageIndex = 0;
 
 	type ProjectDetailImage = {
 		src: string;
 		alt?: string;
 		caption?: string;
 	};
+
+	function escapeHtml(value: string): string {
+		return value
+			.replaceAll('&', '&amp;')
+			.replaceAll('<', '&lt;')
+			.replaceAll('>', '&gt;')
+			.replaceAll('"', '&quot;')
+			.replaceAll("'", '&#39;');
+	}
 
 	function parseProjectImages(raw: string | undefined): ProjectDetailImage[] {
 		if (!raw) return [];
@@ -339,20 +361,24 @@ const avatarSrc = `${import.meta.env.BASE_URL}${String(homeData.avatarInitials).
 			.map((point) => point.trim())
 			.filter(Boolean);
 		const images = parseProjectImages(getLocalizedData(btn, 'images', currentLang));
+		activeProjectImages = images;
 
 		projectModalDescription.textContent = description;
 		projectModalList.innerHTML = points.map((point) => `<li>${point}</li>`).join('');
 		if (images.length === 0) {
 			projectModalGallery.innerHTML = '';
 			projectModalGallery.classList.add('hidden');
+			closeProjectLightbox();
 		} else {
 			projectModalGallery.classList.remove('hidden');
 			projectModalGallery.innerHTML = images
 				.map(
-					(image) => `
+					(image, index) => `
 						<figure class="overflow-hidden rounded-xl border border-gray-200 dark:border-indigo-700/70 bg-gray-50 dark:bg-slate-800/60">
-							<img src="${image.src}" alt="${image.alt || (currentLang === 'fr' ? 'Detail du projet' : 'Project detail')}" class="w-full h-52 object-cover" loading="lazy" decoding="async" />
-							${image.caption ? `<figcaption class="px-3 py-2 text-sm text-gray-600 dark:text-slate-300/90">${image.caption}</figcaption>` : ''}
+							<button type="button" class="project-gallery-trigger w-full text-left" data-image-index="${index}" aria-label="${escapeHtml(image.alt || image.caption || (currentLang === 'fr' ? 'Afficher image en grand' : 'Show full image'))}">
+								<img src="${image.src}" alt="${escapeHtml(image.alt || (currentLang === 'fr' ? 'Detail du projet' : 'Project detail'))}" class="w-full h-52 object-cover cursor-zoom-in" loading="lazy" decoding="async" />
+							</button>
+							${image.caption ? `<figcaption class="px-3 py-2 text-sm text-gray-600 dark:text-slate-300/90">${escapeHtml(image.caption)}</figcaption>` : ''}
 						</figure>
 					`
 				)
@@ -360,12 +386,53 @@ const avatarSrc = `${import.meta.env.BASE_URL}${String(homeData.avatarInitials).
 		}
 	}
 
+	function renderProjectLightboxImage() {
+		if (!projectLightboxImage || !projectLightboxCaption || activeProjectImages.length === 0) return;
+		const image = activeProjectImages[activeImageIndex];
+		const fallbackAlt = currentLang === 'fr' ? 'Detail du projet' : 'Project detail';
+		const alt = image.alt?.trim() || fallbackAlt;
+		const caption = image.caption?.trim() || '';
+
+		projectLightboxImage.src = image.src;
+		projectLightboxImage.alt = alt;
+		projectLightboxCaption.textContent = caption || alt;
+	}
+
+	function openProjectLightbox(index: number) {
+		if (!projectLightbox || activeProjectImages.length === 0) return;
+		activeImageIndex = Math.max(0, Math.min(index, activeProjectImages.length - 1));
+		renderProjectLightboxImage();
+		projectLightbox.classList.remove('hidden');
+		projectLightbox.setAttribute('aria-hidden', 'false');
+	}
+
+	function closeProjectLightbox() {
+		if (!projectLightbox) return;
+		projectLightbox.classList.add('hidden');
+		projectLightbox.setAttribute('aria-hidden', 'true');
+	}
+
+	function showPreviousProjectImage() {
+		if (activeProjectImages.length <= 1) return;
+		activeImageIndex = (activeImageIndex - 1 + activeProjectImages.length) % activeProjectImages.length;
+		renderProjectLightboxImage();
+	}
+
+	function showNextProjectImage() {
+		if (activeProjectImages.length <= 1) return;
+		activeImageIndex = (activeImageIndex + 1) % activeProjectImages.length;
+		renderProjectLightboxImage();
+	}
+
 	function closeProjectModal() {
 		if (!projectModal) return;
+		closeProjectLightbox();
 		projectModal.classList.add('hidden');
 		projectModal.setAttribute('aria-hidden', 'true');
 		document.body.classList.remove('overflow-hidden');
 		activeProjectTrigger = null;
+		activeProjectImages = [];
+		activeImageIndex = 0;
 	}
 
 	document.querySelectorAll<HTMLButtonElement>('.project-detail-btn').forEach((btn) => {
@@ -381,8 +448,31 @@ const avatarSrc = `${import.meta.env.BASE_URL}${String(homeData.avatarInitials).
 
 	projectModalClose?.addEventListener('click', closeProjectModal);
 	projectModal?.querySelector<HTMLElement>('[data-project-close]')?.addEventListener('click', closeProjectModal);
+	projectModalGallery?.addEventListener('click', (event) => {
+		const trigger = (event.target as HTMLElement).closest<HTMLButtonElement>('.project-gallery-trigger');
+		if (!trigger) return;
+		const index = Number(trigger.dataset.imageIndex || '0');
+		openProjectLightbox(Number.isNaN(index) ? 0 : index);
+	});
+
+	projectLightboxClose?.addEventListener('click', closeProjectLightbox);
+	projectLightboxPrev?.addEventListener('click', showPreviousProjectImage);
+	projectLightboxNext?.addEventListener('click', showNextProjectImage);
+	projectLightbox?.querySelector<HTMLElement>('[data-lightbox-close]')?.addEventListener('click', closeProjectLightbox);
+
 	document.addEventListener('keydown', (e) => {
-		if (e.key === 'Escape') closeProjectModal();
+		if (e.key === 'Escape') {
+			if (projectLightbox && !projectLightbox.classList.contains('hidden')) {
+				closeProjectLightbox();
+				return;
+			}
+			closeProjectModal();
+			return;
+		}
+
+		if (!projectLightbox || projectLightbox.classList.contains('hidden')) return;
+		if (e.key === 'ArrowLeft') showPreviousProjectImage();
+		if (e.key === 'ArrowRight') showNextProjectImage();
 	});
 
 	if (contactForm && contactStatus) {
@@ -444,6 +534,9 @@ const avatarSrc = `${import.meta.env.BASE_URL}${String(homeData.avatarInitials).
 		updateLang(currentLang);
 		if (activeProjectTrigger && projectModal && !projectModal.classList.contains('hidden')) {
 			renderProjectModal(activeProjectTrigger);
+			if (projectLightbox && !projectLightbox.classList.contains('hidden')) {
+				renderProjectLightboxImage();
+			}
 		}
 	});
 </script>
