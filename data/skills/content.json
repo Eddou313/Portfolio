@@ -16,7 +16,7 @@
         "en": "Frontend",
         "fr": "Frontend"
       },
-      "items": ["Astro", "Vue.js", "Ionic", "HTML5 / CSS3", "JavaScript DOM"]
+      "items": ["Astro", "Vue.js", "Ionic", "HTML5 / CSS3", "JavaScript DOM","TypeScript"]
     },
     {
       "title": {
@@ -30,7 +30,7 @@
         "en": "Tools & DevOps",
         "fr": "Outils & DevOps"
       },
-      "items": ["Git", "GitHub Desktop", "Linux", "FileZilla", "Samba", "FTP", "PowerBI", "haproxy", "Docker","n8n"]
+      "items": ["Git", "GitHub Desktop", "Linux", "FileZilla", "Samba", "FTP", "PowerBI", "haproxy", "Docker","n8n","SSH"]
     }
   ]
 }
