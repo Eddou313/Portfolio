@@ -1,36 +1,74 @@
 {
   "title": {
     "en": "My Skills",
-    "fr": "Mes Competences"
+    "fr": "Mes compétences"
   },
   "categories": [
     {
       "title": {
-        "en": "Backend",
-        "fr": "Backend"
+        "en": "Languages",
+        "fr": "Langages"
       },
-      "items": ["PHP Flight", "Laravel", "Spring Boot", "Spring MVC", "Java Swing", "Java EE", "C#", "Python Pandas", "Flask", "API REST"]
+      "items": [
+        "PHP",
+        "Java",
+        "C#",
+        "Python",
+        "JavaScript",
+        "TypeScript",
+        "HTML5",
+        "CSS3"
+      ]
     },
     {
       "title": {
-        "en": "Frontend",
-        "fr": "Frontend"
+        "en": "Frameworks",
+        "fr": "Frameworks"
       },
-      "items": ["Astro", "Vue.js", "Ionic", "HTML5 / CSS3", "JavaScript DOM","TypeScript"]
+      "items": [
+        "Laravel",
+        "Symfony",
+        "Spring Boot",
+        "Spring MVC",
+        "Java Swing",
+        "Java EE",
+        "Flask",
+        "Vue.js",
+        "Ionic",
+        "Astro",
+        "Bootstrap",
+        "Tailwind CSS"
+      ]
     },
     {
       "title": {
         "en": "Database",
-        "fr": "Base de donnees"
+        "fr": "Bases de données"
       },
-      "items": ["MySQL", "PostgreSQL", "MongoDB"]
+      "items": [
+        "MySQL",
+        "PostgreSQL",
+        "MongoDB"
+      ]
     },
     {
       "title": {
         "en": "Tools & DevOps",
         "fr": "Outils & DevOps"
       },
-      "items": ["Git", "GitHub Desktop", "Linux", "FileZilla", "Samba", "FTP", "PowerBI", "haproxy", "Docker","n8n","SSH"]
+      "items": [
+        "Git",
+        "GitHub Desktop",
+        "Linux",
+        "FileZilla",
+        "Samba",
+        "FTP",
+        "Power BI",
+        "HAProxy",
+        "Docker",
+        "n8n",
+        "SSH"
+      ]
     }
   ]
 }
