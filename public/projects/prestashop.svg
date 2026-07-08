@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1329"/>
+      <stop offset="50%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#1c1917"/>
+    </linearGradient>
+    <linearGradient id="reactGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00d8ff"/>
+      <stop offset="100%" stop-color="#007799"/>
+    </linearGradient>
+    <linearGradient id="prestaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#df0067"/>
+      <stop offset="100%" stop-color="#790038"/>
+    </linearGradient>
+    <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00d8ff"/>
+      <stop offset="50%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#df0067"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <circle cx="200" cy="150" r="180" fill="#00d8ff" filter="blur(110px)" opacity="0.12" />
+  <circle cx="1000" cy="450" r="180" fill="#df0067" filter="blur(110px)" opacity="0.12" />
+
+  <rect x="50" y="50" width="1100" height="530" rx="28" fill="#ffffff" fill-opacity="0.02" stroke="#ffffff" stroke-opacity="0.08" stroke-width="2"/>
+
+  <text x="100" y="140" fill="#ffffff" font-size="46" font-family="Segoe UI, system-ui, sans-serif" font-weight="800" letter-spacing="-0.5">
+    Project: PrestaShop-React Bridge
+  </text>
+  <text x="100" y="195" fill="#94a3b8" font-size="26" font-family="Segoe UI, system-ui, sans-serif" font-weight="400">
+    E-commerce Management Dashboard &amp; Synchronized Sync
+  </text>
+
+  <g transform="translate(100, 260)">
+    <g transform="translate(0, 0)">
+      <rect width="220" height="46" rx="14" fill="#002233" stroke="#00d8ff" stroke-width="1.5"/>
+      <circle cx="30" cy="23" r="6" fill="#00d8ff" />
+      <text x="52" y="29" fill="#e2e8f0" font-size="16" font-family="Segoe UI, sans-serif" font-weight="700">React (NewAPP)</text>
+    </g>
+    <g transform="translate(0, 65)">
+      <rect width="220" height="46" rx="14" fill="#2d0015" stroke="#df0067" stroke-width="1.5"/>
+      <circle cx="30" cy="23" r="6" fill="#df0067" />
+      <text x="52" y="29" fill="#e2e8f0" font-size="16" font-family="Segoe UI, sans-serif" font-weight="700">PrestaShop API(XML)</text>
+    </g>
+  </g>
+
+  <g transform="translate(480, 240)">
+    <path d="M 90 40 Q 175 10, 260 40" fill="none" stroke="url(#lineGrad)" stroke-width="3" stroke-dasharray="6 4" opacity="0.8"/>
+    <path d="M 90 70 Q 175 70, 260 70" fill="none" stroke="url(#lineGrad)" stroke-width="4" opacity="0.6"/>
+    <path d="M 90 100 Q 175 130, 260 100" fill="none" stroke="url(#lineGrad)" stroke-width="3" stroke-dasharray="2 2" opacity="0.8"/>
+    
+    <text x="175" y="25" fill="#38bdf8" font-size="12" font-family="Segoe UI, sans-serif" font-weight="600" text-anchor="middle">XML REST API Exchange</text>
+    <text x="175" y="145" fill="#f43f5e" font-size="12" font-family="Segoe UI, sans-serif" font-weight="600" text-anchor="middle">Stock Sync (Delta)</text>
+    
+    <g transform="translate(0, 30)">
+      <rect width="90" height="80" rx="16" fill="url(#reactGrad)" opacity="0.2"/>
+      <rect width="90" height="80" rx="16" fill="none" stroke="#00d8ff" stroke-width="2"/>
+      <ellipse cx="45" cy="40" rx="25" ry="9" fill="none" stroke="#00d8ff" stroke-width="1.5" transform="rotate(30 45 40)"/>
+      <ellipse cx="45" cy="40" rx="25" ry="9" fill="none" stroke="#00d8ff" stroke-width="1.5" transform="rotate(90 45 40)"/>
+      <ellipse cx="45" cy="40" rx="25" ry="9" fill="none" stroke="#00d8ff" stroke-width="1.5" transform="rotate(150 45 40)"/>
+      <circle cx="45" cy="40" r="4" fill="#00d8ff"/>
+    </g>
+
+    <g transform="translate(260, 30)">
+      <rect width="90" height="80" rx="16" fill="url(#prestaGrad)" opacity="0.2"/>
+      <rect width="90" height="80" rx="16" fill="none" stroke="#df0067" stroke-width="2"/>
+      <circle cx="45" cy="35" r="16" fill="#ffffff" fill-opacity="0.9"/>
+      <path d="M 33 55 C 33 42, 57 42, 57 55 Z" fill="#ffffff" fill-opacity="0.9"/>
+      <polygon points="41,34 49,34 45,42" fill="#df0067"/>
+      <circle cx="39" cy="30" r="2.5" fill="#0f172a"/>
+      <circle cx="51" cy="30" r="2.5" fill="#0f172a"/>
+    </g>
+  </g>
+</svg>

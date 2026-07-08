@@ -1,0 +1,190 @@
+{
+  "order": 3,
+  "slug": "application-integration-prestashop-v8-2-6",
+  "badge": {
+    "en": "Solo",
+    "fr": "Solo"
+  },
+  "image": "projects/prestashop.svg",
+  "imageAlt": {
+    "en": "Operational dashboard of the Prestashop integration application",
+    "fr": "Tableau de bord opérationnel de l'application d'intégration Prestashop"
+  },
+  "title": {
+    "en": "Prestashop v8.2.6 Integration Application",
+    "fr": "Application d'Intégration Prestashop v8.2.6"
+  },
+  "description": {
+    "en": "A React and TypeScript full-stack client application connected to Prestashop v8.2.6 via XML data exchange, featuring an automated catalog, multi-criteria search, order flows, and an advanced management back-office.",
+    "fr": "Une application cliente full-stack en React et TypeScript connectée à Prestashop v8.2.6 via des échanges de données en XML, comprenant un catalogue automatisé, une recherche multicritère, la gestion des commandes et un back-office de gestion avancé."
+  },
+  "technologies": ["React", "TypeScript", "Vite", "Prestashop API", "XML"],
+  "repoUrl": "https://github.com/Eddou313/ERP_eval01",
+  "details": {
+    "description": {
+      "en": "This project consists of developing a custom client application (NewAPP) linked to an existing Prestashop e-commerce instance. Communication is handled via custom and native Prestashop endpoints using XML formats. The application decouples the user experience with a tailored Front-Office for rapid purchasing and a dedicated Back-Office to streamline inventory tracking, data importing, and financial reporting.",
+      "fr": "Ce projet consiste en le développement d'une application cliente sur mesure (NewAPP) interconnectée avec une instance e-commerce Prestashop existante. La communication est entièrement assurée par des flux XML via des endpoints natifs et personnalisés. L'application découple l'expérience utilisateur avec un Front-Office adapté (achat rapide, sélection de profil) et un Back-Office dédié pour optimiser le suivi des stocks, les imports massifs de données et les rapports financiers."
+    },
+    "points": {
+      "en": [
+        "Built a responsive React + Vite + TypeScript frontend for both client-facing Front-Office and administrative Back-Office dashboards.",
+        "Implemented secure XML data exchange and custom endpoints with Prestashop to dynamically update stocks and modify order statuses (Paid, Cancelled, Delivered).",
+        "Developed a robust Back-Office data parser handling 3 CSV files and a ZIP archive for product images, including strict validation (column conformance, date formats, positive amounts).",
+        "Created an analytical dashboard showing daily order counts, total revenue, global stock evolution, and detailed financial stats (sales vs. costs and benefits per category).",
+        "Designed a Front-Office featuring bypass-login user selection, an advanced multi-criteria filter (name, category, price range), dynamic 'HOT'/'NEW' badges based on product availability, and complete cart-to-order workflows."
+      ],
+      "fr": [
+        "Développement d'un frontend performant en React + Vite + TypeScript structurant un Front-Office client et un Back-Office administrateur.",
+        "Mise en place d'une communication bidirectionnelle basée sur des échanges XML avec l'API Prestashop pour la synchronisation des stocks et des états de commande.",
+        "Conception d'un module d'importation de données dans le Back-Office validant dynamiquement 3 fichiers CSV et une archive ZIP d'images (vérification des colonnes, formats de date DD/MM/YYYY, montants positifs).",
+        "Création de tableaux de bord statistiques complets : suivi journalier des ventes, évolution des stocks physiques/réservés/disponibles et calcul des bénéfices par catégorie.",
+        "Implémentation d'un Front-Office avec sélection rapide de profils utilisateurs, recherche multicritère (nom, catégorie, prix), badges temporels dynamiques ('HOT' / 'NEW') et tunnel d'achat complet avec paiement à la livraison."
+      ]
+    },
+    "images": [
+      {
+        "src": "projects/prestashop/Login_FO.webp",
+        "alt": {
+          "en": "Login page with a split layout for authentication",
+          "fr": "Page de connexion avec une mise en page en deux colonnes pour l'authentification"
+        },
+        "caption": {
+          "en": "Authentication screen used to access the management workspace.",
+          "fr": "Écran d'authentification utilisé pour accéder à l'espace de gestion."
+        }
+      },
+      {
+        "src": "projects/prestashop/listeUtilisateur_FO.webp",
+        "alt": {
+          "en": "User selection screen for easy testing bypass",
+          "fr": "Choix de l'utilisateur pour éviter de se loger manuellement sur la page de connexion"
+        },
+        "caption": {
+          "en": "Dedicated dashboard screen allowing quick user profile swapping for Front-Office workflows.",
+          "fr": "Écran du Front-Office permettant de changer rapidement de profil utilisateur pour simuler les commandes."
+        }
+      },
+      {
+        "src": "projects/prestashop/ListeProduit_FO.webp",
+        "alt": {
+          "en": "Product listing from Prestashop with multi-criteria filtering",
+          "fr": "Liste des produits existants dans Prestashop avec filtre multi-critères"
+        },
+        "caption": {
+          "en": "Product catalog equipped with advanced search filters: name, category, and price range.",
+          "fr": "Catalogue produit équipé de filtres avancés : recherche par nom, catégorie et intervalle de prix."
+        }
+      },
+      {
+        "src": "projects/prestashop/AchatProduit_FO.webp",
+        "alt": {
+          "en": "Product purchase page with details",
+          "fr": "Zone d'achat d'un produit avec détails"
+        },
+        "caption": {
+          "en": "Product detail view displaying description and available stock directly fetched from Prestashop.",
+          "fr": "Vue détaillée du produit affichant la description et la quantité disponible en stock réel."
+        }
+      },
+      {
+        "src": "projects/prestashop/PanierUsers_FO.webp",
+        "alt": {
+          "en": "User cart management interface",
+          "fr": "Gestion du panier utilisateur"
+        },
+        "caption": {
+          "en": "Shopping cart interface managing selected items before checkout validation.",
+          "fr": "Interface du panier gérant les articles sélectionnés avant la validation finale de la commande."
+        }
+      },
+      {
+        "src": ["projects/prestashop/Commande_FO.webp","projects/prestashop/Commande2_FO.webp"],
+        "alt": {
+          "en": "Front-office order creation screen",
+          "fr": "Création de commande Front-office"
+        },
+        "caption": {
+          "en": "Checkout validation screen with cash on delivery selection.",
+          "fr": "Écran de validation de commande avec option exclusive de paiement à la livraison."
+        }
+      },
+      {
+        "src": "projects/prestashop/ListeCommandeUser_FO.webp",
+        "alt": {
+          "en": "User order history list",
+          "fr": "Liste des commandes de l'utilisateur"
+        },
+        "caption": {
+          "en": "User's order history showcasing statuses and an option to duplicate a past command.",
+          "fr": "Historique des commandes de l'utilisateur affichant les états et un bouton de duplication de commande."
+        }
+      },
+      {
+        "src": "projects/prestashop/DuplicationCommandeUser_FO.webp",
+        "alt": {
+          "en": "Order duplication validation modal",
+          "fr": "Validation de la duplication de commande"
+        },
+        "caption": {
+          "en": "Confirmation modal ensuring proper order re-creation logic.",
+          "fr": "Fenêtre de confirmation validant la ré-exécution d'une commande précédente."
+        }
+      },
+      {
+        "src": "projects/prestashop/Login_BO.webp",
+        "alt": {
+          "en": "Back-office login area",
+          "fr": "Zone de connexion pour le backoffice"
+        },
+        "caption": {
+          "en": "Protected administrator login form featuring pre-filled credentials for ease of evaluation.",
+          "fr": "Formulaire de connexion sécurisé pour le Back-office avec identifiants pré-remplis par défaut."
+        }
+      },
+      {
+        "src": ["projects/prestashop/Boards_BO.webp","projects/prestashop/Boards2_BO.webp","projects/prestashop/Boards3_BO.webp","projects/prestashop/Boards4_BO.webp"],
+        "alt": {
+          "en": "dashboard",
+          "fr": "Tableau de bord"
+        },
+        "caption": {
+          "en": "dashboard",
+          "fr": "Tableau de bord"
+        }
+      },
+      {
+        "src": "projects/prestashop/ListeCommande_BO.webp",
+        "alt": {
+          "en": "Back-office order management list",
+          "fr": "Liste des commandes avec modification de statut"
+        },
+        "caption": {
+          "en": "Management list with quick status updates such as 'Deliver' or 'Cancel' utilizing custom endpoints.",
+          "fr": "Liste de gestion permettant de modifier l'état d'une commande via des boutons 'Annuler' et 'Livrer'."
+        }
+      },
+      {
+        "src": "projects/prestashop/GestionStock_BO.webp",
+        "alt": {
+          "en": "Back-office stock supply interface",
+          "fr": "Gestion des stocks des produits Backoffice"
+        },
+        "caption": {
+          "en": "Form interface designed to manually restock products via native Prestashop hooks.",
+          "fr": "Interface permettant de réapprovisionner manuellement le stock de produits via l'API Prestashop."
+        }
+      },
+      {
+        "src": "projects/prestashop/Import_BO.webp",
+        "alt": {
+          "en": "Data import and data reset workspace",
+          "fr": "Zone d'import et réinitialisation des données"
+        },
+        "caption": {
+          "en": "Database maintenance workspace handling CSV data files and product images archive with comprehensive format checks.",
+          "fr": "Zone d'importation gérant 3 fichiers CSV et une archive ZIP avec réinitialisation complète des données."
+        }
+      }
+    ]
+  }
+}

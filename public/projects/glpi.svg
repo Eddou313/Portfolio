@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e1b4b"/>
+    </linearGradient>
+    <linearGradient id="reactGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00d8ff"/>
+      <stop offset="100%" stop-color="#005f73"/>
+    </linearGradient>
+    <linearGradient id="glpiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2bb673"/>
+      <stop offset="100%" stop-color="#155d3b"/>
+    </linearGradient>
+    <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00d8ff"/>
+      <stop offset="50%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#2bb673"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <circle cx="950" cy="180" r="160" fill="#2bb673" filter="blur(100px)" opacity="0.12" />
+  <circle cx="500" cy="240" r="140" fill="#00d8ff" filter="blur(90px)" opacity="0.15" />
+
+  <rect x="50" y="50" width="1100" height="530" rx="24" fill="#ffffff" fill-opacity="0.02" stroke="#ffffff" stroke-opacity="0.06" stroke-width="1.5"/>
+
+  <text x="90" y="130" fill="#ffffff" font-size="44" font-family="Segoe UI, system-ui, sans-serif" font-weight="800" letter-spacing="-0.5">
+    GLPI 11 &amp; React Ecosystem Bridge
+  </text>
+  <text x="90" y="180" fill="#94a3b8" font-size="24" font-family="Segoe UI, system-ui, sans-serif" font-weight="400">
+    ITIL Asset Management &amp; Custom Kanban Dashboard
+  </text>
+
+  <g transform="translate(90, 240)">
+    <g transform="translate(0, 0)">
+      <rect width="230" height="44" rx="12" fill="#082f49" stroke="#00d8ff" stroke-width="1.5"/>
+      <circle cx="28" cy="22" r="5" fill="#00d8ff"/>
+      <text x="48" y="27" fill="#f1f5f9" font-size="15" font-family="Segoe UI, sans-serif" font-weight="700">React (NewAPP)</text>
+    </g>
+    <g transform="translate(0, 60)">
+      <rect width="230" height="44" rx="12" fill="#0c4a6e" stroke="#38bdf8" stroke-width="1.5"/>
+      <circle cx="28" cy="22" r="5" fill="#38bdf8"/>
+      <text x="48" y="27" fill="#f1f5f9" font-size="15" font-family="Segoe UI, sans-serif" font-weight="700">SQLite</text>
+    </g>
+    <g transform="translate(0, 120)">
+      <rect width="230" height="44" rx="12" fill="#312e81" stroke="#818cf8" stroke-width="1.5" stroke-dasharray="4 2"/>
+      <circle cx="28" cy="22" r="5" fill="#818cf8"/>
+      <text x="48" y="27" fill="#f1f5f9" font-size="15" font-family="Segoe UI, sans-serif" font-weight="700">JSON REST API Exchange</text>
+    </g>
+    <g transform="translate(0, 180)">
+      <rect width="230" height="44" rx="12" fill="#064e3b" stroke="#2bb673" stroke-width="1.5"/>
+      <circle cx="28" cy="22" r="5" fill="#2bb673"/>
+      <text x="48" y="27" fill="#f1f5f9" font-size="15" font-family="Segoe UI, sans-serif" font-weight="700">GLPI 11 (ExistingApp)</text>
+    </g>
+  </g>
+
+  <g transform="translate(480, 230)">
+    <path d="M 85 45 Q 170 15, 255 45" fill="none" stroke="url(#lineGrad)" stroke-width="3" stroke-dasharray="6 4" opacity="0.9"/>
+    <path d="M 85 75 Q 170 75, 255 75" fill="none" stroke="url(#lineGrad)" stroke-width="3" opacity="0.4"/>
+    <path d="M 85 105 Q 170 135, 255 105" fill="none" stroke="url(#lineGrad)" stroke-width="3" stroke-dasharray="2 2" opacity="0.9"/>
+    
+    <text x="170" y="28" fill="#38bdf8" font-size="11" font-family="Segoe UI, sans-serif" font-weight="600" text-anchor="middle">JSON Payload</text>
+    <text x="170" y="142" fill="#4ade80" font-size="11" font-family="Segoe UI, sans-serif" font-weight="600" text-anchor="middle">Tickets &amp; Assets Sync</text>
+
+    <g transform="translate(0, 30)">
+      <rect width="85" height="90" rx="14" fill="url(#reactGrad)" opacity="0.15"/>
+      <rect width="85" height="90" rx="14" fill="none" stroke="#00d8ff" stroke-width="2"/>
+      <rect x="17" y="20" width="51" height="34" rx="4" fill="none" stroke="#00d8ff" stroke-width="1.5"/>
+      <line x1="23" y1="44" x2="35" y2="44" stroke="#00d8ff" stroke-width="1.5"/>
+      <circle cx="61" cy="30" r="3" fill="#00d8ff"/>
+      <path d="M 50 64 C 50 61, 75 61, 75 64 L 75 74 C 75 77, 50 77, 50 74 Z" fill="#38bdf8" fill-opacity="0.8"/>
+      <ellipse cx="62.5" cy="64" rx="12.5" ry="3" fill="#00d8ff"/>
+      <text x="42" y="81" fill="#00d8ff" font-size="9" font-family="Segoe UI, sans-serif" font-weight="800">SQLITE</text>
+    </g>
+
+    <g transform="translate(255, 30)">
+      <rect width="85" height="90" rx="14" fill="url(#glpiGrad)" opacity="0.15"/>
+      <rect width="85" height="90" rx="14" fill="none" stroke="#2bb673" stroke-width="2"/>
+      <path d="M 55 30 A 18 18 0 1 0 55 58 L 55 48 A 8 8 0 1 1 55 40 Z" fill="#2bb673"/>
+      <rect x="25" y="55" width="16" height="16" rx="3" fill="#2bb673"/>
+      <circle cx="33" cy="63" r="3" fill="#ffffff"/>
+      <text x="42.5" y="82" fill="#4ade80" font-size="13" font-family="Segoe UI, sans-serif" font-weight="800" text-anchor="middle">GLPI 11</text>
+    </g>
+  </g>
+
+
+</svg>

@@ -1,0 +1,169 @@
+{
+  "order": 1,
+  "slug": "integration-dolibarr-grh-newapp",
+  "badge": {
+    "en": "Solo",
+    "fr": "Solo"
+  },
+  "image": "projects/dolibarr.svg",
+  "imageAlt": {
+    "en": "Operational interface and payroll synchronization dashboard with Dolibarr ERP",
+    "fr": "Interface opérationnelle et tableau de bord de synchronisation des salaires avec l'ERP Dolibarr"
+  },
+  "title": {
+    "en": "Dolibarr v23.0.3 Integration & Custom GRH Ecosystem",
+    "fr": "Application d'Intégration Dolibarr v23.0.3 & Écosystème GRH"
+  },
+  "description": {
+    "en": "A decoupled dual-layer full-stack platform (NewApp) interacting with a local Dolibarr ERP instance. Features advanced multi-criteria payroll generation, multi-stage salary payments tracking, structured CSV/ZIP imports with visual progress, and local SQLite caching for custom holiday policies.",
+    "fr": "Une plateforme full-stack découplée en deux couches (NewApp) connectée à une instance locale de l'ERP Dolibarr. Elle intègre la génération automatique de salaires multicritères, le suivi des paiements échelonnés, l'import structuré de fichiers CSV/ZIP avec indicateur d'avancement, et une persistance SQLite pour la gestion des jours fériés."
+  },
+  "technologies": [
+    "React",
+    "TypeScript",
+    "Tailwind CSS",
+    "Node.js",
+    "Express",
+    "SQLite",
+    "Dolibarr REST API"
+  ],
+  "repoUrl": "https://github.com/Eddou313/NewAppDolibarr",
+  "details": {
+    "description": {
+      "en": "This decoupled system was built to extend the standard Human Resources (GRH) capabilities of Dolibarr ERP v23. The platform is divided into two distinct scopes: a protected Backoffice designed for database reinitialization, secure hardcoded-token entry, and mass data/image file ingestion (CSV and ZIP bundles); and an advanced Frontoffice focusing on agile payroll flows. It supports batch calculation factoring in specific filters (job role, gender, working hours range), handles multi-installment payment tracking with automatic 'remaining balance' detection, and applies localized public holidays constraints stored dynamically inside an isolated SQLite instance.",
+      "fr": "Cet écosystème découplé a été conçu pour étendre et enrichir les fonctionnalités du module de Gestion des Ressources Humaines (GRH) de l'ERP Dolibarr v23. L'application (NewApp) s'organise autour de deux environnements : un Backoffice sécurisé par code unique dédié à la réinitialisation des tables et à l'import massif de données (fichiers CSV pour les profils/postes et archives ZIP pour les photos d'employés) ; et un Frontoffice complet permettant le traitement agile de la paie. Ce dernier prend en charge la génération groupée de salaires selon des critères stricts (poste, genre, heures de travail min/max), le suivi des paiements échelonnés avec calcul dynamique du 'reste à payer', et l'intégration de contraintes calendaires via un CRUD de jours fériés stocké localement sur SQLite."
+    },
+    "points": {
+      "en": [
+        "Configured and deployed a local Dolibarr ERP v23 instance, activating core modules including Payroll, Holidays, and Expenses.",
+        "Built a modular React + TypeScript frontend utilizing Tailwind CSS for high-fidelity dashboards and fluid workflows.",
+        "Designed a node-based backend engine relying on SQLite to process data management operations, imports, and custom calendar management rules.",
+        "Developed a secure Backoffice portal utilizing custom passcodes to prevent unauthenticated database modifications.",
+        "Implemented structured parsing tools supporting multiple CSV tabular datasets alongside visual progression logs.",
+        "Created an automated multi-criteria payroll micro-generator applying customizable daily rates and holiday premiums.",
+        "Implemented detailed employee ledger subviews aggregating career summaries, full payroll histories, and historical balances."
+      ],
+      "fr": [
+        "Configuration et déploiement en local d'une instance de l'ERP Dolibarr v23 avec activation des modules natifs Salaire, Congés et Notes de frais.",
+        "Développement d'un frontend modulaire en React et TypeScript stylisé avec Tailwind CSS pour des tableaux de bord fluides.",
+        "Conception d'une architecture backend sous Node.js exploitant SQLite pour gérer la réinitialisation des tables et l'indexation des jours fériés.",
+        "Mise en place d'un espace Backoffice sécurisé par mot de passe à code unique par défaut pour encadrer l'administration du système.",
+        "Intégration d'un module d'import asynchrone capable d'ingérer des fichiers CSV complexes et des archives ZIP d'images avec suivi de l'avancement.",
+        "Création d'un moteur de génération de salaires groupés basé sur des filtres combinatoires (Poste, Genre, amplitude d'heures de travail).",
+        "Modélisation de fiches salariés individuelles consolidant le profil RH, l'historique complet des versements et le calcul automatique du reste à payer."
+      ]
+    },
+    "images": [
+      {
+        "src": "projects/dolibarr/ListeSalaries_FO.webp",
+        "alt": {
+          "en": "Frontoffice directory - List of all employees with advanced multi-criteria filtering capabilities",
+          "fr": "Annuaire du Frontoffice - Listes de tous les salariés avec filtres multicritères"
+        },
+        "caption": {
+          "en": "Frontoffice directory - Dynamic view displaying complete staff members with combined filtering parameters.",
+          "fr": "Annuaire du Frontoffice - Vue dynamique affichant l'ensemble des collaborateurs avec paramètres de tri combinés."
+        }
+      },
+      {
+        "src": ["projects/dolibarr/GenererSalaire1_FO.webp","projects/dolibarr/GenererSalaire1JF_FO.webp"],
+        "alt": {
+          "en": "Advanced generation wizard displaying monthly calendar periods, base rates, and holiday adjustments",
+          "fr": "Assistant de génération avancée configuré par mois, année, taux journalier et majoration férié"
+        },
+        "caption": {
+          "en": "Refined batch generation screen processing salary structures based on target months and years, base daily metrics, and premium holiday weighting.",
+          "fr": "Écran de génération par lot affinant la structure de paie selon le mois et anner visé, le montant journalier de base et les majorations de jours fériés."
+        }
+      },
+      {
+        "src": "projects/dolibarr/ListeSalaire_FO.webp",
+        "alt": {
+          "en": "Comprehensive payroll registry with real-time text query and criteria matchers",
+          "fr": "Registre global des salaires avec recherche textuelle et filtres multicritères"
+        },
+        "caption": {
+          "en": "Central ledger displaying historic salary slips issued, searchable by employee metadata and periods.",
+          "fr": "Livre-journal central affichant l'historique des fiches de paie émises, triable par employé et par période."
+        }
+      },
+      {
+        "src": "projects/dolibarr/CreateSalaire_FO.webp",
+        "alt": {
+          "en": "Salary creation workflow featuring support for multi-installment and partial payments",
+          "fr": "Formulaire de création de salaire avec support des règlements échelonnés et partiels"
+        },
+        "caption": {
+          "en": "Interactive sub-module allowing administrators to trigger pay runs with adaptable, fragmented disbursement schedules.",
+          "fr": "Sous-module interactif permettant d'initier un versement avec planification de décaissements fragmentés et adaptables."
+        }
+      },
+      {
+        "src": ["projects/dolibarr/GenererSalaire2_FO.webp","projects/dolibarr/GenererSalaire2Normal_FO.webp"],
+        "alt": {
+          "en": "Batch payroll generation panel - Standard dates and fixed amount setup",
+          "fr": "Panneau de génération de salaire groupé - Configuration des dates et du montant fixe"
+        },
+        "caption": {
+          "en": "Allows automated payroll calculations for selected personnel using explicit start dates, end dates, and target amounts.",
+          "fr": "Permet d'automatiser le calcul de la paie pour le personnel sélectionné avec saisie des dates de début, fin et montant cible."
+        }
+      },
+      {
+        "src": ["projects/dolibarr/ListeSalaireInfo_FO.webp","projects/dolibarr/InfoSalaireUser_FO.webp","projects/dolibarr/InfoDetailPayementSalary_FO.webp"],
+        "alt": {
+          "en": "Detailed individual ledger aggregating specific staff parameters and historical tracking details",
+          "fr": "Fiche détaillée d'un collaborateur regroupant l'historique de ses salaires et l'état des versements"
+        },
+        "caption": {
+          "en": "Granular view detailing an employee's personal core variables, comprehensive pay slip breakdowns, and absolute outstanding balance due.",
+          "fr": "Vue granulaire détaillant les données de base d'un agent, l'état de ses salaires passés et le montant exact du reste à payer."
+        }
+      },
+      {
+        "src": "projects/dolibarr/Login_BO.webp",
+        "alt": {
+          "en": "Backoffice secure gateway requiring a dedicated single-token master password",
+          "fr": "Portail de connexion du Backoffice sécurisé par un code unique maître"
+        },
+        "caption": {
+          "en": "Minimalist administrative access portal enforcing application-wide data safety guidelines without multi-user profiles.",
+          "fr": "Portail d'accès administratif minimaliste protégeant la configuration globale du système via un champ de code unique."
+        }
+      },
+      {
+        "src": "projects/dolibarr/Boards_BO.webp",
+        "alt": {
+          "en": "Analytical metrics dashboard separating total operational costs by structural gender and calendar months",
+          "fr": "Tableau de bord analytique ventilant les masses salariales par genre et par période mensuelle"
+        },
+        "caption": {
+          "en": "Visual business intelligence components showing critical aggregates: global budget spent per gender and time tracking curves.",
+          "fr": "Composants de business intelligence affichant les indicateurs clés : répartition budgétaire par genre et courbes d'évolution mensuelle."
+        }
+      },
+      {
+        "src": "projects/dolibarr/Import_BO.webp",
+        "alt": {
+          "en": "Unified import terminal showing live progress updates for structured CSV matrices and asset bundles",
+          "fr": "Terminal d'importation unifié affichant l'avancement de l'extraction des matrices CSV et du pack d'images"
+        },
+        "caption": {
+          "en": "Handles sequential synchronization across three source data structures with responsive visual feedback bars.",
+          "fr": "Prend en charge la synchronisation séquentielle de trois structures de données sources avec barres de progression dynamiques."
+        }
+      },
+      {
+        "src": ["projects/dolibarr/CRUD_JF_BO.webp","projects/dolibarr/Crud_JF_BO.webp"],
+        "alt": {
+          "en": "Administrative calendar manager handling specialized custom calendar constraints",
+          "fr": "Interface d'administration du calendrier pour le contrôle des jours fériés légaux"
+        },
+        "caption": {
+          "en": "Full CRUD management module directly interacting with local SQLite schemas to configure corporate holiday variables.",
+          "fr": "Module de gestion complet (CRUD) communiquant directement avec SQLite pour stocker les variables de jours fériés applicables."
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,170 @@
+{
+  "order": 2,
+  "slug": "application-integration-glpi-v11-0-7",
+  "badge": {
+    "en": "Team",
+    "fr": "Binôme"
+  },
+  "image": "projects/glpi.svg",
+  "imageAlt": {
+    "en": "Operational dashboard of the GLPI integration application",
+    "fr": "Tableau de bord opérationnel de l'application d'intégration GLPI"
+  },
+  "title": {
+    "en": "GLPI v11.0.7 Integration Application",
+    "fr": "Application d'Intégration GLPI v11.0.7"
+  },
+  "description": {
+    "en": "A full-stack client application built with React, Node.js, and SQLite, communicating with GLPI v11.0.7 via JSON API. It features a customizable Kanban ticket manager, multi-criteria asset search, and advanced financial cost tracking.",
+    "fr": "Une application cliente full-stack développée en React, Node.js et SQLite, communiquant avec l'API JSON de GLPI v11.0.7. Elle intègre un gestionnaire de tickets Kanban personnalisable, une recherche d'actifs multi-critères et un suivi analytique des coûts."
+  },
+  "technologies": ["React", "TypeScript", "Vite", "Node.js", "Express", "SQLite", "GLPI API", "JSON"],
+  "repoUrl": "https://github.com/Eddou313/glpi",
+  "details": {
+    "description": {
+      "en": "This project delivers a custom interface (NewAPP) linked with an active GLPI ITIL asset instance. Data synchronization flows over JSON endpoints. While core IT assets and standard ticket states (New, In Progress, Closed) live in GLPI, local customization parameters (Kanban backgrounds, Malagasy translation strings) and high-level ticket recalculations (Real Cost, Reopening Cost, Super Cost) are structured locally using an Express and SQLite backend.",
+      "fr": "Ce projet propose une interface sur mesure (NewAPP) interconnectée à une instance de gestion de parc GLPI. Les échanges de données s'effectuent en JSON. Alors que les actifs et les tickets de base résident dans GLPI, les configurations locales (couleurs du Kanban, traductions des statuts en malgache) et la logique financière des tickets (coût réel, coût de réouverture, super coût) sont persistées localement via un backend Express et SQLite."
+    },
+    "points": {
+      "en": [
+        "Built a dual-layer Front-Office and Back-Office UI using React, Vite, and TypeScript.",
+        "Developed an Express.js companion backend with SQLite to persist custom parameters and ticket workflow histories.",
+        "Implemented a dynamic drag-and-drop Kanban board in the Front-Office with contextual input modals for specific ticket state transitions.",
+        "Created a Back-Office settings module to dynamically map localized Malagasy status names (Vaovao, Efa manao, Vita) and background colors to the client view.",
+        "Designed advanced financial computation engines parsing CSV logs to evaluate Real Cost, Reopening Cost, and cumulative Super Cost metrics per ticket.",
+        "Engineered a secure administrative zone protected by a password-only code barrier, facilitating full data resets and multi-source CSV/ZIP asset importing."
+      ],
+      "fr": [
+        "Développement d'une interface utilisateur double (Front-Office et Back-Office) performante en React, Vite et TypeScript.",
+        "Conception d'un backend compagnon sous Express.js avec SQLite pour la persistance des paramètres locaux et des mouvements de tickets.",
+        "Implémentation d'un tableau Kanban dynamique en Front-Office (Drag & Drop) gérant le décompte des tickets et incluant des boîtes de dialogue contextuelles lors des changements d'état.",
+        "Mise en place d'un espace de configuration Back-Office pour internationaliser les statuts en langue malgache (Vaovao, Efa manao, Vita) et personnaliser les couleurs du Kanban.",
+        "Intégration d'un module analytique calculant finement les indicateurs financiers des tickets : coût réel, coût de réouverture et 'super coût' global.",
+        "Sécurisation de l'accès Back-office via un formulaire à code unique par défaut, intégrant des fonctionnalités d'importation de fichiers (3 CSV de données et 1 ZIP d'images) et de réinitialisation."
+      ]
+    },
+    "images": [
+      {
+        "src": "projects/glpi/ListeItems_FO.webp",
+        "alt": {
+          "en": "Asset listing view with multi-criteria search engine",
+          "fr": "Liste de tous les éléments avec recherche multi-critères"
+        },
+        "caption": {
+          "en": "Front-Office asset inventory view supporting multi-field filtering synced with GLPI.",
+          "fr": "Vue Front-Office de l'inventaire des éléments matériels prenant en charge le filtrage multi-critères synchronisé avec GLPI."
+        }
+      },
+      {
+        "src": "projects/glpi/CreationTickets_FO.webp",
+        "alt": {
+          "en": "Ticket creation page with multi-asset linkage capabilities",
+          "fr": "Création de tickets avec liaison d'éléments"
+        },
+        "caption": {
+          "en": "Interface permettant d'ouvrir un ticket d'incident tout en y associant simultanément plusieurs éléments matériels.",
+          "fr": "Interface permettant d'ouvrir un ticket d'incident tout en y associant simultanément plusieurs éléments matériels."
+        }
+      },
+      {
+        "src": "projects/glpi/GestionStatusTickets_FO.webp",
+        "alt": {
+          "en": "Kanban board workflow ticket management in the front office",
+          "fr": "Gestion des tickets par Kanban sur le Front-Office"
+        },
+        "caption": {
+          "en": "Interactive Kanban view supporting drag-and-drop actions across standard operational states.",
+          "fr": "Vue Kanban interactive permettant de faire glisser les tickets pour faire évoluer instantanément leur statut GLPI."
+        }
+      },
+      {
+        "src": "projects/glpi/Login_BO.webp",
+        "alt": {
+          "en": "Back-office login screen with password code entry field",
+          "fr": "Zone de connexion pour le Back-Office avec champ code secret"
+        },
+        "caption": {
+          "en": "Secure access portal for the Back-Office requesting a single pre-configured access key.",
+          "fr": "Portail d'accès sécurisé pour le Back-Office requérant uniquement la saisie d'un code secret pré-rempli."
+        }
+      },
+      {
+        "src": ["projects/glpi/Boards_BO.webp","projects/glpi/Boards2_BO.webp"],
+        "alt": {
+          "en": "dashboard",
+          "fr": "Tableau de bord "
+        },
+        "caption": {
+          "en": "dashboard",
+          "fr": "Tableau de bord "
+        }
+      },
+      {
+        "src": "projects/glpi/ListeTickets_BO.webp",
+        "alt": {
+          "en": "Detailed administrative tickets listing view",
+          "fr": "Liste d'administration des tickets avec détails"
+        },
+        "caption": {
+          "en": "Back-office inventory spreadsheet detailing full history and inner parameters for active tickets.",
+          "fr": "Grille d'inventaire Back-Office détaillant l'historique complet et les fiches descriptives des tickets."
+        }
+      },
+      {
+        "src": ["projects/glpi/Import_BO.webp","projects/glpi/Import2_BO.webp"],
+        "alt": {
+          "en": "Initial dataset bulk upload and reset area",
+          "fr": "Import des fichiers initiaux avec réinitialisation des données"
+        },
+        "caption": {
+          "en": "Back-office data maintenance workspace parsing core structure data files and images archives.",
+          "fr": "Espace de maintenance gérant l'importation de 4 fichiers sources (CSV/ZIP) et l'effacement global de test."
+        }
+      },
+      {
+        "src": "projects/glpi/CreateParametreKanban_BO.webp",
+        "alt": {
+          "en": "Kanban workspace behaviors configuration screen",
+          "fr": "Création et configuration des paramètres du comportement du Kanban"
+        },
+        "caption": {
+          "en": "Customization portal manipulating column themes and language translation targets persisted in SQLite.",
+          "fr": "Formulaire de configuration modifiant la couleur des colonnes et traduisant les statuts en langue malgache."
+        }
+      },
+      {
+        "src": "projects/glpi/CostTicketsEtSuperCost_BO.webp",
+        "alt": {
+          "en": "Financial tracking view showing real cost, reopening cost, and super cost",
+          "fr": "Détail financier des tickets avec coût réel, coût de réouverture et super coût"
+        },
+        "caption": {
+          "en": "Granular monetary analytics auditing individual operational ticket expenses and reopening overhead costs.",
+          "fr": "Vue granulaire détaillant l'impact financier de chaque ticket (coût réel, pénalité de réouverture et super coût cumulé)."
+        }
+      },
+      {
+        "src": "projects/glpi/Import3_BO.webp",
+        "alt": {
+          "en": "CSV file importing dedicated to ticket logs and financial costs",
+          "fr": "Importation d'un fichier CSV dédié aux mouvements et coûts des tickets"
+        },
+        "caption": {
+          "en": "Secondary intake terminal processing ticket financial modifications and external cost sheets updates.",
+          "fr": "Terminal d'importation secondaire traitant le fichier d'historique des mouvements financiers et des coûts applicables."
+        }
+      },
+      {
+        "src": "projects/glpi/GestionStatuTickets_BO.webp",
+        "alt": {
+          "en": "Back-office administrative ticket handling status panel",
+          "fr": "Gestion des statuts de tickets dans le Back-Office"
+        },
+        "caption": {
+          "en": "Administrative interface supervising ticket lifecycles and resolving edge conflicts.",
+          "fr": "Interface d'administration supervisant le cycle de vie général des tickets et assurant la cohérence avec GLPI."
+        }
+      }
+    ]
+  }
+}
