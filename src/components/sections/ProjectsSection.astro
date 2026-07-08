@@ -187,15 +187,20 @@ projects.sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
         let currentLightboxIndex = 0;
         let isZoomed = false; // État du zoom
 
-        const currentLang = document.documentElement.lang === 'en' ? 'en' : 'fr';
+        // On lit la langue actuelle à la demande (pas une seule fois au chargement).
+        // Le toggle FR/EN du site stocke la langue via l'attribut data-lang sur <html>
+        // (voir Navbar.astro : document.documentElement.setAttribute('data-lang', lang)).
+        const getCurrentLang = () => (document.documentElement.getAttribute('data-lang') === 'fr' ? 'fr' : 'en');
 
-        // Gestion de l'ouverture de la modal et génération de la galerie
-        document.querySelectorAll('.project-detail-btn').forEach(btn => {
-            btn.addEventListener('click', (e: Event) => {
-                const target = e.currentTarget as HTMLElement | null;
-                if (!target || !modalDesc || !modalList || !modalGallery) return;
+        // Référence vers le dernier bouton "détails" cliqué, pour pouvoir
+        // re-remplir la modal si la langue change pendant qu'elle est ouverte.
+        let lastDetailTarget: HTMLElement | null = null;
 
-                modalDesc.textContent = target.getAttribute(`data-description-${currentLang}`) || '';
+        function fillModal(target: HTMLElement) {
+            if (!modalDesc || !modalList || !modalGallery) return;
+            const currentLang = getCurrentLang();
+
+            modalDesc.textContent = target.getAttribute(`data-description-${currentLang}`) || '';
                 
                 modalList.innerHTML = '';
                 const pointsRaw = target.getAttribute(`data-points-${currentLang}`);
@@ -263,15 +268,34 @@ projects.sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
                     modalGallery.appendChild(wrapper);
                 });
 
-                if (modalGallery.children.length === 0) {
-                    modalGallery.style.display = 'none';
-                } else {
-                    modalGallery.style.display = 'grid';
-                }
+            if (modalGallery.children.length === 0) {
+                modalGallery.style.display = 'none';
+            } else {
+                modalGallery.style.display = 'grid';
+            }
+        }
+
+        // Gestion de l'ouverture de la modal et génération de la galerie
+        document.querySelectorAll('.project-detail-btn').forEach(btn => {
+            btn.addEventListener('click', (e: Event) => {
+                const target = e.currentTarget as HTMLElement | null;
+                if (!target) return;
+
+                lastDetailTarget = target; // mémorisé pour pouvoir re-traduire si la langue change
+                fillModal(target);
 
                 modal?.classList.remove('hidden');
                 document.body.style.overflow = 'hidden';
             });
+        });
+
+        // La navbar dispatch l'événement sur `window` (window.dispatchEvent(...)),
+        // donc on écoute ici sur window pour recevoir le changement de langue
+        // en temps réel, y compris pendant que la modal est ouverte.
+        window.addEventListener('langchange', () => {
+            if (lastDetailTarget && modal && !modal.classList.contains('hidden')) {
+                fillModal(lastDetailTarget);
+            }
         });
 
         // Fermeture de la modal -> reload de la page en gardant l'ancre #projects
