@@ -13,7 +13,7 @@ type ProjectData = {
         description: LocalizedText;
         points: LocalizedStringArray;
         images?: Array<{
-            src: string;
+            src: string | string[]; // Chaîne unique ou tableau d'images
             alt?: LocalizedText;
             caption?: LocalizedText;
         }>;
@@ -36,7 +36,6 @@ function resolveLocalizedArray(value: LocalizedStringArray | undefined, lang: 'e
 }
 
 function resolveProjectText(value: LocalizedText | undefined): { en: string; fr: string } {
-    // Si c'est une simple string, on la retourne pour les deux langues
     if (typeof value === 'string') return { en: value, fr: value };
     
     const en = resolveLocalizedText(value, 'en', 'fr');
@@ -55,18 +54,12 @@ function resolveProjectArray(value: LocalizedStringArray | undefined): { en: str
 const projectModules = import.meta.glob('../../../data/projets/*.json', { eager: true, import: 'default' });
 const projects = Object.values(projectModules) as ProjectData[];
 projects.sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
-
 ---
+
 <section id="projects" class="min-h-screen py-20 px-4 bg-gray-50 dark:bg-gray-800/50 flex flex-col justify-center relative">
     <div class="max-w-6xl mx-auto w-full">
         <div class="text-center mb-14">
-            <h2
-                data-en="My Projects"
-                data-fr="Mes Projets"
-                class="section-text text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4"
-            >
-                My Projects
-            </h2>
+            <h2 data-en="My Projects" data-fr="Mes Projets" class="section-text text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">My Projects</h2>
             <div class="w-20 h-1 bg-amber-400 mx-auto rounded-full"></div>
             <p data-en="Some of my recent work" data-fr="Quelques-uns de mes travaux recents" class="section-text mt-6 text-gray-600 dark:text-gray-400 text-lg">Some of my recent work</p>
         </div>
@@ -79,64 +72,43 @@ projects.sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
                 const description = resolveProjectText(project.description);
                 const detailsDescription = resolveProjectText(project.details.description);
                 const detailsPoints = resolveProjectArray(project.details.points);
+                
                 const detailsImagesEn = (project.details.images ?? []).map((image) => ({
-                    src: image.src,
+                    src: Array.isArray(image.src) ? image.src : [image.src],
                     alt: resolveProjectText(image.alt).en,
                     caption: resolveProjectText(image.caption).en
                 }));
                 const detailsImagesFr = (project.details.images ?? []).map((image) => ({
-                    src: image.src,
+                    src: Array.isArray(image.src) ? image.src : [image.src],
                     alt: resolveProjectText(image.alt).fr,
                     caption: resolveProjectText(image.caption).fr
                 }));
 
                 return (
                 <div class="relative rounded-2xl overflow-hidden border border-gray-200 dark:border-indigo-700/60 bg-white dark:bg-slate-900/80 shadow-lg shadow-black/10 dark:shadow-black/30 hover:-translate-y-1 hover:shadow-xl transition-all h-full flex flex-col">
-                    {/* --- CORRECTION ICI POUR LE BADGE --- */}
-                    <span 
-                        data-en={badge.en} 
-                        data-fr={badge.fr} 
-                        class="project-i18n absolute top-3 right-3 z-10 inline-flex items-center gap-1.5 rounded-full bg-amber-400 px-3 py-1 text-xs font-semibold text-slate-900"
-                    >
-                        {badge.en}
-                    </span>
+                    <span data-en={badge.en} data-fr={badge.fr} class="project-i18n absolute top-3 right-3 z-10 inline-flex items-center gap-1.5 rounded-full bg-amber-400 px-3 py-1 text-xs font-semibold text-slate-900">{badge.en}</span>
                     
-                    <img
-                        src={project.image}
-                        alt={imageAlt.en}
-                        data-en-alt={imageAlt.en}
-                        data-fr-alt={imageAlt.fr}
-                        class="project-cover h-52 w-full object-cover"
-                        loading="lazy"
-                    />
+                    <img src={project.image} alt={imageAlt.en} data-en-alt={imageAlt.en} data-fr-alt={imageAlt.fr} class="project-cover h-52 w-full object-cover" loading="lazy" />
+                    
                     <div class="p-5 flex flex-1 flex-col">
                         <h3 data-en={title.en} data-fr={title.fr} class="project-i18n text-2xl font-bold text-gray-900 dark:text-slate-100 mb-2">{title.en}</h3>
                         <p data-en={description.en} data-fr={description.fr} class="project-i18n text-gray-600 dark:text-slate-300/90 leading-relaxed">{description.en}</p>
+                        
                         <div class="mt-4 flex flex-wrap gap-2">
                             {project.technologies.map((tech) => (
                                 <span class="px-2.5 py-1 rounded-md bg-gray-100 dark:bg-slate-800 text-amber-700 dark:text-amber-300 text-xs font-semibold">{tech}</span>
                             ))}
                         </div>
+                        
                         <div class="mt-auto pt-4 border-t border-gray-200 dark:border-indigo-700/60 flex items-center justify-between gap-3">
-                            <a
-                                href={project.repoUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                data-en="View code"
-                                data-fr="Voir le code"
-                                class="project-i18n inline-flex items-center gap-2 text-indigo-700 dark:text-amber-300 hover:text-indigo-900 dark:hover:text-amber-200 font-semibold text-sm"
-                            >
-                                <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 18l6-6-6-6" />
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12H3" />
-                                </svg>
+                            <a href={project.repoUrl} target="_blank" rel="noopener noreferrer" data-en="View code" data-fr="Voir le code" class="project-i18n inline-flex items-center gap-2 text-indigo-700 dark:text-amber-300 hover:text-indigo-900 dark:hover:text-amber-200 font-semibold text-sm">
+                                <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 18l6-6-6-6M15 12H3" /></svg>
                                 <span class="project-i18n-text">View code</span>
                             </a>
                             <button
                                 type="button"
                                 class="project-i18n project-detail-btn text-indigo-700 dark:text-amber-300 hover:text-indigo-900 dark:hover:text-amber-200 font-semibold text-sm"
-                                data-en="View details"
-                                data-fr="Voir les details"
+                                data-en="View details" data-fr="Voir les details"
                                 data-project={project.slug}
                                 data-description-en={detailsDescription.en}
                                 data-description-fr={detailsDescription.fr}
@@ -145,10 +117,7 @@ projects.sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
                                 data-images-en={JSON.stringify(detailsImagesEn)}
                                 data-images-fr={JSON.stringify(detailsImagesFr)}
                             >
-                                <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14" />
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" />
-                                </svg>
+                                <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14" /></svg>
                                 <span class="project-i18n-text">View details</span>
                             </button>
                         </div>
@@ -158,85 +127,245 @@ projects.sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
             })}
         </div>
 
-        {/* ... (Reste du code pour les modals et lightboxes inchangé) ... */}
+        {/* Modal Structure */}
         <div id="project-modal" class="fixed inset-0 z-[80] hidden" aria-hidden="true">
             <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" data-project-close></div>
             <div class="relative z-10 flex items-center justify-center min-h-full p-4">
-                    <div class="w-[80vw] max-w-none max-h-[calc(100vh-2rem)] overflow-hidden rounded-2xl border border-gray-200 dark:border-indigo-700 bg-white dark:bg-slate-900 text-gray-900 dark:text-slate-100 shadow-2xl shadow-black/30 dark:shadow-black/70 flex flex-col" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
+                <div class="w-[80vw] max-w-none max-h-[calc(100vh-2rem)] overflow-hidden rounded-2xl border border-gray-200 dark:border-indigo-700 bg-white dark:bg-slate-900 text-gray-900 dark:text-slate-100 shadow-2xl shadow-black/30 dark:shadow-black/70 flex flex-col" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
                     <div class="flex items-center justify-between gap-4 border-b border-gray-200 dark:border-indigo-700 px-5 py-4">
                         <h3 id="project-modal-title" data-en="Project details" data-fr="Details du projet" class="project-i18n text-xl font-bold">Project details</h3>
-                        <button type="button" id="project-modal-close" data-en="Close" data-fr="Fermer" class="project-i18n rounded-lg border border-gray-300 dark:border-indigo-600 px-3 py-2 text-sm hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors">Close</button>
+                        <button type="button" data-project-close class="rounded-lg border border-gray-300 dark:border-indigo-600 px-3 py-2 text-sm hover:bg-gray-100 dark:hover:bg-slate-800 transition-colors">Close</button>
                     </div>
-                        <div class="flex-1 overflow-y-auto p-5">
+                    <div class="flex-1 overflow-y-auto p-5">
                         <p id="project-modal-description" class="text-gray-700 dark:text-slate-300/95 leading-relaxed"></p>
                         <ul id="project-modal-list" class="mt-4 space-y-2 text-gray-700 dark:text-slate-300/90 list-disc pl-5"></ul>
+                        {/* Conteneur de la galerie */}
                         <div id="project-modal-gallery" class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4"></div>
                     </div>
                 </div>
             </div>
         </div>
 
+        {/* Lightbox Structure */}
         <div id="project-lightbox" class="fixed inset-0 z-[90] hidden" aria-hidden="true">
             <div class="absolute inset-0 bg-black/90" data-lightbox-close></div>
             <div class="relative z-10 flex items-center justify-center min-h-full px-4 py-8">
-                <button
-                    type="button"
-                    id="project-lightbox-close"
-                    data-en="Close image"
-                    data-fr="Fermer l'image"
-                    class="project-i18n absolute top-6 right-6 inline-flex items-center justify-center w-11 h-11 rounded-full border border-white/30 bg-black/40 text-white hover:bg-black/60 transition-colors"
-                    aria-label="Close image"
-                >
-                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12" />
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M18 6L6 18" />
-                    </svg>
-                    <span class="project-i18n-text sr-only">Close image</span>
+                <button type="button" data-lightbox-close class="absolute top-6 right-6 inline-flex items-center justify-center w-11 h-11 rounded-full border border-white/30 bg-black/40 text-white hover:bg-black/60 transition-colors">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M18 6L6 18" /></svg>
                 </button>
 
-                <button
-                    type="button"
-                    id="project-lightbox-prev"
-                    data-en="Previous image"
-                    data-fr="Image precedente"
-                    class="project-i18n absolute left-4 md:left-8 inline-flex items-center justify-center w-11 h-11 rounded-full border border-white/30 bg-black/40 text-white hover:bg-black/60 transition-colors"
-                    aria-label="Previous image"
-                >
-                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 18l-6-6 6-6" />
-                    </svg>
-                    <span class="project-i18n-text sr-only">Previous image</span>
+                <button type="button" id="project-lightbox-prev" class="absolute left-4 md:left-8 inline-flex items-center justify-center w-11 h-11 rounded-full border border-white/30 bg-black/40 text-white hover:bg-black/60 transition-colors">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 18l-6-6 6-6" /></svg>
                 </button>
 
                 <div class="w-full max-w-6xl">
                     <figure class="w-full">
-                        <img id="project-lightbox-image" src="" alt="" class="w-full max-h-[75vh] object-contain" loading="eager" decoding="async" />
+                        <img id="project-lightbox-image" src="" alt="" class="w-full max-h-[75vh] object-contain" />
                         <figcaption id="project-lightbox-caption" class="mt-4 text-center text-sm md:text-base text-white/90"></figcaption>
                     </figure>
                 </div>
 
-                <button
-                    type="button"
-                    id="project-lightbox-next"
-                    data-en="Next image"
-                    data-fr="Image suivante"
-                    class="project-i18n absolute right-4 md:right-8 inline-flex items-center justify-center w-11 h-11 rounded-full border border-white/30 bg-black/40 text-white hover:bg-black/60 transition-colors"
-                    aria-label="Next image"
-                >
-                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 18l6-6-6-6" />
-                    </svg>
-                    <span class="project-i18n-text sr-only">Next image</span>
+                <button type="button" id="project-lightbox-next" class="absolute right-4 md:right-8 inline-flex items-center justify-center w-11 h-11 rounded-full border border-white/30 bg-black/40 text-white hover:bg-black/60 transition-colors">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 18l6-6-6-6" /></svg>
                 </button>
             </div>
         </div>
     </div>
-
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <a href="#contact" aria-label="Scroll to Contact section" class="inline-flex items-center justify-center w-12 h-12 rounded-full text-gray-400 dark:text-slate-300 hover:text-amber-300 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
-            </svg>
-        </a>
-    </div>
 </section>
+<script>
+    const initProjects = () => {
+        const modal = document.getElementById('project-modal');
+        const modalDesc = document.getElementById('project-modal-description');
+        const modalList = document.getElementById('project-modal-list');
+        const modalGallery = document.getElementById('project-modal-gallery');
+        
+        const lightbox = document.getElementById('project-lightbox');
+        const lightboxImg = document.getElementById('project-lightbox-image') as HTMLImageElement | null;
+        const lightboxCap = document.getElementById('project-lightbox-caption');
+        
+        let activeLightboxGroup: Array<{ src: string; alt: string; caption: string }> = [];
+        let currentLightboxIndex = 0;
+        let isZoomed = false; // État du zoom
+
+        const currentLang = document.documentElement.lang === 'en' ? 'en' : 'fr';
+
+        // Gestion de l'ouverture de la modal et génération de la galerie
+        document.querySelectorAll('.project-detail-btn').forEach(btn => {
+            btn.addEventListener('click', (e: Event) => {
+                const target = e.currentTarget as HTMLElement | null;
+                if (!target || !modalDesc || !modalList || !modalGallery) return;
+
+                modalDesc.textContent = target.getAttribute(`data-description-${currentLang}`) || '';
+                
+                modalList.innerHTML = '';
+                const pointsRaw = target.getAttribute(`data-points-${currentLang}`);
+                if (pointsRaw) {
+                    pointsRaw.split('||').forEach((pt: string) => {
+                        if (pt.trim()) {
+                            const li = document.createElement('li');
+                            li.textContent = pt;
+                            modalList.appendChild(li);
+                        }
+                    });
+                }
+
+                modalGallery.innerHTML = '';
+                const rawImages = target.getAttribute(`data-images-${currentLang}`);
+                let imagesData = [];
+                
+                try {
+                    imagesData = JSON.parse(rawImages || '[]');
+                } catch (err) {
+                    console.error("Parsing JSON failed", err);
+                }
+                
+                imagesData.forEach((imgGroup: any) => {
+                    if (!imgGroup || !imgGroup.src || imgGroup.src.length === 0) return;
+
+                    const urls: string[] = Array.isArray(imgGroup.src) ? imgGroup.src : [imgGroup.src];
+                    const firstUrl = urls[0];
+                    const totalImagesCount = urls.length;
+
+                    const wrapper = document.createElement('div');
+                    wrapper.className = "group relative cursor-pointer overflow-hidden rounded-xl border border-gray-200 dark:border-indigo-900 bg-gray-100 dark:bg-slate-950 aspect-video flex items-center justify-center min-h-[150px]";
+                    
+                    const img = document.createElement('img');
+                    img.src = firstUrl;
+                    img.alt = imgGroup.alt || '';
+                    img.className = "w-full h-full object-cover transition-transform duration-300 group-hover:scale-105";
+                    wrapper.appendChild(img);
+
+                    const overlay = document.createElement('div');
+                    overlay.className = "absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-semibold z-10";
+                    overlay.textContent = currentLang === 'en' ? "View Gallery" : "Voir la galerie";
+                    wrapper.appendChild(overlay);
+
+                    if (totalImagesCount > 1) {
+                        const countBadge = document.createElement('span');
+                        countBadge.className = "absolute top-3 right-3 bg-amber-500 text-slate-950 text-xs font-bold px-2.5 py-1 rounded-full z-20 shadow-md";
+                        countBadge.textContent = `+${totalImagesCount}`;
+                        wrapper.appendChild(countBadge);
+                    }
+
+                    wrapper.addEventListener('click', () => {
+                        activeLightboxGroup = urls.map(url => ({
+                            src: url,
+                            alt: imgGroup.alt || '',
+                            caption: imgGroup.caption || ''
+                        }));
+                        
+                        currentLightboxIndex = 0;
+                        resetZoom(); // Reset du zoom à l'ouverture
+                        updateLightbox();
+                        lightbox?.classList.remove('hidden');
+                    });
+
+                    modalGallery.appendChild(wrapper);
+                });
+
+                if (modalGallery.children.length === 0) {
+                    modalGallery.style.display = 'none';
+                } else {
+                    modalGallery.style.display = 'grid';
+                }
+
+                modal?.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        // Fermeture de la modal -> reload de la page en gardant l'ancre #projects
+        // (évite le bug de scroll bloqué après fermeture)
+        const handleCloseModal = () => {
+            if (!modal || modal.classList.contains('hidden')) return;
+            window.location.hash = 'projects';
+            window.location.reload();
+        };
+
+        document.querySelectorAll('[data-project-close]').forEach(el => {
+            el.addEventListener('click', handleCloseModal);
+        });
+
+        // Sécurité : fermeture avec la touche Échap
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+                handleCloseModal();
+            }
+        });
+
+        // --- Système de Zoom pour la Lightbox ---
+        if (lightboxImg) {
+            // Style de base initial pour permettre les transformations fluides
+            lightboxImg.style.transition = "transform 0.25s ease, transform-origin 0s";
+            lightboxImg.style.cursor = "zoom-in";
+
+            lightboxImg.addEventListener('click', (e: MouseEvent) => {
+                isZoomed = !isZoomed;
+                
+                if (isZoomed) {
+                    lightboxImg.style.cursor = "zoom-out";
+                    lightboxImg.style.transform = "scale(2)"; // Facteur de zoom réglable (ex: 2 ou 2.5)
+                    
+                    // Ajuster l'origine du zoom selon la position du clic
+                    const rect = lightboxImg.getBoundingClientRect();
+                    const x = ((e.clientX - rect.left) / rect.width) * 100;
+                    const y = ((e.clientY - rect.top) / rect.height) * 100;
+                    lightboxImg.style.transformOrigin = `${x}% ${y}%`;
+                } else {
+                    resetZoom();
+                }
+            });
+
+            // Déplacement dans l'image zoomée en bougeant la souris
+            lightboxImg.addEventListener('mousemove', (e: MouseEvent) => {
+                if (!isZoomed) return;
+                const rect = lightboxImg.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / rect.width) * 100;
+                const y = ((e.clientY - rect.top) / rect.height) * 100;
+                // Ajustement dynamique et fluide du focus du zoom
+                lightboxImg.style.transformOrigin = `${x}% ${y}%`;
+            });
+        }
+
+        function resetZoom() {
+            isZoomed = false;
+            if (lightboxImg) {
+                lightboxImg.style.transform = "scale(1)";
+                lightboxImg.style.cursor = "zoom-in";
+                lightboxImg.style.transformOrigin = "center center";
+            }
+        }
+
+        function updateLightbox() {
+            if (!lightboxImg || !lightboxCap || activeLightboxGroup.length === 0) return;
+            resetZoom(); // Reset automatique si on change d'image
+            const item = activeLightboxGroup[currentLightboxIndex];
+            lightboxImg.src = item.src;
+            lightboxImg.alt = item.alt || '';
+            lightboxCap.textContent = item.caption || '';
+        }
+
+        // Navigation Lightbox
+        document.getElementById('project-lightbox-prev')?.addEventListener('click', () => {
+            if (activeLightboxGroup.length === 0) return;
+            currentLightboxIndex = (currentLightboxIndex - 1 + activeLightboxGroup.length) % activeLightboxGroup.length;
+            updateLightbox();
+        });
+
+        document.getElementById('project-lightbox-next')?.addEventListener('click', () => {
+            if (activeLightboxGroup.length === 0) return;
+            currentLightboxIndex = (currentLightboxIndex + 1) % activeLightboxGroup.length;
+            updateLightbox();
+        });
+
+        document.querySelectorAll('[data-lightbox-close]').forEach(el => {
+            el.addEventListener('click', () => {
+                lightbox?.classList.add('hidden');
+                resetZoom();
+            });
+        });
+    };
+
+    document.addEventListener('DOMContentLoaded', initProjects);
+    document.addEventListener('astro:page-load', initProjects);
+</script>
