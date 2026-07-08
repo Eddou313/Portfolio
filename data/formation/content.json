@@ -5,28 +5,28 @@
   },
   "items": [
     {
-      "period": "2025 - 2026",
+      "period": "2025 - Present",
       "title": {
-        "en": "3rd Year in Computer Science",
-        "fr": "3eme annee en Informatique"
+        "en": "Bachelor's Degree in Computer Science",
+        "fr": "Licence en Informatique"
       },
       "subtitle": {
-        "en": "Developer Option",
-        "fr": "Option Developpeur"
+        "en": "Developer",
+        "fr": "Développeur"
       },
-      "school": "IT Universite Andoharanofotsy"
+      "school": "IT-University Andoharanofotsy"
     },
     {
       "period": "2019 - 2020",
       "title": {
         "en": "High School Diploma",
-        "fr": "Baccalaureat"
+        "fr": "Baccalauréat"
       },
       "subtitle": {
-        "en": "Scientific Stream (S) with 'Assez bien' grade",
-        "fr": "Serie Scientifique (S) avec mention 'Assez bien'"
+        "en": "Scientific Stream (S) with honors ('Assez bien')",
+        "fr": "Série Scientifique (S) avec mention 'Assez bien'"
       },
-      "school": "Lycee Saint Famille Mahamasina"
+      "school": "Lycée Sainte-Famille Mahamasina"
     }
   ]
 }
